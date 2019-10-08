@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="AccountStatus.cs" />
-    <Compile Include="AutoPart.cs" />
-    <Compile Include="AutoPartStatus.cs" />
+    <Compile Include="Data\Entity\Account.cs" />
+    <Compile Include="Data\Entity\AccountStatus.cs" />
+    <Compile Include="Data\Entity\AutoPart.cs" />
+    <Compile Include="Data\Entity\AutoPartStatus.cs" />
     <Compile Include="Business\Processor\AccountStatus\AccountStatusProcessor.cs" />
     <Compile Include="Business\Processor\AccountStatus\IAccountStatusProcessor.cs" />
     <Compile Include="Business\Processor\Account\AccountProcessor.cs" />
@@ -231,13 +231,13 @@
     <Compile Include="Business\Processor\VehicleStatus\VehicleStatusProcessor.cs" />
     <Compile Include="Business\Processor\Vehicle\IVehicleProcessor.cs" />
     <Compile Include="Business\Processor\Vehicle\VehicleProcessor.cs" />
-    <Compile Include="CheckUp.cs" />
-    <Compile Include="CheckUpStatus.cs" />
-    <Compile Include="Contract.cs" />
-    <Compile Include="ContractStatus.cs" />
-    <Compile Include="ContractType.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="CustomerStatus.cs" />
+    <Compile Include="Data\Entity\CheckUp.cs" />
+    <Compile Include="Data\Entity\CheckUpStatus.cs" />
+    <Compile Include="Data\Entity\Contract.cs" />
+    <Compile Include="Data\Entity\ContractStatus.cs" />
+    <Compile Include="Data\Entity\ContractType.cs" />
+    <Compile Include="Data\Entity\Customer.cs" />
+    <Compile Include="Data\Entity\CustomerStatus.cs" />
     <Compile Include="Dataaccess\Dao\AccountStatus\AccountStatusDao.cs" />
     <Compile Include="Dataaccess\Dao\AccountStatus\IAccountStatusDao.cs" />
     <Compile Include="Dataaccess\Dao\Account\AccountCao.cs" />
@@ -284,13 +284,13 @@
     <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusDao.cs" />
     <Compile Include="Dataaccess\Dao\Vehicle\IVehicleDao.cs" />
     <Compile Include="Dataaccess\Dao\Vehicle\VehicleDao.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="EmployeeStatus.cs" />
-    <Compile Include="Issue.cs" />
-    <Compile Include="Make.cs" />
-    <Compile Include="Model.cs" />
-    <Compile Include="Persistent.cs" />
-    <Compile Include="NamedPersistent.cs" />
+    <Compile Include="Data\Entity\Employee.cs" />
+    <Compile Include="Data\Entity\EmployeeStatus.cs" />
+    <Compile Include="Data\Entity\Issue.cs" />
+    <Compile Include="Data\Entity\Make.cs" />
+    <Compile Include="Data\Entity\Model.cs" />
+    <Compile Include="Data\Entity\Persistent.cs" />
+    <Compile Include="Data\Entity\NamedPersistent.cs" />
     <Compile Include="Presentation\service\AccountStatus\AccountStatusStatus.cs" />
     <Compile Include="Presentation\service\AccountStatus\IAccountStatusService.cs" />
     <Compile Include="Presentation\service\Account\AccountService.cs" />
@@ -339,13 +339,13 @@
     <Compile Include="Presentation\service\Vehicle\VehicleService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserGroup.cs" />
-    <Compile Include="UserGroupStatus.cs" />
-    <Compile Include="UserUserGroup.cs" />
-    <Compile Include="VehicleMakeModel.cs" />
-    <Compile Include="VehicleStatus.cs" />
-    <Compile Include="Vehicle.cs" />
+    <Compile Include="Data\Entity\User.cs" />
+    <Compile Include="Data\Entity\UserGroup.cs" />
+    <Compile Include="Data\Entity\UserGroupStatus.cs" />
+    <Compile Include="Data\Entity\UserUserGroup.cs" />
+    <Compile Include="Data\Entity\VehicleMakeModel.cs" />
+    <Compile Include="Data\Entity\VehicleStatus.cs" />
+    <Compile Include="Data\Entity\Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
