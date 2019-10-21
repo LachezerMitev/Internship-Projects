@@ -20,36 +20,61 @@ namespace AutoServiceShop.Business.Processor.Account
         public AccountResult Create(AccountParam param)
         {
             Data.Entity.Account entity = AccountParamConverter.Convert(param);
-            //AccountDao.Save(entity);
-
-            Console.WriteLine("Account: " + entity.FirstName + " " + entity.LastName);
+            AccountDao.Save(entity);
 
             return AccountResultConverter.Convert(entity);
         }
 
         public List<AccountResult> Create(List<AccountParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Account> entities = new List<Data.Entity.Account>();
+            foreach (var item in param)
+            {
+                entities.Add(AccountParamConverter.Convert(item));
+            }
+            AccountDao.Save(entities);
+            List<AccountResult> result = new List<AccountResult>();
+            foreach (var item in entities)
+            {
+                result.Add(AccountResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            AccountDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Account> entity = new List<Data.Entity.Account>();
+            foreach (var id in idList)
+            {
+                entity.Add(AccountDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                AccountDao.Delete(id);
+            }
         }
 
         public AccountResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Account entity = AccountDao.Find(id);
+            AccountResult result = AccountResultConverter.Convert(entity);
+            return result;
         }
 
         public List<AccountResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Account> accounts = AccountDao.Find();
+            List<AccountResult> results = new List<AccountResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(AccountResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, AccountParam param)

@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Processor\Converter\BaseParam.cs" />
+    <Compile Include="Business\Processor\Converter\BaseParamNamed.cs" />
+    <Compile Include="Business\Processor\Converter\BaseResult.cs" />
+    <Compile Include="Business\Processor\Converter\BaseResultNamed.cs" />
     <Compile Include="Data\Common\ApiResponse.cs" />
     <Compile Include="Data\Entity\Account.cs" />
     <Compile Include="Data\Entity\AccountStatus.cs" />
@@ -295,6 +299,7 @@
     <Compile Include="Data\Entity\Model.cs" />
     <Compile Include="Data\Entity\Persistent.cs" />
     <Compile Include="Data\Entity\NamedPersistent.cs" />
+    <Compile Include="Presentation\JsonConverter\JsonConverter.cs" />
     <Compile Include="Presentation\service\AccountStatus\AccountStatusStatus.cs" />
     <Compile Include="Presentation\service\AccountStatus\IAccountStatusService.cs" />
     <Compile Include="Presentation\service\Account\AccountService.cs" />

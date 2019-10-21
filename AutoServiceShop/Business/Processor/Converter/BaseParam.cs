@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoServiceShop.Data.Entity
+namespace AutoServiceShop.Business.Processor.Converter
 {
-    class Persistent
+    class BaseParam
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
     }
 }

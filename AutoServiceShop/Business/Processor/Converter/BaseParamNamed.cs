@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoServiceShop.Data.Entity
+namespace AutoServiceShop.Business.Processor.Converter
 {
-    class NamedPersistent : Persistent
+    class BaseParamNamed : BaseParam
     {
         public int Code { get; set; }
+
         public string Name { get; set; }
+
         public string Description { get; set; }
     }
 }

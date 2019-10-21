@@ -15,9 +15,19 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
 
         public Data.Entity.Account Convert(AccountParam param)
         {
-            Data.Entity.Account convertedAccount = JsonConvert.DeserializeObject<Data.Entity.Account>(param.jsonString);
+            Data.Entity.Account result = new Data.Entity.Account()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+                FirstName = param.FirstName,
+                Surname = param.Surname,
+                LastName = param.LastName,
+                Type = param.Type
+            };
 
-            return convertedAccount;
+            return result;
         }
     }
 }

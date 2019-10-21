@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Account
 {
-    class AccountResult
+    class AccountResult : BaseResultNamed
     {
-        public string jsonResult { get; set; }
+        public string FirstName { get; set; }
+
+        public string Surname { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Type { get; set; }
     }
 }

@@ -14,43 +14,102 @@ namespace AutoServiceShop.Presentation.service.Account
     {
         public AccountProcessor AccountProcessor { get; set; }
 
+        public ApiResponse Response { get; set; }
+
         public ApiResponse Create(AccountParam param)
         {
-            
-            AccountProcessor.Create(param);
-
-            ApiResponse response = new ApiResponse
+            try
             {
-                text = "Well something happend. I think it worked :/",
-                result = true
-            };
+                Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Create(param));
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+            }
 
-            return response;
+            return Response;
         }
-
+        
         public ApiResponse Create(List<AccountParam> param)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Create(param));
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+            }
+
+            return Response;
         }
 
         public ApiResponse Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            try
+            {
+                AccountProcessor.Delete(idList);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong. Try again later. :)";
+                Response.result = false;
+            }
+            return Response;
         }
 
         public ApiResponse DeleteById(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                AccountProcessor.Delete(id);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+            }
+            return Response;
         }
 
         public ApiResponse FindByPK(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                AccountProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Find(id));
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "An account with this id does not exist";
+                Response.result = false;
+            }
+            return Response;
         }
 
         public ApiResponse ListAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                AccountProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Find());
+                Response.result = true;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+            }
+            return Response;
         }
 
         public ApiResponse Update(long id, AccountParam param)

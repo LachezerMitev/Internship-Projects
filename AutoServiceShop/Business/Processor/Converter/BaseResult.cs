@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoServiceShop.Data.Entity
+namespace AutoServiceShop.Business.Processor.Converter
 {
-    class Persistent
+    class BaseResult
     {
         public long Id { get; set; }
     }

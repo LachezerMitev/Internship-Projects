@@ -12,11 +12,16 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
     {
         public AccountResult Convert(Data.Entity.Account param)
         {
-            string output = JsonConvert.SerializeObject(param);
-
-            AccountResult result = new AccountResult
+            AccountResult result = new AccountResult()
             {
-                jsonResult = output
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+                FirstName = param.FirstName,
+                Surname = param.Surname,
+                LastName = param.LastName,
+                Type = param.Type
             };
 
             return result;

@@ -11,7 +11,8 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Account entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.Account entity)
@@ -21,7 +22,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.Account> Find()
@@ -36,12 +37,12 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public Data.Entity.Account Save(Data.Entity.Account entity)
         {
-            throw new NotImplementedException();
+            return entity;
         }
 
         public List<Data.Entity.Account> Save(List<Data.Entity.Account> entity)
         {
-            throw new NotImplementedException();
+            return entity;
         }
 
         public Data.Entity.Account Update(Data.Entity.Account entity)

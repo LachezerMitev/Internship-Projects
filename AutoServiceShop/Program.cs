@@ -10,6 +10,7 @@ using AutoServiceShop.Business.Processor.Converter.Account;
 using AutoServiceShop.Presentation.service.Account;
 using AutoServiceShop.Dataaccess.Dao.Account;
 using AutoServiceShop.Business.Processor.Account;
+using AutoServiceShop.Data.Common;
 
 namespace AutoServiceShop
 {
@@ -17,19 +18,16 @@ namespace AutoServiceShop
     {
         static void Main(string[] args)
         {
-            Account testccount = new Account
+            AccountParam testParam = new AccountParam
             {
                 FirstName = "Gosho",
                 Surname = "Ivanov",
                 LastName = "Golemiq",
-                Type = "Golemiq"
-            };
-
-            string output = JsonConvert.SerializeObject(testccount);
-
-            AccountParam testParam = new AccountParam
-            {
-                jsonString = output
+                Type = "Rabotnik",
+                Code = 1235486,
+                Description = "Well, He works...... stuff..... idk",
+                Name = "Georgi",
+                Id = 12352456
             };
 
             AccountDao accountDao = new AccountDao();
@@ -39,11 +37,12 @@ namespace AutoServiceShop
             accountProcessor.AccountResultConverter = accountResultConverter;
             accountProcessor.AccountParamConverter = accountParamConverter;
             accountProcessor.AccountDao = accountDao;
-            AccountService testService = new AccountService();
-            testService.AccountProcessor = accountProcessor;
-            
+            AccountService testService = new AccountService() { AccountProcessor = accountProcessor};
 
-            testService.Create(testParam);
+
+            ApiResponse response = testService.Create(testParam);
+
+            Console.WriteLine(response.text);
 
             Console.ReadLine();
         }
