@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.User
 {
     class UserParamConverter : IUserParamConverter
     {
-        UserDao UserDao { get; set; }
+        IUserDao UserDao { get; set; }
 
         public Data.Entity.User Convert(UserParam param)
         {

@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.VehicleStatus
 {
     class VehicleStatusProcessor : IVehicleStatusProcessor
     {
-        VehicleStatusDao VehicleStatusDao { get; set; }
+        IVehicleStatusDao VehicleStatusDao { get; set; }
 
-        VehicleStatusParamConverter VehicleStatusParamConverter { get; set; }
-        VehicleStatusResultConverter VehicleStatusResultConverter { get; set; }
+        IVehicleStatusParamConverter VehicleStatusParamConverter { get; set; }
+        IVehicleStatusResultConverter VehicleStatusResultConverter { get; set; }
 
         public VehicleStatusResult Create(VehicleStatusParam param)
         {

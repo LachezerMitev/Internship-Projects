@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.Model
 {
     class ModelProcessor : IModelProcessor
     {
-        ModelDao ModelDao { get; set; }
+        IModelDao ModelDao { get; set; }
 
-        ModelParamConverter ModelParamConverter { get; set; }
-        ModelResultConverrter ModelResultConverrter { get; set; }
+        IModelParamConverter ModelParamConverter { get; set; }
+        IModelResultConverter ModelResultConverrter { get; set; }
 
         public ModelResult Create(ModelParam param)
         {

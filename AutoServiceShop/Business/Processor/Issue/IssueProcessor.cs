@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.Issue
 {
     class IssueProcessor : IIssueProcessor
     {
-        IssueDao IssueDao { get; set; }
+        IIssueDao IssueDao { get; set; }
 
-        IssueParamConverter IssueParamConverter { get; set; }
-        IssueResultConverter IssueResultConverter { get; set; }
+        IIssueParamConverter IssueParamConverter { get; set; }
+        IIssueResultConverter IssueResultConverter { get; set; }
 
         public IssueResult Create(IssueParam param)
         {

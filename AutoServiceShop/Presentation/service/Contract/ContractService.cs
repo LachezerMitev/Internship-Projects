@@ -12,7 +12,7 @@ namespace AutoServiceShop.Presentation.service.Contract
 {
     class ContractService : IContractService
     {
-        ContractProcessor ContractProcessor { get; set; }
+        IContractProcessor ContractProcessor { get; set; }
 
         public ApiResponse Create(ContractParam param)
         {

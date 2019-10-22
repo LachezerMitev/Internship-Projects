@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 {
     class EmployeeStatusService : IEmployeeStatusService
     {
-        EmployeeStatusProcessor EmployeeStatusProcessor { get; set; }
+        IEmployeeStatusProcessor EmployeeStatusProcessor { get; set; }
 
         public ApiResponse Create(EmployeeStatusParam param)
         {

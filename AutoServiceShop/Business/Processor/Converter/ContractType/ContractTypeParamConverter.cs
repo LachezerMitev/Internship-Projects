@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractType
 {
     class ContractTypeParamConverter : IContractTypeParamConverter
     {
-        ContractTypeDao ContractTypeDao { get; set; }
+        IContractTypeDao ContractTypeDao { get; set; }
 
         public Data.Entity.ContractType Convert(ContractTypeParam param)
         {

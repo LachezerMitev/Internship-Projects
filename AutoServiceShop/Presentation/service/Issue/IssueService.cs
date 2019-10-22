@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.Issue
 {
     class IssueService : IIssueService
     {
-        IssueProcessor IssueProcessor { get; set; }
+        IIssueProcessor IssueProcessor { get; set; }
 
         public ApiResponse Create(IssueParam param)
         {

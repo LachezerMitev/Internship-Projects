@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
 {
     class ModelParamConverter : IModelParamConverter
     {
-        ModelDao ModelDao { get; set; }
+        IModelDao ModelDao { get; set; }
 
         public Data.Entity.Model Convert(ModelParam param)
         {

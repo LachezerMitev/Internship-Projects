@@ -12,7 +12,7 @@ namespace AutoServiceShop.Presentation.service.AutoPart
 {
     class AutoPartService : IAutoPartService
     {
-        AutoPartProcessor AutoPartProcessor { get; set; }
+        IAutoPartProcessor AutoPartProcessor { get; set; }
 
         public ApiResponse Create(AutoPartParam param)
         {

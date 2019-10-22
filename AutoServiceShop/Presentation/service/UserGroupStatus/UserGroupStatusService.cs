@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 {
     class UserGroupStatusService : IUserGroupStatusService
     {
-        UserGroupStatusProcessor UserGroupStatusProcessor { get; set; }
+        IUserGroupStatusProcessor UserGroupStatusProcessor { get; set; }
 
         public ApiResponse Create(UserGroupStatusParam param)
         {

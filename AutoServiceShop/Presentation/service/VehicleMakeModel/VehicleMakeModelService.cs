@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 {
     class VehicleMakeModelService : IVehicleMakeModelService
     {
-        VehicleMakeModelProcessor VehicleMakeModelProcessor { get; set; }
+        IVehicleMakeModelProcessor VehicleMakeModelProcessor { get; set; }
 
         public ApiResponse Create(VehicleMakeModelParam param)
         {

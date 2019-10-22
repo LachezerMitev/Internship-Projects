@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
     class VehicleMakeModelProcessor : IVehicleMakeModelProcessor
     {
-        VehicleMakeModelDao VehicleMakeModelDao { get; set; }
+        IVehicleMakeModelDao VehicleMakeModelDao { get; set; }
 
-        VehicleMakeModelParamConverter VehicleMakeModelParamConverter { get; set; }
-        VehicleMakeModelResultConverter VehicleMakeModelResultConverter { get; set; }
+        IVehicleMakeModelParamConverter VehicleMakeModelParamConverter { get; set; }
+        IVehicleMakeModelResultConverter VehicleMakeModelResultConverter { get; set; }
 
         public VehicleMakeModelResult Create(VehicleMakeModelParam param)
         {

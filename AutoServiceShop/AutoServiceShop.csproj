@@ -50,6 +50,7 @@
     <Compile Include="Business\Processor\Converter\BaseParamNamed.cs" />
     <Compile Include="Business\Processor\Converter\BaseResult.cs" />
     <Compile Include="Business\Processor\Converter\BaseResultNamed.cs" />
+    <Compile Include="Dataaccess\Dao\Account\AccountStorage.cs" />
     <Compile Include="Data\Common\ApiResponse.cs" />
     <Compile Include="Data\Entity\Account.cs" />
     <Compile Include="Data\Entity\AccountStatus.cs" />

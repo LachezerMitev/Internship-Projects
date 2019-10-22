@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.AutoPartStatus
 {
     class AutoPartStatusProcessor : IAutoPartStatusProcessor
     {
-        AutoPartStatusDao AutoPartStatusDao { get; set; }
+        IAutoPartStatusDao AutoPartStatusDao { get; set; }
 
-        AutoPartStatusParamConverter AutoPartStatusParamConverter { get; set; }
-        AutoPartStatusResultConverter AutoPartStatusResultConverter { get; set; }
+        IAutoPartStatusParamConverter AutoPartStatusParamConverter { get; set; }
+        IAutoPartStatusResultConverter AutoPartStatusResultConverter { get; set; }
 
         public AutoPartStatusResult Create(AutoPartStatusParam param)
         {

@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.UserUserGroup
 {
     class UserUserGroupProcessor : IUserUserGroupProcessor
     {
-        UserUserGroupDao UserUserGroupDao { get; set; }
+        IUserUserGroupDao UserUserGroupDao { get; set; }
 
-        UserUserGroupParamConverter UserUserGroupParamConverter { get; set; }
-        UserUserGroupResultConverter UserUserGroupResultConverter { get; set; }
+        IUserUserGroupParamConverter UserUserGroupParamConverter { get; set; }
+        IUserUserGroupResultConverter UserUserGroupResultConverter { get; set; }
 
         public UserUserGroupResult Create(UserUserGroupParam param)
         {

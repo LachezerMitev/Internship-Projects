@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.Make
 {
     class MakeService : IMakeService
     {
-        MakeProcessor MakeProcessor { get; set; }
+        IMakeProcessor MakeProcessor { get; set; }
 
         public ApiResponse Create(MakeParam param)
         {

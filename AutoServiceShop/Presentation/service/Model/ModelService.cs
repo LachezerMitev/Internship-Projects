@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.Model
 {
     class ModelService : IModelService
     {
-        ModelProcessor ModelProcessor { get; set; }
+        IModelProcessor ModelProcessor { get; set; }
 
         public ApiResponse Create(ModelParam param)
         {

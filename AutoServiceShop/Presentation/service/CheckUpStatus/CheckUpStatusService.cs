@@ -12,7 +12,7 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 {
     class CheckUpStatusService : ICheckUpStatusService
     {
-        CheckUpStatusProcessor CheckUpStatusProcessor { get; set; }
+        ICheckUpStatusProcessor CheckUpStatusProcessor { get; set; }
 
         public ApiResponse Create(CheckUpStatusParam param)
         {

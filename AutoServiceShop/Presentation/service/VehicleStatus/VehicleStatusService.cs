@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.VehicleStatus
 {
     class VehicleStatusService : IVehicleStatusService
     {
-        VehicleStatusProcessor VehicleStatusProcessor { get; set; }
+        IVehicleStatusProcessor VehicleStatusProcessor { get; set; }
 
         public ApiResponse Create(VehicleStatusParam param)
         {

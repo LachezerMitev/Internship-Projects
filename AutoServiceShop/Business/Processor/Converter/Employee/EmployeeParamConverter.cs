@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Employee
 {
     class EmployeeParamConverter : IEmployeeParamConverter
     {
-        EmployeeDao EmployeeDao { get; set; }
+        IEmployeeDao EmployeeDao { get; set; }
 
         public Data.Entity.Employee Convert(EmployeeParam param)
         {

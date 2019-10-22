@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.Make
 {
     class MakeProcessor : IMakeProcessor
     {
-        MakeDao MakeDao { get; set; }
+        IMakeDao MakeDao { get; set; }
 
-        MakeParamConverter MakeParamConverter { get; set; }
-        MakeResultConverter MakeResultConverter { get; set; }
+        IMakeParamConverter MakeParamConverter { get; set; }
+        IMakeResultConverter MakeResultConverter { get; set; }
 
         public MakeResult Create(MakeParam param)
         {

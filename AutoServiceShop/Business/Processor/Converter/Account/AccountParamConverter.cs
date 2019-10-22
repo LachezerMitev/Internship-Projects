@@ -11,7 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
 {
     class AccountParamConverter : IAccountParamConverter
     {
-        AccountDao AccountDao { get; set; }
+        IAccountDao AccountDao { get; set; }
 
         public Data.Entity.Account Convert(AccountParam param)
         {
@@ -28,6 +28,31 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
             };
 
             return result;
+        }
+
+        public Data.Entity.Account Convert(AccountParam param, Data.Entity.Account oldentity)
+        {
+            Data.Entity.Account entity = null;
+
+            if (oldentity != null)
+            {
+                entity = oldentity;
+            }
+            else
+            {
+                entity = new Data.Entity.Account();
+            }
+
+            entity.Code = param.Code;
+            entity.Id = param.Id;
+            entity.Description = param.Description;
+            entity.Name = param.Name;
+            entity.FirstName = param.FirstName;
+            entity.Surname = param.Surname;
+            entity.LastName = param.LastName;
+            entity.Type = param.Type;
+
+            return entity;
         }
     }
 }

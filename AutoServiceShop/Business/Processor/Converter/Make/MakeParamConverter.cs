@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
 {
     class MakeParamConverter : IMakeParamConverter
     {
-        MakeDao MakeDao { get; set; }
+        IMakeDao MakeDao { get; set; }
 
         public Data.Entity.Make Convert(MakeParam param)
         {

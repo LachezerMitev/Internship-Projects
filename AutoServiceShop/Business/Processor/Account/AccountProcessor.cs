@@ -12,13 +12,15 @@ namespace AutoServiceShop.Business.Processor.Account
 {
     class AccountProcessor : IAccountProcessor
     {
-        public AccountDao AccountDao { get; set; }
+        public IAccountDao AccountDao = new AccountDao();
 
-        public AccountParamConverter AccountParamConverter { get; set; }
-        public AccountResultConverter AccountResultConverter { get; set; }
+        public IAccountParamConverter AccountParamConverter = new AccountParamConverter();
+
+        public IAccountResultConverter AccountResultConverter = new AccountResultConverter();
 
         public AccountResult Create(AccountParam param)
         {
+
             Data.Entity.Account entity = AccountParamConverter.Convert(param);
             AccountDao.Save(entity);
 
@@ -79,12 +81,20 @@ namespace AutoServiceShop.Business.Processor.Account
 
         public void Update(long id, AccountParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Account oldEntity = AccountDao.Find(id);
+            Data.Entity.Account newEntity = AccountParamConverter.Convert(param);
+            AccountDao.Update(newEntity);
         }
 
         public void Update(List<AccountParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Account> entity = new List<Data.Entity.Account>();
+            foreach(var item in param)
+            {
+                Data.Entity.Account oldEntity = AccountDao.Find(item.Id);
+                Data.Entity.Account newEntity = AccountParamConverter.Convert(item);
+                AccountDao.Update(newEntity);
+            }
         }
     }
 }

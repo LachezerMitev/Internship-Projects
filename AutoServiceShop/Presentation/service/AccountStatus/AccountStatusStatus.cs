@@ -12,7 +12,7 @@ namespace AutoServiceShop.Presentation.service.AccountStatus
 {
     class AccountStatusStatus : IAccountStatusService
     {
-        AccountStatusProcessor AccountStatusProcessor { get; set; }
+        IAccountStatusProcessor AccountStatusProcessor { get; set; }
 
         public ApiResponse Create(AccountStatusParam param)
         {

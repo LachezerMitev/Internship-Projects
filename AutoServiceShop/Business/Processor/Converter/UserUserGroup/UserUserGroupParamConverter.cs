@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
     class UserUserGroupParamConverter : IUserUserGroupParamConverter
     {
-        UserUserGroupDao UserUserGroupDao { get; set; }
+        IUserUserGroupDao UserUserGroupDao { get; set; }
 
         public Data.Entity.UserUserGroup Convert(UserUserGroupParam param)
         {

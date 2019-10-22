@@ -19,5 +19,7 @@ namespace AutoServiceShop.Data.Entity
 
         [JsonIgnore]
         public string Type { get; set; }
+
+
     }
 }

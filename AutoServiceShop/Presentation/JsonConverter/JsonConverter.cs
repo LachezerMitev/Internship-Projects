@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.JsonConverter
     {
         public static string ObjToJson(object obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            return JsonConvert.SerializeObject(obj, Formatting.Indented);
         }
     }
 }

@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.AccountStatus
 {
     class AccountStatusProcessor : IAccountStatusProcessor
     {
-        AccountStatusDao AccountStatusDao { get; set; }
+        IAccountStatusDao AccountStatusDao { get; set; }
 
-        AccountStatusParamConvert AccountStatusParamConvert { get; set; }
-        AccountStatusResultConvert AccountStatusResultConvert { get; set; }
+        IAccountStatusParamConverter AccountStatusParamConvert { get; set; }
+        IAccountStatusResultConvert AccountStatusResultConvert { get; set; }
 
         public AccountStatusResult Create(AccountStatusParam param)
         {

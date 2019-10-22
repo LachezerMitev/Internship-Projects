@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractStatus
 {
     class ContractStatusParamConverter : IContractStatusParamConverter
     {
-        ContractStatusDao ContractStatusDao { get; set; }
+        IContractStatusDao ContractStatusDao { get; set; }
 
         public Data.Entity.ContractStatus Convert(ContractStatusParam param)
         {

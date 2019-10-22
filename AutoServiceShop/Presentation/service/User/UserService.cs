@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.User
 {
     class UserService : IUserService
     {
-        UserProcessor UserProcessor { get; set; }
+        IUserProcessor UserProcessor { get; set; }
 
         public ApiResponse Create(UserParam param)
         {

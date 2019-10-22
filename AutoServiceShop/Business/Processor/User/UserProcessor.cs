@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.User
 {
     class UserProcessor : IUserProcessor
     {
-        UserDao UserDao { get; set; }
+        IUserDao UserDao { get; set; }
 
-        UserParamConverter UserParamConverter { get; set; }
-        UserResultConverter UserResultConverter { get; set; }
+        IUserParamConverter UserParamConverter { get; set; }
+        IUserResultConverter UserResultConverter { get; set; }
 
         public UserResult Create(UserParam param)
         {

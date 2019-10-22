@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
 {
     class VehicleParamConverter : IVehicleParamConverter
     {
-        VehicleDao VehicleDao { get; set; }
+        IVehicleDao VehicleDao { get; set; }
 
         public Data.Entity.Vehicle Convert(VehicleParam param)
         {

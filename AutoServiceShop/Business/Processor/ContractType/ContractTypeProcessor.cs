@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.ContractType
 {
     class ContractTypeProcessor : IContractTypeProcessor
     {
-        ContractTypeDao ContractTypeDao { get; set; }
+        IContractTypeDao ContractTypeDao { get; set; }
 
-        ContractTypeParamConverter ContractTypeParamConverter { get; set; }
-        ContractTypeResultConverter ContractTypeResultConverter { get; set; }
+        IContractTypeParamConverter ContractTypeParamConverter { get; set; }
+        IContractTypeResultConverter ContractTypeResultConverter { get; set; }
 
         public ContractTypeResult Create(ContractTypeParam param)
         {

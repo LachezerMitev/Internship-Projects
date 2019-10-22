@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.AutoPart
 {
     class AutoPartParamConverter : IAutoPartParamConverter
     {
-        AutoPartDao AutoPartDao { get; set; }
+        IAutoPartDao AutoPartDao { get; set; }
 
         public Data.Entity.AutoPart Convert(AutoPartParam param)
         {

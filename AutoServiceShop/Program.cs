@@ -30,19 +30,29 @@ namespace AutoServiceShop
                 Id = 12352456
             };
 
-            AccountDao accountDao = new AccountDao();
-            AccountParamConverter accountParamConverter = new AccountParamConverter();
-            AccountResultConverter accountResultConverter = new AccountResultConverter();
-            AccountProcessor accountProcessor = new AccountProcessor();
-            accountProcessor.AccountResultConverter = accountResultConverter;
-            accountProcessor.AccountParamConverter = accountParamConverter;
-            accountProcessor.AccountDao = accountDao;
-            AccountService testService = new AccountService() { AccountProcessor = accountProcessor};
+            AccountService testService = new AccountService();
 
+            Console.WriteLine("Adding an Account");
 
             ApiResponse response = testService.Create(testParam);
 
             Console.WriteLine(response.text);
+
+            Console.WriteLine("_______________________________________________");
+            Console.WriteLine("Listing all accounts");
+
+            ApiResponse listAll = testService.ListAll();
+
+            Console.WriteLine(listAll.text);
+
+            Console.WriteLine("_______________________________________________");
+            Console.WriteLine("Removing an account");
+
+            ApiResponse deleteItem = testService.DeleteById(145367);
+
+            Console.WriteLine(deleteItem.text);
+
+            Console.WriteLine("_______________________________________________");
 
             Console.ReadLine();
         }

@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 {
     class UserGroupService : IUserGroupService
     {
-        UserGroupProcessor UserGroupProcessor { get; set; }
+        IUserGroupProcessor UserGroupProcessor { get; set; }
 
         public ApiResponse Create(UserGroupParam param)
         {

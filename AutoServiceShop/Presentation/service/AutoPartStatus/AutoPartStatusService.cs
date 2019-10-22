@@ -12,7 +12,7 @@ namespace AutoServiceShop.Presentation.service.AutoPartStatus
 {
     class AutoPartStatusService : IAutoPartStatusService
     {
-        AutoPartStatusProcessor AutoPartStatusProcessor { get; set; }
+        IAutoPartStatusProcessor AutoPartStatusProcessor { get; set; }
 
         public ApiResponse Create(AutoPartStatusParam param)
         {

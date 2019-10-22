@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Issue
 {
     class IssueParamConverter : IIssueParamConverter
     {
-        IssueDao IssueDao { get; set; }
+        IIssueDao IssueDao { get; set; }
 
         public Data.Entity.Issue Convert(IssueParam param)
         {

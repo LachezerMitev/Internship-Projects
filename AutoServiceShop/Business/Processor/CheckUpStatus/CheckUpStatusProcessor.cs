@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
 {
     class CheckUpStatusProcessor : ICheckUpStatusProcessor
     {
-        CheckUpStatusDao CheckUpStatusDao { get; set; }
+        ICheckUpStatusDao CheckUpStatusDao { get; set; }
 
-        CheckUpStatusParamConverter CheckUpStatusParamConverter { get; set; }
-        CheckUpStatusResultConverter CheckUpStatusResultConverter { get; set; }
+        ICheckUpStatusParamConverter CheckUpStatusParamConverter { get; set; }
+        ICheckUpStatusResultConverter CheckUpStatusResultConverter { get; set; }
 
         public CheckUpStatusResult Create(CheckUpStatusParam param)
         {

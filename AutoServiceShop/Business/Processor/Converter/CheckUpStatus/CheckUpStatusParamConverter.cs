@@ -10,7 +10,7 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
 {
     class CheckUpStatusParamConverter : ICheckUpStatusParamConverter
     {
-        CheckUpStatusDao CheckUpStatusDao { get; set; }
+        ICheckUpStatusDao CheckUpStatusDao { get; set; }
 
         public Data.Entity.CheckUpStatus Convert(CheckUpStatusParam param)
         {

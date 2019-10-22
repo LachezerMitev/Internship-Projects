@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.EmployeeStatus
 {
     class EmployeeStatusProcessor : IEmployeeStatusProcessor
     {
-        EmployeeStatusDao EmployeeStatusDao { get; set; }
+        IEmployeeStatusDao EmployeeStatusDao { get; set; }
 
-        EmployeeStatusParamConverter EmployeeStatusParamConverter { get; set; }
-        EmployeeStatusResultConverter EmployeeStatusResultConverter { get; set; }
+        IEmployeeStatusParamConverter EmployeeStatusParamConverter { get; set; }
+        IEmployeeStatusResultConverter EmployeeStatusResultConverter { get; set; }
 
         public EmployeeStatusResult Create(EmployeeStatusParam param)
         {

@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.Customer
 {
     class CustomerProcessor : ICustomerProcessor
     {
-        CustomerDao CustomerDao { get; set; }
+        ICustomerDao CustomerDao { get; set; }
 
-        CustomerParamConverter CustomerParamConverter { get; set; }
-        CustomerResultConverter CustomerResultConverter { get; set; }
+        ICustomerParamConverter CustomerParamConverter { get; set; }
+        ICustomerResultConverter CustomerResultConverter { get; set; }
 
         public CustomerResult Create(CustomerParam param)
         {

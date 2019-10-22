@@ -9,6 +9,8 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 {
     class AccountDao : IAccountDao
     {
+
+
         public void Delete(long id)
         {
             Data.Entity.Account entity = Find(id);
@@ -17,7 +19,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public void Delete(Data.Entity.Account entity)
         {
-            throw new NotImplementedException();
+            AccountStorage.Accounts.Remove(entity);
         }
 
         public void Delete(List<long> idList)
@@ -27,32 +29,37 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public List<Data.Entity.Account> Find()
         {
-            throw new NotImplementedException();
+            return AccountStorage.Accounts;
         }
 
         public Data.Entity.Account Find(long id)
         {
-            throw new NotImplementedException();
+            return AccountStorage.Accounts.Where(x => x.Id.Equals(id)).Single();
         }
 
         public Data.Entity.Account Save(Data.Entity.Account entity)
         {
+            AccountStorage.Accounts.Add(entity);
             return entity;
         }
 
         public List<Data.Entity.Account> Save(List<Data.Entity.Account> entity)
         {
+            entity.ForEach(x => AccountStorage.Accounts.Add(x));
             return entity;
         }
 
         public Data.Entity.Account Update(Data.Entity.Account entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.Account> Update(List<Data.Entity.Account> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

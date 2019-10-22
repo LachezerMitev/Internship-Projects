@@ -11,10 +11,10 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
 {
     class ContractStatusProcessor : IContractStatusProcessor
     {
-        ContractStatusDao ContractStatusDao { get; set; }
+        IContractStatusDao ContractStatusDao { get; set; }
 
-        ContractStatusParamConverter ContractStatusParamConverter { get; set; }
-        ContractStatusResultConverter ContractStatusResultConverter { get; set; }
+        IContractStatusParamConverter ContractStatusParamConverter { get; set; }
+        IContractStatusResultConverter ContractStatusResultConverter { get; set; }
 
         public ContractStatusResult Create(ContractStatusParam param)
         {

@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.CustomerStatus
 {
     class CustomerStatusService : ICustomerStatusService
     {
-        CustomerStatusProcessor CustomerStatusProcessor { get; set; }
+        ICustomerStatusProcessor CustomerStatusProcessor { get; set; }
 
         public ApiResponse Create(CustomerStatusParam param)
         {

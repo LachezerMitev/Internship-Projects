@@ -11,7 +11,7 @@ namespace AutoServiceShop.Presentation.service.Customer
 {
     class CustomerService : ICustomerService
     {
-        CustomerProcessor CustomerProcessor { get; set; }
+        ICustomerProcessor CustomerProcessor { get; set; }
 
         public ApiResponse Create(CustomerParam param)
         {
