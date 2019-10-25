@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Employee
 {
-    class EmployeeResult
+    class EmployeeResult : BaseResultNamed
     {
+        public Data.Entity.EmployeeStatus EmployeeStatus { get; set; }
+        public Data.Entity.Contract Contract { get; set; }
     }
 }

@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.User
 {
     class UserProcessor : IUserProcessor
     {
-        IUserDao UserDao { get; set; }
+        IUserDao UserDao = new UserDao();
 
-        IUserParamConverter UserParamConverter { get; set; }
-        IUserResultConverter UserResultConverter { get; set; }
+        IUserParamConverter UserParamConverter = new UserParamConverter();
+        IUserResultConverter UserResultConverter = new UserResultConverter();
 
         public UserResult Create(UserParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.User entity = UserParamConverter.Convert(param);
+            UserDao.Save(entity);
+
+            return UserResultConverter.Convert(entity);
         }
 
         public List<UserResult> Create(List<UserParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.User> entities = new List<Data.Entity.User>();
+            foreach (var item in param)
+            {
+                entities.Add(UserParamConverter.Convert(item));
+            }
+            UserDao.Save(entities);
+            List<UserResult> result = new List<UserResult>();
+            foreach (var item in entities)
+            {
+                result.Add(UserResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            UserDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.User> entity = new List<Data.Entity.User>();
+            foreach (var id in idList)
+            {
+                entity.Add(UserDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                UserDao.Delete(id);
+            }
         }
 
         public UserResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.User entity = UserDao.Find(id);
+            UserResult result = UserResultConverter.Convert(entity);
+            return result;
         }
 
         public List<UserResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.User> accounts = UserDao.Find();
+            List<UserResult> results = new List<UserResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(UserResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, UserParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.User oldEntity = UserDao.Find(id);
+            Data.Entity.User newEntity = UserParamConverter.Convert(param);
+            UserDao.Update(newEntity);
         }
 
         public void Update(List<UserParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.User> entity = new List<Data.Entity.User>();
+            foreach (var item in param)
+            {
+                Data.Entity.User oldEntity = UserDao.Find(item.Id);
+                Data.Entity.User newEntity = UserParamConverter.Convert(item);
+                UserDao.Update(newEntity);
+            }
         }
     }
 }

@@ -14,7 +14,42 @@ namespace AutoServiceShop.Business.Processor.Converter.Employee
 
         public Data.Entity.Employee Convert(EmployeeParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Employee result = new Data.Entity.Employee()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+
+                Contract = param.Contract,
+                EmployeeStatus = param.EmployeeStatus
+            };
+
+            return result;
+        }
+
+        public Data.Entity.Employee Convert(EmployeeParam param, Data.Entity.Employee oldentity)
+        {
+            Data.Entity.Employee entity = null;
+
+            if (oldentity != null)
+            {
+                entity = oldentity;
+            }
+            else
+            {
+                entity = new Data.Entity.Employee();
+            }
+
+            entity.Code = param.Code;
+            entity.Id = param.Id;
+            entity.Description = param.Description;
+            entity.Name = param.Name;
+
+            entity.EmployeeStatus = param.EmployeeStatus;
+            entity.Contract = param.Contract;
+
+            return entity;
         }
     }
 }

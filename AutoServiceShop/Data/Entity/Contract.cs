@@ -8,10 +8,14 @@ namespace AutoServiceShop.Data.Entity
 {
     class Contract : NamedPersistent
     {
-        DateTime WorkDayStart { get; set; }
-        DateTime WorkDayEnd { get; set; }
-        double Salary { get; set; }
-        ContractStatus ContractStatus { get; set; }
-        ContractType ContractType { get; set; }
+        public DateTime WorkDayStart { get; set; }
+
+        public DateTime WorkDayEnd { get; set; }
+
+        public double Salary { get; set; }
+
+        public ContractStatus ContractStatus { get; set; }
+
+        public ContractType ContractType { get; set; }
     }
 }

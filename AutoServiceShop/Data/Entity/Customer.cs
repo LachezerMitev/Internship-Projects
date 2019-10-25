@@ -8,6 +8,6 @@ namespace AutoServiceShop.Data.Entity
 {
     class Customer : NamedPersistent
     {
-        CustomerStatus CustomerStatus { get; set; }
+        public CustomerStatus CustomerStatus { get; set; }
     }
 }

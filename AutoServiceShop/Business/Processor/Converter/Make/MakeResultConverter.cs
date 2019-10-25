@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
     {
         public MakeResult Convert(Data.Entity.Make param)
         {
-            throw new NotImplementedException();
+            MakeResult result = new MakeResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }

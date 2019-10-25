@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
     {
         public UserUserGroupResult Convert(Data.Entity.UserUserGroup param)
         {
-            throw new NotImplementedException();
+            UserUserGroupResult result = new UserUserGroupResult()
+            {
+                Id = param.Id,
+
+                User = param.User,
+                UserGroupList = param.UserGroupList
+            };
+
+            return result;
         }
     }
 }

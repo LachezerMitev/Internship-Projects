@@ -11,47 +11,61 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.AccountStatus entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.AccountStatus entity)
         {
-            throw new NotImplementedException();
+            AccountStatusStorage.AccountStatusList.Remove(entity);
+            AccountStatusStorage.AccountStatusDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.AccountStatus> Find()
         {
-            throw new NotImplementedException();
+            return AccountStatusStorage.AccountStatusList;
         }
 
         public Data.Entity.AccountStatus Find(long id)
         {
-            throw new NotImplementedException();
+            return AccountStatusStorage.AccountStatusList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.AccountStatus Save(Data.Entity.AccountStatus entity)
         {
-            throw new NotImplementedException();
+            AccountStatusStorage.AccountStatusList.Add(entity);
+            AccountStatusStorage.AccountStatusDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.AccountStatus> Save(List<Data.Entity.AccountStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => AccountStatusStorage.AccountStatusList.Add(x));
+
+            entity.ForEach(x => AccountStatusStorage.AccountStatusDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.AccountStatus Update(Data.Entity.AccountStatus entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.AccountStatus> Update(List<Data.Entity.AccountStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

@@ -11,46 +11,183 @@ namespace AutoServiceShop.Presentation.service.UserUserGroup
 {
     class UserUserGroupService : IUserUserGroupService
     {
-        IUserUserGroupProcessor UserUserGroupProcessor { get; set; }
+        IUserUserGroupProcessor UserUserGroupProcessor = new UserUserGroupProcessor();
+        public ApiResponse Response = new ApiResponse();
 
         public ApiResponse Create(UserUserGroupParam param)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(UserUserGroupProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Create(List<UserUserGroupParam> param)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(UserUserGroupProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Delete(idList);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong. Try again later. :)";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse DeleteById(long id)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Delete(id);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse FindByPK(long id)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(UserUserGroupProcessor.Find(id));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "An account with this id does not exist";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse ListAll()
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(UserUserGroupProcessor.Find());
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(long id, UserUserGroupParam param)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Update(id, param);
+                Response.text = "Entity was successfully updated";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(List<UserUserGroupParam> param)
         {
-            throw new NotImplementedException();
+            UserUserGroupProcessor = new UserUserGroupProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                UserUserGroupProcessor.Update(param);
+
+                Response.text = "Entities were successfully updated.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public void ValidateParameters(UserUserGroupParam param)

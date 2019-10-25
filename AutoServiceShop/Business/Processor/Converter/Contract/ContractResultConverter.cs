@@ -11,7 +11,21 @@ namespace AutoServiceShop.Business.Processor.Converter.Contract
     {
         public ContractResult Convert(Data.Entity.Contract param)
         {
-            throw new NotImplementedException();
+            ContractResult result = new ContractResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+
+                ContractStatus = param.ContractStatus,
+                ContractType = param.ContractType,
+                Salary = param.Salary,
+                WorkDayEnd = param.WorkDayEnd,
+                WorkDayStart = param.WorkDayStart
+            };
+
+            return result;
         }
     }
 }

@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.UserUserGroup
 {
     class UserUserGroupProcessor : IUserUserGroupProcessor
     {
-        IUserUserGroupDao UserUserGroupDao { get; set; }
+        IUserUserGroupDao UserUserGroupDao = new UserUserGroupDao();
 
-        IUserUserGroupParamConverter UserUserGroupParamConverter { get; set; }
-        IUserUserGroupResultConverter UserUserGroupResultConverter { get; set; }
+        IUserUserGroupParamConverter UserUserGroupParamConverter = new UserUserGroupParamConverter();
+        IUserUserGroupResultConverter UserUserGroupResultConverter = new UserUserGroupResultConverter();
 
         public UserUserGroupResult Create(UserUserGroupParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.UserUserGroup entity = UserUserGroupParamConverter.Convert(param);
+            UserUserGroupDao.Save(entity);
+
+            return UserUserGroupResultConverter.Convert(entity);
         }
 
         public List<UserUserGroupResult> Create(List<UserUserGroupParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.UserUserGroup> entities = new List<Data.Entity.UserUserGroup>();
+            foreach (var item in param)
+            {
+                entities.Add(UserUserGroupParamConverter.Convert(item));
+            }
+            UserUserGroupDao.Save(entities);
+            List<UserUserGroupResult> result = new List<UserUserGroupResult>();
+            foreach (var item in entities)
+            {
+                result.Add(UserUserGroupResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            UserUserGroupDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.UserUserGroup> entity = new List<Data.Entity.UserUserGroup>();
+            foreach (var id in idList)
+            {
+                entity.Add(UserUserGroupDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                UserUserGroupDao.Delete(id);
+            }
         }
 
         public UserUserGroupResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.UserUserGroup entity = UserUserGroupDao.Find(id);
+            UserUserGroupResult result = UserUserGroupResultConverter.Convert(entity);
+            return result;
         }
 
         public List<UserUserGroupResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.UserUserGroup> accounts = UserUserGroupDao.Find();
+            List<UserUserGroupResult> results = new List<UserUserGroupResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(UserUserGroupResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, UserUserGroupParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.UserUserGroup oldEntity = UserUserGroupDao.Find(id);
+            Data.Entity.UserUserGroup newEntity = UserUserGroupParamConverter.Convert(param);
+            UserUserGroupDao.Update(newEntity);
         }
 
         public void Update(List<UserUserGroupParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.UserUserGroup> entity = new List<Data.Entity.UserUserGroup>();
+            foreach (var item in param)
+            {
+                Data.Entity.UserUserGroup oldEntity = UserUserGroupDao.Find(item.Id);
+                Data.Entity.UserUserGroup newEntity = UserUserGroupParamConverter.Convert(item);
+                UserUserGroupDao.Update(newEntity);
+            }
         }
     }
 }

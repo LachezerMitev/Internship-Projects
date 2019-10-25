@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.VehicleMakeModel entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.VehicleMakeModel entity)
         {
-            throw new NotImplementedException();
+            VehicleMakeModelStorage.VehicleMakeModelList.Remove(entity);
+            VehicleMakeModelStorage.VehicleMakeModelDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.VehicleMakeModel> Find()
         {
-            throw new NotImplementedException();
+            return VehicleMakeModelStorage.VehicleMakeModelList;
         }
 
         public Data.Entity.VehicleMakeModel Find(long id)
         {
-            throw new NotImplementedException();
+            return VehicleMakeModelStorage.VehicleMakeModelList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.VehicleMakeModel Save(Data.Entity.VehicleMakeModel entity)
         {
-            throw new NotImplementedException();
+
+            VehicleMakeModelStorage.VehicleMakeModelList.Add(entity);
+            VehicleMakeModelStorage.VehicleMakeModelDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.VehicleMakeModel> Save(List<Data.Entity.VehicleMakeModel> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => VehicleMakeModelStorage.VehicleMakeModelList.Add(x));
+
+            entity.ForEach(x => VehicleMakeModelStorage.VehicleMakeModelDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.VehicleMakeModel Update(Data.Entity.VehicleMakeModel entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.VehicleMakeModel> Update(List<Data.Entity.VehicleMakeModel> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

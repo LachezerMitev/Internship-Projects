@@ -14,7 +14,36 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
 
         public Data.Entity.Make Convert(MakeParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Make result = new Data.Entity.Make()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
+        }
+
+        public Data.Entity.Make Convert(MakeParam param, Data.Entity.Make oldentity)
+        {
+            Data.Entity.Make entity = null;
+            
+            if (oldentity != null)
+            {
+                entity = oldentity;
+            }
+            else
+            {
+                entity = new Data.Entity.Make();
+            }
+
+            entity.Code = param.Code;
+            entity.Id = param.Id;
+            entity.Description = param.Description;
+            entity.Name = param.Name;
+
+            return entity;
         }
     }
 }

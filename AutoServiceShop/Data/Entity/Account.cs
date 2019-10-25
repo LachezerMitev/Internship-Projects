@@ -17,9 +17,9 @@ namespace AutoServiceShop.Data.Entity
 
         public string LastName { get; set; }
 
-        [JsonIgnore]
         public string Type { get; set; }
 
-
+        [JsonIgnore]
+        public User User { get; set; }
     }
 }

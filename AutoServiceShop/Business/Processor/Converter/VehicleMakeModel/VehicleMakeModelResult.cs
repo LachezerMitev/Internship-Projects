@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 {
-    class VehicleMakeModelResult
+    class VehicleMakeModelResult : BaseResultNamed
     {
+        public Data.Entity.Vehicle Vehicle { get; set; }
+
+        public Data.Entity.Make Make { get; set; }
+
+        public Data.Entity.Model ModelList { get; set; }
     }
 }

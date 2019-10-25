@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.ContractType
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.ContractType entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.ContractType entity)
         {
-            throw new NotImplementedException();
+            ContractTypeStorage.ContractTypeList.Remove(entity);
+            ContractTypeStorage.ContractTypeDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.ContractType> Find()
         {
-            throw new NotImplementedException();
+            return ContractTypeStorage.ContractTypeList;
         }
 
         public Data.Entity.ContractType Find(long id)
         {
-            throw new NotImplementedException();
+            return ContractTypeStorage.ContractTypeList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.ContractType Save(Data.Entity.ContractType entity)
         {
-            throw new NotImplementedException();
+
+            ContractTypeStorage.ContractTypeList.Add(entity);
+            ContractTypeStorage.ContractTypeDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.ContractType> Save(List<Data.Entity.ContractType> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => ContractTypeStorage.ContractTypeList.Add(x));
+
+            entity.ForEach(x => ContractTypeStorage.ContractTypeDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.ContractType Update(Data.Entity.ContractType entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.ContractType> Update(List<Data.Entity.ContractType> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

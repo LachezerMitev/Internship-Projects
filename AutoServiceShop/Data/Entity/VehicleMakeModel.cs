@@ -8,8 +8,10 @@ namespace AutoServiceShop.Data.Entity
 {
     class VehicleMakeModel : Persistent
     {
-        Vehicle Vehicle { get; set; }
-        Make Make { get; set; }
-        Model ModelList { get; set; }
+        public Vehicle Vehicle { get; set; }
+
+        public Make Make { get; set; }
+
+        public Model ModelList { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
 {
-    class CheckUpStatusParam
+    class CheckUpStatusParam : BaseParamNamed
     {
     }
 }

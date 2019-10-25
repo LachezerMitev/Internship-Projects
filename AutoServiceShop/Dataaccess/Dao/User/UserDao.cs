@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.User
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.User entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.User entity)
         {
-            throw new NotImplementedException();
+            UserStorage.UserList.Remove(entity);
+            UserStorage.UserDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.User> Find()
         {
-            throw new NotImplementedException();
+            return UserStorage.UserList;
         }
 
         public Data.Entity.User Find(long id)
         {
-            throw new NotImplementedException();
+            return UserStorage.UserList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.User Save(Data.Entity.User entity)
         {
-            throw new NotImplementedException();
+
+            UserStorage.UserList.Add(entity);
+            UserStorage.UserDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.User> Save(List<Data.Entity.User> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => UserStorage.UserList.Add(x));
+
+            entity.ForEach(x => UserStorage.UserDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.User Update(Data.Entity.User entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.User> Update(List<Data.Entity.User> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

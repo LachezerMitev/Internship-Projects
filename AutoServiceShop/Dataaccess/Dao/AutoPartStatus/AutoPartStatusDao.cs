@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPartStatus
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.AutoPartStatus entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.AutoPartStatus entity)
         {
-            throw new NotImplementedException();
+            AutoPartStatusStorage.AutoPartStatusList.Remove(entity);
+            AutoPartStatusStorage.AutoPartStatusDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.AutoPartStatus> Find()
         {
-            throw new NotImplementedException();
+            return AutoPartStatusStorage.AutoPartStatusList;
         }
 
         public Data.Entity.AutoPartStatus Find(long id)
         {
-            throw new NotImplementedException();
+            return AutoPartStatusStorage.AutoPartStatusList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.AutoPartStatus Save(Data.Entity.AutoPartStatus entity)
         {
-            throw new NotImplementedException();
+
+            AutoPartStatusStorage.AutoPartStatusList.Add(entity);
+            AutoPartStatusStorage.AutoPartStatusDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.AutoPartStatus> Save(List<Data.Entity.AutoPartStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => AutoPartStatusStorage.AutoPartStatusList.Add(x));
+
+            entity.ForEach(x => AutoPartStatusStorage.AutoPartStatusDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.AutoPartStatus Update(Data.Entity.AutoPartStatus entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.AutoPartStatus> Update(List<Data.Entity.AutoPartStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.Model
 {
     class ModelProcessor : IModelProcessor
     {
-        IModelDao ModelDao { get; set; }
+        IModelDao ModelDao = new ModelDao();
 
-        IModelParamConverter ModelParamConverter { get; set; }
-        IModelResultConverter ModelResultConverrter { get; set; }
+        IModelParamConverter ModelParamConverter = new ModelParamConverter();
+        IModelResultConverter ModelResultConverrter = new ModelResultConverrter();
 
         public ModelResult Create(ModelParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Model entity = ModelParamConverter.Convert(param);
+            ModelDao.Save(entity);
+
+            return ModelResultConverrter.Convert(entity);
         }
 
         public List<ModelResult> Create(List<ModelParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Model> entities = new List<Data.Entity.Model>();
+            foreach (var item in param)
+            {
+                entities.Add(ModelParamConverter.Convert(item));
+            }
+            ModelDao.Save(entities);
+            List<ModelResult> result = new List<ModelResult>();
+            foreach (var item in entities)
+            {
+                result.Add(ModelResultConverrter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            ModelDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Model> entity = new List<Data.Entity.Model>();
+            foreach (var id in idList)
+            {
+                entity.Add(ModelDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                ModelDao.Delete(id);
+            }
         }
 
         public ModelResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Model entity = ModelDao.Find(id);
+            ModelResult result = ModelResultConverrter.Convert(entity);
+            return result;
         }
 
         public List<ModelResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Model> accounts = ModelDao.Find();
+            List<ModelResult> results = new List<ModelResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(ModelResultConverrter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, ModelParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Model oldEntity = ModelDao.Find(id);
+            Data.Entity.Model newEntity = ModelParamConverter.Convert(param);
+            ModelDao.Update(newEntity);
         }
 
         public void Update(List<ModelParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Model> entity = new List<Data.Entity.Model>();
+            foreach (var item in param)
+            {
+                Data.Entity.Model oldEntity = ModelDao.Find(item.Id);
+                Data.Entity.Model newEntity = ModelParamConverter.Convert(item);
+                ModelDao.Update(newEntity);
+            }
         }
     }
 }

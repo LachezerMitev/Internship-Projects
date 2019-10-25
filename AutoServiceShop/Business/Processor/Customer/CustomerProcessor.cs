@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.Customer
 {
     class CustomerProcessor : ICustomerProcessor
     {
-        ICustomerDao CustomerDao { get; set; }
+        ICustomerDao CustomerDao = new CustomerDao();
 
-        ICustomerParamConverter CustomerParamConverter { get; set; }
-        ICustomerResultConverter CustomerResultConverter { get; set; }
+        ICustomerParamConverter CustomerParamConverter = new CustomerParamConverter();
+        ICustomerResultConverter CustomerResultConverter = new CustomerResultConverter();
 
         public CustomerResult Create(CustomerParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Customer entity = CustomerParamConverter.Convert(param);
+            CustomerDao.Save(entity);
+
+            return CustomerResultConverter.Convert(entity);
         }
 
         public List<CustomerResult> Create(List<CustomerParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Customer> entities = new List<Data.Entity.Customer>();
+            foreach (var item in param)
+            {
+                entities.Add(CustomerParamConverter.Convert(item));
+            }
+            CustomerDao.Save(entities);
+            List<CustomerResult> result = new List<CustomerResult>();
+            foreach (var item in entities)
+            {
+                result.Add(CustomerResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            CustomerDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Customer> entity = new List<Data.Entity.Customer>();
+            foreach (var id in idList)
+            {
+                entity.Add(CustomerDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                CustomerDao.Delete(id);
+            }
         }
 
         public CustomerResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Customer entity = CustomerDao.Find(id);
+            CustomerResult result = CustomerResultConverter.Convert(entity);
+            return result;
         }
 
         public List<CustomerResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Customer> accounts = CustomerDao.Find();
+            List<CustomerResult> results = new List<CustomerResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(CustomerResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, CustomerParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.Customer oldEntity = CustomerDao.Find(id);
+            Data.Entity.Customer newEntity = CustomerParamConverter.Convert(param);
+            CustomerDao.Update(newEntity);
         }
 
         public void Update(List<CustomerParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.Customer> entity = new List<Data.Entity.Customer>();
+            foreach (var item in param)
+            {
+                Data.Entity.Customer oldEntity = CustomerDao.Find(item.Id);
+                Data.Entity.Customer newEntity = CustomerParamConverter.Convert(item);
+                CustomerDao.Update(newEntity);
+            }
         }
     }
 }

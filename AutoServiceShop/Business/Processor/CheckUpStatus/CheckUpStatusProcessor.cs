@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
 {
     class CheckUpStatusProcessor : ICheckUpStatusProcessor
     {
-        ICheckUpStatusDao CheckUpStatusDao { get; set; }
+        ICheckUpStatusDao CheckUpStatusDao = new CheckUpStatusDao();
 
-        ICheckUpStatusParamConverter CheckUpStatusParamConverter { get; set; }
-        ICheckUpStatusResultConverter CheckUpStatusResultConverter { get; set; }
+        ICheckUpStatusParamConverter CheckUpStatusParamConverter = new CheckUpStatusParamConverter();
+        ICheckUpStatusResultConverter CheckUpStatusResultConverter = new CheckUpStatusResultConverter();
 
         public CheckUpStatusResult Create(CheckUpStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.CheckUpStatus entity = CheckUpStatusParamConverter.Convert(param);
+            CheckUpStatusDao.Save(entity);
+
+            return CheckUpStatusResultConverter.Convert(entity);
         }
 
         public List<CheckUpStatusResult> Create(List<CheckUpStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CheckUpStatus> entities = new List<Data.Entity.CheckUpStatus>();
+            foreach (var item in param)
+            {
+                entities.Add(CheckUpStatusParamConverter.Convert(item));
+            }
+            CheckUpStatusDao.Save(entities);
+            List<CheckUpStatusResult> result = new List<CheckUpStatusResult>();
+            foreach (var item in entities)
+            {
+                result.Add(CheckUpStatusResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            CheckUpStatusDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CheckUpStatus> entity = new List<Data.Entity.CheckUpStatus>();
+            foreach (var id in idList)
+            {
+                entity.Add(CheckUpStatusDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                CheckUpStatusDao.Delete(id);
+            }
         }
 
         public CheckUpStatusResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.CheckUpStatus entity = CheckUpStatusDao.Find(id);
+            CheckUpStatusResult result = CheckUpStatusResultConverter.Convert(entity);
+            return result;
         }
 
         public List<CheckUpStatusResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CheckUpStatus> accounts = CheckUpStatusDao.Find();
+            List<CheckUpStatusResult> results = new List<CheckUpStatusResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(CheckUpStatusResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, CheckUpStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.CheckUpStatus oldEntity = CheckUpStatusDao.Find(id);
+            Data.Entity.CheckUpStatus newEntity = CheckUpStatusParamConverter.Convert(param);
+            CheckUpStatusDao.Update(newEntity);
         }
 
         public void Update(List<CheckUpStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CheckUpStatus> entity = new List<Data.Entity.CheckUpStatus>();
+            foreach (var item in param)
+            {
+                Data.Entity.CheckUpStatus oldEntity = CheckUpStatusDao.Find(item.Id);
+                Data.Entity.CheckUpStatus newEntity = CheckUpStatusParamConverter.Convert(item);
+                CheckUpStatusDao.Update(newEntity);
+            }
         }
     }
 }

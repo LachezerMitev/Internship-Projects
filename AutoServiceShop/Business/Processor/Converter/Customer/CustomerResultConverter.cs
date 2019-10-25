@@ -11,7 +11,16 @@ namespace AutoServiceShop.Business.Processor.Converter.Customer
     {
         public CustomerResult Convert(Data.Entity.Customer param)
         {
-            throw new NotImplementedException();
+            CustomerResult result = new CustomerResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+                CustomerStatus = param.CustomerStatus
+            };
+
+            return result;
         }
     }
 }

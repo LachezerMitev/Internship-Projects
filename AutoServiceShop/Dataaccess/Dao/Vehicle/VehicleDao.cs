@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.Vehicle
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Vehicle entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.Vehicle entity)
         {
-            throw new NotImplementedException();
+            VehicleStorage.VehicleList.Remove(entity);
+            VehicleStorage.VehicleDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.Vehicle> Find()
         {
-            throw new NotImplementedException();
+            return VehicleStorage.VehicleList;
         }
 
         public Data.Entity.Vehicle Find(long id)
         {
-            throw new NotImplementedException();
+            return VehicleStorage.VehicleList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.Vehicle Save(Data.Entity.Vehicle entity)
         {
-            throw new NotImplementedException();
+
+            VehicleStorage.VehicleList.Add(entity);
+            VehicleStorage.VehicleDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.Vehicle> Save(List<Data.Entity.Vehicle> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => VehicleStorage.VehicleList.Add(x));
+
+            entity.ForEach(x => VehicleStorage.VehicleDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.Vehicle Update(Data.Entity.Vehicle entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.Vehicle> Update(List<Data.Entity.Vehicle> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

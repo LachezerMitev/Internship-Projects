@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.Customer
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Customer entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.Customer entity)
         {
-            throw new NotImplementedException();
+            CustomerStorage.CustomerList.Remove(entity);
+            CustomerStorage.CustomerDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.Customer> Find()
         {
-            throw new NotImplementedException();
+            return CustomerStorage.CustomerList;
         }
 
         public Data.Entity.Customer Find(long id)
         {
-            throw new NotImplementedException();
+            return CustomerStorage.CustomerList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.Customer Save(Data.Entity.Customer entity)
         {
-            throw new NotImplementedException();
+
+            CustomerStorage.CustomerList.Add(entity);
+            CustomerStorage.CustomerDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.Customer> Save(List<Data.Entity.Customer> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => CustomerStorage.CustomerList.Add(x));
+
+            entity.ForEach(x => CustomerStorage.CustomerDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.Customer Update(Data.Entity.Customer entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.Customer> Update(List<Data.Entity.Customer> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

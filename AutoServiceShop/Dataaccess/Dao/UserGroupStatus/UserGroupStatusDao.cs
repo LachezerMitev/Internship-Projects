@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroupStatus
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.UserGroupStatus entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.UserGroupStatus entity)
         {
-            throw new NotImplementedException();
+            UserGroupStatusStorage.UserGroupStatusList.Remove(entity);
+            UserGroupStatusStorage.UserGroupStatusDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.UserGroupStatus> Find()
         {
-            throw new NotImplementedException();
+            return UserGroupStatusStorage.UserGroupStatusList;
         }
 
         public Data.Entity.UserGroupStatus Find(long id)
         {
-            throw new NotImplementedException();
+            return UserGroupStatusStorage.UserGroupStatusList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.UserGroupStatus Save(Data.Entity.UserGroupStatus entity)
         {
-            throw new NotImplementedException();
+
+            UserGroupStatusStorage.UserGroupStatusList.Add(entity);
+            UserGroupStatusStorage.UserGroupStatusDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.UserGroupStatus> Save(List<Data.Entity.UserGroupStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => UserGroupStatusStorage.UserGroupStatusList.Add(x));
+
+            entity.ForEach(x => UserGroupStatusStorage.UserGroupStatusDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.UserGroupStatus Update(Data.Entity.UserGroupStatus entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.UserGroupStatus> Update(List<Data.Entity.UserGroupStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.User
     {
         public UserResult Convert(Data.Entity.User param)
         {
-            throw new NotImplementedException();
+            UserResult result = new UserResult()
+            {
+                Id = param.Id,
+
+                Username = param.Username,
+                Password = param.Password
+            };
+
+            return result;
         }
     }
 }

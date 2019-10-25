@@ -12,46 +12,183 @@ namespace AutoServiceShop.Presentation.service.ContractType
 {
     class ContractTypeService : IContractTypeService
     {
-       IContractTypeProcessor ContractTypeProcessor { get; set; }
+       IContractTypeProcessor ContractTypeProcessor = new ContractTypeProcessor();
+        public ApiResponse Response = new ApiResponse();
 
         public ApiResponse Create(ContractTypeParam param)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Create(List<ContractTypeParam> param)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Delete(idList);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong. Try again later. :)";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse DeleteById(long id)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Delete(id);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse FindByPK(long id)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Find(id));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "An account with this id does not exist";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse ListAll()
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Find());
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(long id, ContractTypeParam param)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Update(id, param);
+                Response.text = "Entity was successfully updated";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(List<ContractTypeParam> param)
         {
-            throw new NotImplementedException();
+            ContractTypeProcessor = new ContractTypeProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                ContractTypeProcessor.Update(param);
+
+                Response.text = "Entities were successfully updated.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public void ValidateParameters(ContractTypeParam param)

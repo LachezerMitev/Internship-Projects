@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.Issue
     {
         public IssueResult Convert(Data.Entity.Issue param)
         {
-            throw new NotImplementedException();
+            IssueResult result = new IssueResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }

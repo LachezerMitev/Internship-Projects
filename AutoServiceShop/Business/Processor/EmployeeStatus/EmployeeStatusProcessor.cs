@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.EmployeeStatus
 {
     class EmployeeStatusProcessor : IEmployeeStatusProcessor
     {
-        IEmployeeStatusDao EmployeeStatusDao { get; set; }
+        IEmployeeStatusDao EmployeeStatusDao = new EmployeeStatusDao();
 
-        IEmployeeStatusParamConverter EmployeeStatusParamConverter { get; set; }
-        IEmployeeStatusResultConverter EmployeeStatusResultConverter { get; set; }
+        IEmployeeStatusParamConverter EmployeeStatusParamConverter = new EmployeeStatusParamConverter();
+        IEmployeeStatusResultConverter EmployeeStatusResultConverter = new EmployeeStatusResultConverter();
 
         public EmployeeStatusResult Create(EmployeeStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.EmployeeStatus entity = EmployeeStatusParamConverter.Convert(param);
+            EmployeeStatusDao.Save(entity);
+
+            return EmployeeStatusResultConverter.Convert(entity);
         }
 
         public List<EmployeeStatusResult> Create(List<EmployeeStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.EmployeeStatus> entities = new List<Data.Entity.EmployeeStatus>();
+            foreach (var item in param)
+            {
+                entities.Add(EmployeeStatusParamConverter.Convert(item));
+            }
+            EmployeeStatusDao.Save(entities);
+            List<EmployeeStatusResult> result = new List<EmployeeStatusResult>();
+            foreach (var item in entities)
+            {
+                result.Add(EmployeeStatusResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            EmployeeStatusDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.EmployeeStatus> entity = new List<Data.Entity.EmployeeStatus>();
+            foreach (var id in idList)
+            {
+                entity.Add(EmployeeStatusDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                EmployeeStatusDao.Delete(id);
+            }
         }
 
         public EmployeeStatusResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.EmployeeStatus entity = EmployeeStatusDao.Find(id);
+            EmployeeStatusResult result = EmployeeStatusResultConverter.Convert(entity);
+            return result;
         }
 
         public List<EmployeeStatusResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.EmployeeStatus> accounts = EmployeeStatusDao.Find();
+            List<EmployeeStatusResult> results = new List<EmployeeStatusResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(EmployeeStatusResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, EmployeeStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.EmployeeStatus oldEntity = EmployeeStatusDao.Find(id);
+            Data.Entity.EmployeeStatus newEntity = EmployeeStatusParamConverter.Convert(param);
+            EmployeeStatusDao.Update(newEntity);
         }
 
         public void Update(List<EmployeeStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.EmployeeStatus> entity = new List<Data.Entity.EmployeeStatus>();
+            foreach (var item in param)
+            {
+                Data.Entity.EmployeeStatus oldEntity = EmployeeStatusDao.Find(item.Id);
+                Data.Entity.EmployeeStatus newEntity = EmployeeStatusParamConverter.Convert(item);
+                EmployeeStatusDao.Update(newEntity);
+            }
         }
     }
 }

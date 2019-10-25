@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Vehicle
 {
-    class VehicleParam
+    class VehicleParam : BaseParamNamed
     {
+        public Data.Entity.VehicleStatus VehicleStatus { get; set; }
+
+        public DateTime DateOfProduction { get; set; }
+
+        public double Mileage { get; set; }
+
+        public Data.Entity.Customer Owner { get; set; }
     }
 }

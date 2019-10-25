@@ -8,7 +8,7 @@ namespace AutoServiceShop.Data.Entity
 {
     class UserUserGroup : Persistent
     {
-        List<UserGroup> UserGroupList { get; set; }
-        User User { get; set; }
+        public List<UserGroup> UserGroupList { get; set; }
+        public User User { get; set; }
     }
 }

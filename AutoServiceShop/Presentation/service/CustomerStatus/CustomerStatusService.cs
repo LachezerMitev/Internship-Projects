@@ -11,46 +11,183 @@ namespace AutoServiceShop.Presentation.service.CustomerStatus
 {
     class CustomerStatusService : ICustomerStatusService
     {
-        ICustomerStatusProcessor CustomerStatusProcessor { get; set; }
+        ICustomerStatusProcessor CustomerStatusProcessor = new CustomerStatusProcessor();
+        public ApiResponse Response = new ApiResponse();
 
         public ApiResponse Create(CustomerStatusParam param)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerStatusProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Create(List<CustomerStatusParam> param)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerStatusProcessor.Create(param));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Delete(idList);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong. Try again later. :)";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse DeleteById(long id)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Delete(id);
+                Response.text = "Entity was successfully removed from the system.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse FindByPK(long id)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(CustomerStatusProcessor.Find(id));
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "An account with this id does not exist";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse ListAll()
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerStatusProcessor.Find());
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(long id, CustomerStatusParam param)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Update(id, param);
+                Response.text = "Entity was successfully updated";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public ApiResponse Update(List<CustomerStatusParam> param)
         {
-            throw new NotImplementedException();
+            CustomerStatusProcessor = new CustomerStatusProcessor();
+            Response = new ApiResponse();
+
+            try
+            {
+                CustomerStatusProcessor.Update(param);
+
+                Response.text = "Entities were successfully updated.";
+                Response.result = true;
+
+                return Response;
+            }
+            catch
+            {
+                Response.text = "Unfortunately something went wrong :(";
+                Response.result = false;
+
+                return Response;
+            }
         }
 
         public void ValidateParameters(CustomerStatusParam param)

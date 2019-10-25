@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
     {
         public ModelResult Convert(Data.Entity.Model param)
         {
-            throw new NotImplementedException();
+            ModelResult result = new ModelResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }

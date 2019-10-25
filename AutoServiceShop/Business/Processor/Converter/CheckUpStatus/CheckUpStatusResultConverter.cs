@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
     {
         public CheckUpStatusResult Convert(Data.Entity.CheckUpStatus param)
         {
-            throw new NotImplementedException();
+            CheckUpStatusResult result = new CheckUpStatusResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }

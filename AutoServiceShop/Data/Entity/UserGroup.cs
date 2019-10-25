@@ -8,6 +8,6 @@ namespace AutoServiceShop.Data.Entity
 {
     class UserGroup : NamedPersistent
     {
-        UserGroupStatus UserGroupStatus { get; set; }
+        public UserGroupStatus UserGroupStatus { get; set; }
     }
 }

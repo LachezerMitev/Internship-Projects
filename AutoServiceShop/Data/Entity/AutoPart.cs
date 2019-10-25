@@ -8,8 +8,8 @@ namespace AutoServiceShop.Data.Entity
 {
     class AutoPart : NamedPersistent
     {
-        AutoPartStatus AutoPartsStatus { get; set; }
-        double Price { get; set; }
-        int Quantity { get; set; }
+        public AutoPartStatus AutoPartsStatus { get; set; }
+        public double Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

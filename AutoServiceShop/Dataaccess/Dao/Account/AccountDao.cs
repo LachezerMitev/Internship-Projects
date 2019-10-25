@@ -9,8 +9,6 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 {
     class AccountDao : IAccountDao
     {
-
-
         public void Delete(long id)
         {
             Data.Entity.Account entity = Find(id);
@@ -19,7 +17,8 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public void Delete(Data.Entity.Account entity)
         {
-            AccountStorage.Accounts.Remove(entity);
+            AccountStorage.AccountList.Remove(entity);
+            AccountStorage.AccountDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
@@ -29,30 +28,38 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public List<Data.Entity.Account> Find()
         {
-            return AccountStorage.Accounts;
+            return AccountStorage.AccountList;
         }
 
         public Data.Entity.Account Find(long id)
         {
-            return AccountStorage.Accounts.Where(x => x.Id.Equals(id)).Single();
+            return AccountStorage.AccountList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.Account Save(Data.Entity.Account entity)
         {
-            AccountStorage.Accounts.Add(entity);
+
+            AccountStorage.AccountList.Add(entity);
+            AccountStorage.AccountDictionary.Add(entity.Id, entity);
+
             return entity;
         }
 
         public List<Data.Entity.Account> Save(List<Data.Entity.Account> entity)
         {
-            entity.ForEach(x => AccountStorage.Accounts.Add(x));
+            entity.ForEach(x => AccountStorage.AccountList.Add(x));
+
+            entity.ForEach(x => AccountStorage.AccountDictionary.Add(x.Id, x));
+
             return entity;
         }
 
         public Data.Entity.Account Update(Data.Entity.Account entity)
         {
             Delete(entity.Id);
-            Save(entity);
+            Save(entity);  
             return entity;
         }
 

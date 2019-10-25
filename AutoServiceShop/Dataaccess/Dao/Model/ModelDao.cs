@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.Model
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Model entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.Model entity)
         {
-            throw new NotImplementedException();
+            ModelStorage.ModelList.Remove(entity);
+            ModelStorage.ModelDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.Model> Find()
         {
-            throw new NotImplementedException();
+            return ModelStorage.ModelList;
         }
 
         public Data.Entity.Model Find(long id)
         {
-            throw new NotImplementedException();
+            return ModelStorage.ModelList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.Model Save(Data.Entity.Model entity)
         {
-            throw new NotImplementedException();
+
+            ModelStorage.ModelList.Add(entity);
+            ModelStorage.ModelDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.Model> Save(List<Data.Entity.Model> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => ModelStorage.ModelList.Add(x));
+
+            entity.ForEach(x => ModelStorage.ModelDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.Model Update(Data.Entity.Model entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.Model> Update(List<Data.Entity.Model> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

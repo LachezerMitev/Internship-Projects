@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.VehicleStatus entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.VehicleStatus entity)
         {
-            throw new NotImplementedException();
+            VehicleStatusStorage.VehicleStatusList.Remove(entity);
+            VehicleStatusStorage.VehicleStatusDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.VehicleStatus> Find()
         {
-            throw new NotImplementedException();
+            return VehicleStatusStorage.VehicleStatusList;
         }
 
         public Data.Entity.VehicleStatus Find(long id)
         {
-            throw new NotImplementedException();
+            return VehicleStatusStorage.VehicleStatusList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.VehicleStatus Save(Data.Entity.VehicleStatus entity)
         {
-            throw new NotImplementedException();
+
+            VehicleStatusStorage.VehicleStatusList.Add(entity);
+            VehicleStatusStorage.VehicleStatusDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.VehicleStatus> Save(List<Data.Entity.VehicleStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => VehicleStatusStorage.VehicleStatusList.Add(x));
+
+            entity.ForEach(x => VehicleStatusStorage.VehicleStatusDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.VehicleStatus Update(Data.Entity.VehicleStatus entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.VehicleStatus> Update(List<Data.Entity.VehicleStatus> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

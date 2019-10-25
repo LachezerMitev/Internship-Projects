@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractStatus
     {
         public ContractStatusResult Convert(Data.Entity.ContractStatus param)
         {
-            throw new NotImplementedException();
+            ContractStatusResult result = new ContractStatusResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }

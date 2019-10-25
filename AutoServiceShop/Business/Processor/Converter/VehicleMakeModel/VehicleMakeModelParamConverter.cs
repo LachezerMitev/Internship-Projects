@@ -14,7 +14,37 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 
         public Data.Entity.VehicleMakeModel Convert(VehicleMakeModelParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.VehicleMakeModel result = new Data.Entity.VehicleMakeModel()
+            {
+                Id = param.Id,
+
+                Vehicle = param.Vehicle,
+                Make = param.Make,
+                ModelList = param.ModelList
+            };
+
+            return result;
+        }
+
+        public Data.Entity.VehicleMakeModel Convert(VehicleMakeModelParam param, Data.Entity.VehicleMakeModel oldentity)
+        {
+            Data.Entity.VehicleMakeModel entity = null;
+
+            if (oldentity != null)
+            {
+                entity = oldentity;
+            }
+            else
+            {
+                entity = new Data.Entity.VehicleMakeModel();
+            }
+
+            entity.Id = param.Id;
+            entity.Vehicle = param.Vehicle;
+            entity.ModelList = param.ModelList;
+            entity.Make = param.Make;
+
+            return entity;
         }
     }
 }

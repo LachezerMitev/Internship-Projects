@@ -8,7 +8,7 @@ namespace AutoServiceShop.Data.Entity
 {
     class Employee : NamedPersistent
     {
-        EmployeeStatus EmployeeStatus { get; set; }
-        Contract Contract { get; set; }
+        public EmployeeStatus EmployeeStatus { get; set; }
+        public Contract Contract { get; set; }
     }
 }

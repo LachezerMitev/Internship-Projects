@@ -11,47 +11,62 @@ namespace AutoServiceShop.Dataaccess.Dao.Employee
     {
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.Employee entity = Find(id);
+            Delete(entity);
         }
 
         public void Delete(Data.Entity.Employee entity)
         {
-            throw new NotImplementedException();
+            EmployeeStorage.EmployeeList.Remove(entity);
+            EmployeeStorage.EmployeeDictionary.Remove(entity.Id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            idList.ForEach(x => Delete(x));
         }
 
         public List<Data.Entity.Employee> Find()
         {
-            throw new NotImplementedException();
+            return EmployeeStorage.EmployeeList;
         }
 
         public Data.Entity.Employee Find(long id)
         {
-            throw new NotImplementedException();
+            return EmployeeStorage.EmployeeList
+                .Where(x => x.Id.Equals(id))
+                .Single();
         }
 
         public Data.Entity.Employee Save(Data.Entity.Employee entity)
         {
-            throw new NotImplementedException();
+
+            EmployeeStorage.EmployeeList.Add(entity);
+            EmployeeStorage.EmployeeDictionary.Add(entity.Id, entity);
+
+            return entity;
         }
 
         public List<Data.Entity.Employee> Save(List<Data.Entity.Employee> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => EmployeeStorage.EmployeeList.Add(x));
+
+            entity.ForEach(x => EmployeeStorage.EmployeeDictionary.Add(x.Id, x));
+
+            return entity;
         }
 
         public Data.Entity.Employee Update(Data.Entity.Employee entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
+            Save(entity);
+            return entity;
         }
 
         public List<Data.Entity.Employee> Update(List<Data.Entity.Employee> entity)
         {
-            throw new NotImplementedException();
+            entity.ForEach(x => Update(x));
+            return entity;
         }
     }
 }

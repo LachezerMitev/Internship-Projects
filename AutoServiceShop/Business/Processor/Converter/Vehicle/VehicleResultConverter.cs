@@ -11,7 +11,20 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
     {
         public VehicleResult Convert(Data.Entity.Vehicle param)
         {
-            throw new NotImplementedException();
+            VehicleResult result = new VehicleResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+
+                VehicleStatus = param.VehicleStatus,
+                DateOfProduction = param.DateOfProduction,
+                Mileage = param.Mileage,
+                Owner = param.Owner
+            };
+
+            return result;
         }
     }
 }

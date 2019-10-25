@@ -11,7 +11,18 @@ namespace AutoServiceShop.Business.Processor.Converter.AutoPart
     {
         public AutoPartResult Convert(Data.Entity.AutoPart param)
         {
-            throw new NotImplementedException();
+            AutoPartResult result = new AutoPartResult()
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Description = param.Description,
+                Name = param.Name,
+                AutoPartsStatus = param.AutoPartsStatus,
+                Price = param.Price,
+                Quantity = param.Quantity
+            };
+
+            return result;
         }
     }
 }

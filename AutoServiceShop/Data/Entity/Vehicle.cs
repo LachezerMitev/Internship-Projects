@@ -8,9 +8,12 @@ namespace AutoServiceShop.Data.Entity
 {
     class Vehicle : NamedPersistent
     {
-        VehicleStatus VehicleStatus { get; set; }
-        DateTime DateOfProduction { get; set; }
-        double Mileage { get; set; }
-        Customer Owner { get; set; }
+        public VehicleStatus VehicleStatus { get; set; }
+
+        public DateTime DateOfProduction { get; set; }
+
+        public double Mileage { get; set; }
+
+        public Customer Owner { get; set; }
     }
 }

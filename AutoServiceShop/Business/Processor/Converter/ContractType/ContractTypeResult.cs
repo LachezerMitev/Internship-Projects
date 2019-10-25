@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.ContractType
 {
-    class ContractTypeResult
+    class ContractTypeResult : BaseResultNamed
     {
     }
 }

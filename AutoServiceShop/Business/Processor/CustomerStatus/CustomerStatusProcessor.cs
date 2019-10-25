@@ -11,49 +11,87 @@ namespace AutoServiceShop.Business.Processor.CustomerStatus
 {
     class CustomerStatusProcessor : ICustomerStatusProcessor
     {
-        ICustomerStatusDao CustomerStatusDao { get; set; }
+        ICustomerStatusDao CustomerStatusDao = new CustomerStatusDao();
 
-        ICustomerStatusParamConverter CustomerStatusParamConverter { get; set; }
-        ICustomerStatusResultConverter CustomerStatusResultConverter { get; set; }
+        ICustomerStatusParamConverter CustomerStatusParamConverter = new CustomerStatusParamConverter();
+        ICustomerStatusResultConverter CustomerStatusResultConverter = new CustomerStatusResultConverter();
 
         public CustomerStatusResult Create(CustomerStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.CustomerStatus entity = CustomerStatusParamConverter.Convert(param);
+            CustomerStatusDao.Save(entity);
+
+            return CustomerStatusResultConverter.Convert(entity);
         }
 
         public List<CustomerStatusResult> Create(List<CustomerStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CustomerStatus> entities = new List<Data.Entity.CustomerStatus>();
+            foreach (var item in param)
+            {
+                entities.Add(CustomerStatusParamConverter.Convert(item));
+            }
+            CustomerStatusDao.Save(entities);
+            List<CustomerStatusResult> result = new List<CustomerStatusResult>();
+            foreach (var item in entities)
+            {
+                result.Add(CustomerStatusResultConverter.Convert(item));
+            }
+            return result;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            CustomerStatusDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CustomerStatus> entity = new List<Data.Entity.CustomerStatus>();
+            foreach (var id in idList)
+            {
+                entity.Add(CustomerStatusDao.Find(id));
+            }
+            foreach (var id in idList)
+            {
+                CustomerStatusDao.Delete(id);
+            }
         }
 
         public CustomerStatusResult Find(long id)
         {
-            throw new NotImplementedException();
+            Data.Entity.CustomerStatus entity = CustomerStatusDao.Find(id);
+            CustomerStatusResult result = CustomerStatusResultConverter.Convert(entity);
+            return result;
         }
 
         public List<CustomerStatusResult> Find()
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CustomerStatus> accounts = CustomerStatusDao.Find();
+            List<CustomerStatusResult> results = new List<CustomerStatusResult>();
+            foreach (var item in accounts)
+            {
+                results.Add(CustomerStatusResultConverter.Convert(item));
+            }
+            return results;
         }
 
         public void Update(long id, CustomerStatusParam param)
         {
-            throw new NotImplementedException();
+            Data.Entity.CustomerStatus oldEntity = CustomerStatusDao.Find(id);
+            Data.Entity.CustomerStatus newEntity = CustomerStatusParamConverter.Convert(param);
+            CustomerStatusDao.Update(newEntity);
         }
 
         public void Update(List<CustomerStatusParam> param)
         {
-            throw new NotImplementedException();
+            List<Data.Entity.CustomerStatus> entity = new List<Data.Entity.CustomerStatus>();
+            foreach (var item in param)
+            {
+                Data.Entity.CustomerStatus oldEntity = CustomerStatusDao.Find(item.Id);
+                Data.Entity.CustomerStatus newEntity = CustomerStatusParamConverter.Convert(item);
+                CustomerStatusDao.Update(newEntity);
+            }
         }
     }
 }

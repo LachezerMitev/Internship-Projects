@@ -8,8 +8,9 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 {
     class AccountStorage
     {
-       
-        public static List<Data.Entity.Account> Accounts = new List<Data.Entity.Account>();
+
+        public static List<Data.Entity.Account> AccountList = new List<Data.Entity.Account>();
+        public static Dictionary<long, Data.Entity.Account> AccountDictionary= new Dictionary<long, Data.Entity.Account>();
 
         static AccountStorage()
         {
@@ -19,7 +20,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Ivanov",
                 LastName = "Golemiq",
                 Type = "WorEmployeeker",
-                Code = 1235486,
+                Code = "ORTA",
                 Description = "Well, He works...... stuff..... idk",
                 Name = "Georgi",
                 Id = 12352456
@@ -31,7 +32,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Georgiev",
                 LastName = "Shotlekov",
                 Type = "Employee",
-                Code = 1236584,
+                Code = "PVRT",
                 Description = "Engine specialist",
                 Name = "Ivan",
                 Id = 14573574
@@ -43,7 +44,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Petrov",
                 LastName = "Petrov",
                 Type = "Customer",
-                Code = 1235751,
+                Code = "KVPK",
                 Description = "Car",
                 Name = "Petar",
                 Id = 0157617
@@ -54,7 +55,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Latunov",
                 LastName = "Mitev",
                 Type = "Customer",
-                Code = 012458,
+                Code = "KLMN",
                 Description = "Motorcycle",
                 Name = "Mitko",
                 Id = 0128674
@@ -65,7 +66,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Borislav",
                 LastName = "Petrov",
                 Type = "Admin",
-                Code = 254675,
+                Code = "LKVF",
                 Description = "System Administrator",
                 Name = "Mitko",
                 Id = 254685
@@ -76,7 +77,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Spasimirov",
                 LastName = "Angelov",
                 Type = "Intern",
-                Code = 348567,
+                Code = "OSDA",
                 Description = "Suspension intern",
                 Name = "Joro",
                 Id = 348652
@@ -87,7 +88,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Ivanov",
                 LastName = "Peshev",
                 Type = "Intern",
-                Code = 348259,
+                Code = "ARTI",
                 Description = "General intern",
                 Name = "Joro",
                 Id = 348952
@@ -98,7 +99,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Penev",
                 LastName = "Tenev",
                 Type = "Employee",
-                Code = 126845,
+                Code = "PROS",
                 Description = "Senior Suspension specialist",
                 Name = "Gergi",
                 Id = 145326
@@ -109,7 +110,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Tenev",
                 LastName = "Proiski",
                 Type = "Employee",
-                Code = 234157,
+                Code = "MAKF",
                 Description = "Electrical specialist",
                 Name = "Stanislav",
                 Id = 12352456
@@ -120,22 +121,34 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 Surname = "Spasov",
                 LastName = "Georgiev",
                 Type = "Customer",
-                Code = 145637,
+                Code = "IFHE",
                 Description = "Car",
                 Name = "Tedo",
                 Id = 145367
             };
 
-            Accounts.Add(account1);
-            Accounts.Add(account2);
-            Accounts.Add(account3);
-            Accounts.Add(account4);
-            Accounts.Add(account5);
-            Accounts.Add(account6);
-            Accounts.Add(account7);
-            Accounts.Add(account8);
-            Accounts.Add(account9);
-            Accounts.Add(account10);
+            AccountList.Add(account1);
+            AccountList.Add(account2);
+            AccountList.Add(account3);
+            AccountList.Add(account4);
+            AccountList.Add(account5);
+            AccountList.Add(account6);
+            AccountList.Add(account7);
+            AccountList.Add(account8);
+            AccountList.Add(account9);
+            AccountList.Add(account10);
+
+            AccountDictionary.Add(account1.Id, account1);
+            AccountDictionary.Add(account2.Id, account2);
+            AccountDictionary.Add(account3.Id, account3);
+            AccountDictionary.Add(account4.Id, account4);
+            AccountDictionary.Add(account5.Id, account5);
+            AccountDictionary.Add(account6.Id, account6);
+            AccountDictionary.Add(account7.Id, account7);
+            AccountDictionary.Add(account8.Id, account8);
+            AccountDictionary.Add(account9.Id, account9);
+            AccountDictionary.Add(account10.Id, account10);
+
         }
     }
 }

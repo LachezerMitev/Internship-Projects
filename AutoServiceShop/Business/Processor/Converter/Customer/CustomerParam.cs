@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Customer
 {
-    class CustomerParam
+    class CustomerParam : BaseParamNamed
     {
+        public Data.Entity.CustomerStatus CustomerStatus { get; set; }
     }
 }

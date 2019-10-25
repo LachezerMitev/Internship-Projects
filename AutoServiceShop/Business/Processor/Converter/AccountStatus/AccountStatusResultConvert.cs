@@ -11,7 +11,15 @@ namespace AutoServiceShop.Business.Processor.Converter.AccountStatus
     {
         public AccountStatusResult Convert(Data.Entity.AccountStatus param)
         {
-            throw new NotImplementedException();
+            AccountStatusResult result = new AccountStatusResult()
+            {
+                Id = param.Id,
+                Code = param.Code,
+                Description = param.Description,
+                Name = param.Name
+            };
+
+            return result;
         }
     }
 }
