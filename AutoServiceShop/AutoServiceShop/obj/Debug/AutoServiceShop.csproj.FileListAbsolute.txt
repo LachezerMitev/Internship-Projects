@@ -1,0 +1,10 @@
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CoreCompileInputs.cache
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csprojAssemblyReference.cache
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.exe.config
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.exe
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.pdb
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CopyComplete
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.exe
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.pdb
