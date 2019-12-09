@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
 {
     class ContractStatusProcessor : IContractStatusProcessor
     {
-        IContractStatusDao ContractStatusDao = new ContractStatusDao();
+        private IContractStatusParamConverter _contractStatusParamConverter;
+        public IContractStatusParamConverter ContractStatusParamConverter
+        {
+            set => _contractStatusParamConverter = value;
+            get
+            {
+                if (_contractStatusParamConverter == null)
+                {
+                    _contractStatusParamConverter = new ContractStatusParamConverter();
+                    return _contractStatusParamConverter;
+                }
+                else
+                {
+                    return _contractStatusParamConverter;
+                }
+            }
+        }
 
-        IContractStatusParamConverter ContractStatusParamConverter = new ContractStatusParamConverter();
-        IContractStatusResultConverter ContractStatusResultConverter = new ContractStatusResultConverter();
+        private IContractStatusResultConverter _contractStatusResultConverter;
+        public IContractStatusResultConverter ContractStatusResultConverter
+        {
+            set => _contractStatusResultConverter = value;
+            get
+            {
+                if (_contractStatusResultConverter == null)
+                {
+                    _contractStatusResultConverter = new ContractStatusResultConverter();
+                    return _contractStatusResultConverter;
+                }
+                else
+                {
+                    return _contractStatusResultConverter;
+                }
+            }
+        }
+
+        private IContractStatusDao _contractStatusDao;
+        public IContractStatusDao ContractStatusDataObject
+        {
+            set => _contractStatusDao = value;
+            get
+            {
+                if (_contractStatusDao == null)
+                {
+                    _contractStatusDao = new ContractStatusDao();
+                    return _contractStatusDao;
+                }
+                else
+                {
+                    return _contractStatusDao;
+                }
+            }
+        }
+
 
         public ContractStatusResult Create(ContractStatusParam param)
         {
-            Data.Entity.ContractStatus entity = ContractStatusParamConverter.Convert(param, null);
-            ContractStatusDao.Save(entity);
 
-            return ContractStatusResultConverter.Convert(entity);
+            Data.Entity.ContractStatus entity = _contractStatusParamConverter.Convert(param, null);
+
+            _contractStatusDao.Save(entity);
+
+            return _contractStatusResultConverter.Convert(entity);
         }
 
         public List<ContractStatusResult> Create(List<ContractStatusParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
             List<Data.Entity.ContractStatus> entities = new List<Data.Entity.ContractStatus>();
             foreach (var item in param)
             {
-                entities.Add(ContractStatusParamConverter.Convert(item, null));
+                entities.Add(_contractStatusParamConverter.Convert(item, null));
             }
-            ContractStatusDao.Save(entities);
+            _contractStatusDao.Save(entities);
             List<ContractStatusResult> result = new List<ContractStatusResult>();
             foreach (var item in entities)
             {
-                result.Add(ContractStatusResultConverter.Convert(item));
+                result.Add(_contractStatusResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            ContractStatusDao.Delete(id);
+            _contractStatusDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
             List<Data.Entity.ContractStatus> entity = new List<Data.Entity.ContractStatus>();
             foreach (var id in idList)
             {
-                entity.Add(ContractStatusDao.Find(id));
+                entity.Add(_contractStatusDao.Find(id));
             }
             foreach (var id in idList)
             {
-                ContractStatusDao.Delete(id);
+                _contractStatusDao.Delete(id);
             }
         }
 
         public ContractStatusResult Find(long id)
         {
-            Data.Entity.ContractStatus entity = ContractStatusDao.Find(id);
-            ContractStatusResult result = ContractStatusResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.ContractStatus entity = _contractStatusDao.Find(id);
+                ContractStatusResult result = _contractStatusResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<ContractStatusResult> Find()
         {
-            List<Data.Entity.ContractStatus> entity = ContractStatusDao.Find();
+            List<Data.Entity.ContractStatus> ContractStatuss = _contractStatusDao.Find();
             List<ContractStatusResult> results = new List<ContractStatusResult>();
-            foreach (var item in entity)
+            foreach (var item in ContractStatuss)
             {
-                results.Add(ContractStatusResultConverter.Convert(item));
+                results.Add(_contractStatusResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<ContractStatusResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.ContractStatus> ContractStatuss = _contractStatusDao.FindByField(field, value);
+            List<ContractStatusResult> results = new List<ContractStatusResult>();
+            foreach (var item in ContractStatuss)
+            {
+                results.Add(_contractStatusResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, ContractStatusParam param)
         {
-            Data.Entity.ContractStatus oldEntity = ContractStatusDao.Find(id);
-            Data.Entity.ContractStatus newEntity = ContractStatusParamConverter.Convert(param, null);
-            ContractStatusDao.Update(newEntity);
+            Data.Entity.ContractStatus oldEntity = _contractStatusDao.Find(id);
+            Data.Entity.ContractStatus newEntity = _contractStatusParamConverter.Convert(param, oldEntity);
+            _contractStatusDao.Update(newEntity);
         }
 
         public void Update(List<ContractStatusParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
             List<Data.Entity.ContractStatus> entity = new List<Data.Entity.ContractStatus>();
             foreach (var item in param)
             {
-                Data.Entity.ContractStatus oldEntity = ContractStatusDao.Find(item.Id);
-                Data.Entity.ContractStatus newEntity = ContractStatusParamConverter.Convert(item, null);
-                ContractStatusDao.Update(newEntity);
+                Data.Entity.ContractStatus oldEntity = _contractStatusDao.Find(item.Id);
+                Data.Entity.ContractStatus newEntity = _contractStatusParamConverter.Convert(item, oldEntity);
+                _contractStatusDao.Update(newEntity);
             }
         }
     }

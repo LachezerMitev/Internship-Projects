@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.Issue
                 .Single();
         }
 
+        public List<Data.Entity.Issue> FindByField(string field, string value)
+        {
+            return IssueStorage.IssueList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.Issue Save(Data.Entity.Issue entity)
         {
 

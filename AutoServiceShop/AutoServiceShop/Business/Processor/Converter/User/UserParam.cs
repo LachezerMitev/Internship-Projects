@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.User
 {
-    class UserParam : BaseParamNamed
+    class UserParam : BaseParam
     {
         public string Username { get; set; }
 

@@ -10,8 +10,6 @@ namespace AutoServiceShop.Business.Processor.Converter.AccountStatus
 {
     class AccountStatusParamConvert : IAccountStatusParamConverter
     {
-        IAccountStatusDao AccountStatusDao = new AccountStatusDao();
-
         public Data.Entity.AccountStatus Convert(AccountStatusParam param, Data.Entity.AccountStatus oldentity)
         {
             Data.Entity.AccountStatus entity = null;

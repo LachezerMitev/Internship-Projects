@@ -13,9 +13,53 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
 {
     class AccountParamConverter : IAccountParamConverter
     {
+<<<<<<< Updated upstream
         IAccountDao AccountDao = new AccountDao();
         IUserDao UserDao = new UserDao();
         IAccountStatusDao AccountStatusDao = new AccountStatusDao();
+=======
+
+        private IUserDao _userDao;
+        public IUserDao UserDao
+        {
+            
+            set { _userDao = value; }
+
+            get
+            {
+                if (_userDao == null)
+                {
+                    _userDao = new UserDao();
+                    return _userDao;
+                }
+                else
+                {
+                    return _userDao;
+                }
+            }
+        }
+
+        private IAccountStatusDao _accountStatusDao; 
+        public IAccountStatusDao AccountStatusDao
+        {
+
+            set { _accountStatusDao = value; }
+
+            get
+            {
+                if (_accountStatusDao == null)
+                {
+                    _accountStatusDao = new AccountStatusDao();
+                    return _accountStatusDao;
+                }
+                else
+                {
+                    return _accountStatusDao;
+                }
+            }
+        }
+
+>>>>>>> Stashed changes
 
         public Data.Entity.Account Convert(AccountParam param, Data.Entity.Account oldentity)
         {
@@ -36,12 +80,26 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
                 };
             }
 
+<<<<<<< Updated upstream
             entity.FirstName = param.FirstName;
             entity.Surname = param.Surname;
             entity.LastName = param.LastName;
             entity.Type = param.Type;
             entity.User = UserDao.Find(param.UserId);
             entity.AccountStatus = AccountStatusDao.Find(param.AccountStatusId);
+=======
+            ConverterStandart(param, entity);
+
+            ConvertSpecific(param, entity);
+
+            return entity;
+        }
+
+        public override Data.Entity.Account ConvertSpecific(AccountParam param, Data.Entity.Account entity)
+        {
+            entity.AccountStatus = _accountStatusDao.Find(param.AccountStatusId);
+            entity.User = _userDao.Find(param.UserId);
+>>>>>>> Stashed changes
 
             return entity;
         }

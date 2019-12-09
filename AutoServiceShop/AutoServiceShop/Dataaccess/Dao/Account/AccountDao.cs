@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoServiceShop.Data.Entity;
+using Newtonsoft.Json;
 
 namespace AutoServiceShop.Dataaccess.Dao.Account
 {
@@ -13,12 +15,14 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
         {
             Data.Entity.Account entity = Find(id);
             Delete(entity);
+            AccountStorage.SaveInFile();
         }
 
         public void Delete(Data.Entity.Account entity)
         {
             AccountStorage.AccountList.Remove(entity);
             AccountStorage.AccountDictionary.Remove(entity.Id);
+            AccountStorage.SaveInFile();
         }
 
         public void Delete(List<long> idList)
@@ -49,7 +53,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
             AccountStorage.AccountList.Add(entity);
             AccountStorage.AccountDictionary.Add(entity.Id, entity);
-
+            AccountStorage.SaveInFile();
             return entity;
         }
 
@@ -59,13 +63,16 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
             entity.ForEach(x => AccountStorage.AccountDictionary.Add(x.Id, x));
 
+            AccountStorage.SaveInFile();
+
             return entity;
         }
 
         public Data.Entity.Account Update(Data.Entity.Account entity)
         {
             Delete(entity.Id);
-            Save(entity);  
+            Save(entity);
+            AccountStorage.SaveInFile();
             return entity;
         }
 

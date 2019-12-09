@@ -7,23 +7,39 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Account;
 using AutoServiceShop.Business.Processor.Converter.Account;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.Account;
 
 namespace AutoServiceShop.Presentation.service.Account
 {
     class AccountService : IAccountService
     {
-        public IAccountProcessor AccountProcessor = new AccountProcessor();
-
-        public ApiResponse Response = new ApiResponse();
+        private IAccountProcessor _accountProcessor;
+        public IAccountProcessor AccountProcessor
+        {
+            set => _accountProcessor = value;
+            get
+            {
+                if (_accountProcessor == null)
+                {
+                    _accountProcessor = new AccountProcessor();
+                    return _accountProcessor;
+                }
+                else
+                {
+                    return _accountProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(AccountParam param)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Create(param));
+                
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_accountProcessor.Create(param));
+                
                 Response.result = true;
 
                 return Response;
@@ -42,12 +58,12 @@ namespace AutoServiceShop.Presentation.service.Account
         
         public ApiResponse Create(List<AccountParam> param)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_accountProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -63,12 +79,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse Delete(List<long> idList)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Delete(idList);
+                _accountProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -85,12 +100,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse DeleteById(long id)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Delete(id);
+                _accountProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -107,12 +121,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse FindByPK(long id)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Find(id);
+                _accountProcessor.Find(id);
                 Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Find(id));
                 Response.result = true;
 
@@ -129,12 +142,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse FindByField(string field, string value)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.FindByField(field, value);
+                _accountProcessor.FindByField(field, value);
                 Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.FindByField(field, value));
                 Response.result = true;
 
@@ -151,12 +163,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse ListAll()
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Find();
+                _accountProcessor.Find();
                 Response.text = JsonConverter.JsonConverter.ObjToJson(AccountProcessor.Find());
                 Response.result = true;
 
@@ -173,12 +184,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse Update(long id, AccountParam param)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Update(id, param);
+                _accountProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -196,12 +206,11 @@ namespace AutoServiceShop.Presentation.service.Account
 
         public ApiResponse Update(List<AccountParam> param)
         {
-            AccountProcessor = new AccountProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                AccountProcessor.Update(param);
+                _accountProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

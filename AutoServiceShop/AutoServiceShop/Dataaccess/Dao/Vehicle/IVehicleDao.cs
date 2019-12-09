@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.Vehicle
 
         List<Data.Entity.Vehicle> Find();
         Data.Entity.Vehicle Find(long id);
+        List<Data.Entity.Vehicle> FindByField(string field, string value);
     }
 }

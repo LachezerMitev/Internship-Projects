@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.UserUserGroup
                 .Single();
         }
 
+        public List<Data.Entity.UserUserGroup> FindByField(string field, string value)
+        {
+            return UserUserGroupStorage.UserUserGroupList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.UserUserGroup Save(Data.Entity.UserUserGroup entity)
         {
 

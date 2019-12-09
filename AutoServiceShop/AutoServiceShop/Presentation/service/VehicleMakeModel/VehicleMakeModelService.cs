@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 {
     class VehicleMakeModelService : IVehicleMakeModelService
     {
-        IVehicleMakeModelProcessor VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IVehicleMakeModelProcessor _vehicleMakeModelProcessor;
+        public IVehicleMakeModelProcessor VehicleMakeModelProcessor
+        {
+            set => _vehicleMakeModelProcessor = value;
+            get
+            {
+                if (_vehicleMakeModelProcessor == null)
+                {
+                    _vehicleMakeModelProcessor = new VehicleMakeModelProcessor();
+                    return _vehicleMakeModelProcessor;
+                }
+                else
+                {
+                    return _vehicleMakeModelProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(VehicleMakeModelParam param)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(VehicleMakeModelProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_vehicleMakeModelProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse Create(List<VehicleMakeModelParam> param)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(VehicleMakeModelProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_vehicleMakeModelProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse Delete(List<long> idList)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Delete(idList);
+                _vehicleMakeModelProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse DeleteById(long id)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Delete(id);
+                _vehicleMakeModelProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse FindByPK(long id)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(VehicleMakeModelProcessor.Find(id));
+                _vehicleMakeModelProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_vehicleMakeModelProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse ListAll()
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(VehicleMakeModelProcessor.Find());
+                _vehicleMakeModelProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_vehicleMakeModelProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse Update(long id, VehicleMakeModelParam param)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Update(id, param);
+                _vehicleMakeModelProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 
         public ApiResponse Update(List<VehicleMakeModelParam> param)
         {
-            VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                VehicleMakeModelProcessor.Update(param);
+                _vehicleMakeModelProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

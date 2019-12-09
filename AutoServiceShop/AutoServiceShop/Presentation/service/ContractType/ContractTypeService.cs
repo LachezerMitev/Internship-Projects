@@ -12,17 +12,31 @@ namespace AutoServiceShop.Presentation.service.ContractType
 {
     class ContractTypeService : IContractTypeService
     {
-       IContractTypeProcessor ContractTypeProcessor = new ContractTypeProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IContractTypeProcessor _contractTypeProcessor;
+        public IContractTypeProcessor ContractTypeProcessor
+        {
+            set => _contractTypeProcessor = value;
+            get
+            {
+                if (_contractTypeProcessor == null)
+                {
+                    _contractTypeProcessor = new ContractTypeProcessor();
+                    return _contractTypeProcessor;
+                }
+                else
+                {
+                    return _contractTypeProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(ContractTypeParam param)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_contractTypeProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -39,12 +53,11 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse Create(List<ContractTypeParam> param)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_contractTypeProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -60,12 +73,11 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse Delete(List<long> idList)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Delete(idList);
+                _contractTypeProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -82,12 +94,11 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse DeleteById(long id)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Delete(id);
+                _contractTypeProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -104,13 +115,12 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse FindByPK(long id)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Find(id));
+                _contractTypeProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_contractTypeProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -126,13 +136,12 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse ListAll()
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ContractTypeProcessor.Find());
+                _contractTypeProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_contractTypeProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -148,12 +157,11 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse Update(long id, ContractTypeParam param)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Update(id, param);
+                _contractTypeProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -170,12 +178,11 @@ namespace AutoServiceShop.Presentation.service.ContractType
 
         public ApiResponse Update(List<ContractTypeParam> param)
         {
-            ContractTypeProcessor = new ContractTypeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ContractTypeProcessor.Update(param);
+                _contractTypeProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

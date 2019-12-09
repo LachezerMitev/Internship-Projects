@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroupStatus
 
         List<Data.Entity.UserGroupStatus> Find();
         Data.Entity.UserGroupStatus Find(long id);
+        List<Data.Entity.UserGroupStatus> FindByField(string field, string value);
     }
 }

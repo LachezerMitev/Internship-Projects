@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.CheckUp
 {
     class CheckUpProcessor : ICheckUpProcessor
     {
-        ICheckUpDao CheckUpDao = new CheckUpDao();
+        private ICheckUpParamConverter _checkUpParamConverter;
+        public ICheckUpParamConverter CheckUpParamConverter
+        {
+            set => _checkUpParamConverter = value;
+            get
+            {
+                if (_checkUpParamConverter == null)
+                {
+                    _checkUpParamConverter = new CheckUpParamConverter();
+                    return _checkUpParamConverter;
+                }
+                else
+                {
+                    return _checkUpParamConverter;
+                }
+            }
+        }
 
-        ICheckUpParamConverter CheckUpParamConverter = new CheckUpParamConverter();
-        ICheckUpResultConverter CheckUpResultConverter = new CheckUpResultConverter();
+        private ICheckUpResultConverter _checkUpResultConverter;
+        public ICheckUpResultConverter CheckUpResultConverter
+        {
+            set => _checkUpResultConverter = value;
+            get
+            {
+                if (_checkUpResultConverter == null)
+                {
+                    _checkUpResultConverter = new CheckUpResultConverter();
+                    return _checkUpResultConverter;
+                }
+                else
+                {
+                    return _checkUpResultConverter;
+                }
+            }
+        }
+
+        private ICheckUpDao _checkUpDao;
+        public ICheckUpDao CheckUpDataObject
+        {
+            set => _checkUpDao = value;
+            get
+            {
+                if (_checkUpDao == null)
+                {
+                    _checkUpDao = new CheckUpDao();
+                    return _checkUpDao;
+                }
+                else
+                {
+                    return _checkUpDao;
+                }
+            }
+        }
+
 
         public CheckUpResult Create(CheckUpParam param)
         {
-            Data.Entity.CheckUp entity = CheckUpParamConverter.Convert(param, null);
-            CheckUpDao.Save(entity);
 
-            return CheckUpResultConverter.Convert(entity);
+            Data.Entity.CheckUp entity = _checkUpParamConverter.Convert(param, null);
+
+            _checkUpDao.Save(entity);
+
+            return _checkUpResultConverter.Convert(entity);
         }
 
         public List<CheckUpResult> Create(List<CheckUpParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.CheckUp
             List<Data.Entity.CheckUp> entities = new List<Data.Entity.CheckUp>();
             foreach (var item in param)
             {
-                entities.Add(CheckUpParamConverter.Convert(item, null));
+                entities.Add(_checkUpParamConverter.Convert(item, null));
             }
-            CheckUpDao.Save(entities);
+            _checkUpDao.Save(entities);
             List<CheckUpResult> result = new List<CheckUpResult>();
             foreach (var item in entities)
             {
-                result.Add(CheckUpResultConverter.Convert(item));
+                result.Add(_checkUpResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            CheckUpDao.Delete(id);
+            _checkUpDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.CheckUp
             List<Data.Entity.CheckUp> entity = new List<Data.Entity.CheckUp>();
             foreach (var id in idList)
             {
-                entity.Add(CheckUpDao.Find(id));
+                entity.Add(_checkUpDao.Find(id));
             }
             foreach (var id in idList)
             {
-                CheckUpDao.Delete(id);
+                _checkUpDao.Delete(id);
             }
         }
 
         public CheckUpResult Find(long id)
         {
-            Data.Entity.CheckUp entity = CheckUpDao.Find(id);
-            CheckUpResult result = CheckUpResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.CheckUp entity = _checkUpDao.Find(id);
+                CheckUpResult result = _checkUpResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<CheckUpResult> Find()
         {
-            List<Data.Entity.CheckUp> entity = CheckUpDao.Find();
+            List<Data.Entity.CheckUp> CheckUps = _checkUpDao.Find();
             List<CheckUpResult> results = new List<CheckUpResult>();
-            foreach (var item in entity)
+            foreach (var item in CheckUps)
             {
-                results.Add(CheckUpResultConverter.Convert(item));
+                results.Add(_checkUpResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<CheckUpResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.CheckUp> CheckUps = _checkUpDao.FindByField(field, value);
+            List<CheckUpResult> results = new List<CheckUpResult>();
+            foreach (var item in CheckUps)
+            {
+                results.Add(_checkUpResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, CheckUpParam param)
         {
-            Data.Entity.CheckUp oldEntity = CheckUpDao.Find(id);
-            Data.Entity.CheckUp newEntity = CheckUpParamConverter.Convert(param, null);
-            CheckUpDao.Update(newEntity);
+            Data.Entity.CheckUp oldEntity = _checkUpDao.Find(id);
+            Data.Entity.CheckUp newEntity = _checkUpParamConverter.Convert(param, oldEntity);
+            _checkUpDao.Update(newEntity);
         }
 
         public void Update(List<CheckUpParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.CheckUp
             List<Data.Entity.CheckUp> entity = new List<Data.Entity.CheckUp>();
             foreach (var item in param)
             {
-                Data.Entity.CheckUp oldEntity = CheckUpDao.Find(item.Id);
-                Data.Entity.CheckUp newEntity = CheckUpParamConverter.Convert(item, null);
-                CheckUpDao.Update(newEntity);
+                Data.Entity.CheckUp oldEntity = _checkUpDao.Find(item.Id);
+                Data.Entity.CheckUp newEntity = _checkUpParamConverter.Convert(item, oldEntity);
+                _checkUpDao.Update(newEntity);
             }
         }
     }

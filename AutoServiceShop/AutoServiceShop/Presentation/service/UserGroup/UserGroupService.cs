@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 {
     class UserGroupService : IUserGroupService
     {
-        IUserGroupProcessor UserGroupProcessor = new UserGroupProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IUserGroupProcessor _userGroupProcessor;
+        public IUserGroupProcessor UserGroupProcessor
+        {
+            set => _userGroupProcessor = value;
+            get
+            {
+                if (_userGroupProcessor == null)
+                {
+                    _userGroupProcessor = new UserGroupProcessor();
+                    return _userGroupProcessor;
+                }
+                else
+                {
+                    return _userGroupProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(UserGroupParam param)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse Create(List<UserGroupParam> param)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse Delete(List<long> idList)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Delete(idList);
+                _userGroupProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse DeleteById(long id)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Delete(id);
+                _userGroupProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse FindByPK(long id)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(UserGroupProcessor.Find(id));
+                _userGroupProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_userGroupProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse ListAll()
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupProcessor.Find());
+                _userGroupProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse Update(long id, UserGroupParam param)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Update(id, param);
+                _userGroupProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 
         public ApiResponse Update(List<UserGroupParam> param)
         {
-            UserGroupProcessor = new UserGroupProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupProcessor.Update(param);
+                _userGroupProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

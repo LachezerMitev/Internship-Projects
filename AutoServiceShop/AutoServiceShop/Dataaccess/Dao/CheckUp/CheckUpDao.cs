@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUp
                 .Single();
         }
 
+        public List<Data.Entity.CheckUp> FindByField(string field, string value)
+        {
+            return CheckUpStorage.CheckUpList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.CheckUp Save(Data.Entity.CheckUp entity)
         {
 

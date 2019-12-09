@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -56,6 +59,7 @@
     <Compile Include="Dataaccess\Dao\AutoPart\AutoPartStorage.cs" />
     <Compile Include="Dataaccess\Dao\CheckUpStatus\CheckUpStatusStorage.cs" />
     <Compile Include="Dataaccess\Dao\CheckUp\CheckUpStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Common\BaseStorage.cs" />
     <Compile Include="Dataaccess\Dao\ContractStatus\ContractStatusStorage.cs" />
     <Compile Include="Dataaccess\Dao\ContractType\ContractTypeStorage.cs" />
     <Compile Include="Dataaccess\Dao\Contract\ContractStorage.cs" />
@@ -74,6 +78,7 @@
     <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusStorage.cs" />
     <Compile Include="Dataaccess\Dao\Vehicle\VehicleStorage.cs" />
     <Compile Include="Data\Common\ApiResponse.cs" />
+    <Compile Include="Data\Common\EntityAttribute.cs" />
     <Compile Include="Data\Entity\Account.cs" />
     <Compile Include="Data\Entity\AccountStatus.cs" />
     <Compile Include="Data\Entity\AutoPart.cs" />
@@ -323,7 +328,7 @@
     <Compile Include="Data\Entity\Persistent.cs" />
     <Compile Include="Data\Entity\NamedPersistent.cs" />
     <Compile Include="Presentation\JsonConverter\JsonConverter.cs" />
-    <Compile Include="Presentation\service\AccountStatus\AccountStatusStatus.cs" />
+    <Compile Include="Presentation\service\AccountStatus\AccountStatusService.cs" />
     <Compile Include="Presentation\service\AccountStatus\IAccountStatusService.cs" />
     <Compile Include="Presentation\service\Account\AccountService.cs" />
     <Compile Include="Presentation\service\Account\IAccountService.cs" />
@@ -378,9 +383,15 @@
     <Compile Include="Data\Entity\VehicleMakeModel.cs" />
     <Compile Include="Data\Entity\VehicleStatus.cs" />
     <Compile Include="Data\Entity\Vehicle.cs" />
+    <Compile Include="ProgramFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DataBase\Accounts.json" />
+    <None Include="DataBase\AccountsBackup.json" />
+    <None Include="DataBase\AccountStatus.json" />
+    <None Include="DataBase\Lubo.json" />
+    <None Include="DataBase\User.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

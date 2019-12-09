@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPart
                 .Single();
         }
 
+        public List<Data.Entity.AutoPart> FindByField(string field, string value)
+        {
+            return AutoPartStorage.AutoPartList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.AutoPart Save(Data.Entity.AutoPart entity)
         {
             AutoPartStorage.AutoPartList.Add(entity);

@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 {
     class UserGroupStatusService : IUserGroupStatusService
     {
-        IUserGroupStatusProcessor UserGroupStatusProcessor = new UserGroupStatusProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IUserGroupStatusProcessor _userGroupStatusProcessor;
+        public IUserGroupStatusProcessor UserGroupStatusProcessor
+        {
+            set => _userGroupStatusProcessor = value;
+            get
+            {
+                if (_userGroupStatusProcessor == null)
+                {
+                    _userGroupStatusProcessor = new UserGroupStatusProcessor();
+                    return _userGroupStatusProcessor;
+                }
+                else
+                {
+                    return _userGroupStatusProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(UserGroupStatusParam param)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse Create(List<UserGroupStatusParam> param)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse Delete(List<long> idList)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Delete(idList);
+                _userGroupStatusProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse DeleteById(long id)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Delete(id);
+                _userGroupStatusProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse FindByPK(long id)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(UserGroupStatusProcessor.Find(id));
+                _userGroupStatusProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_userGroupStatusProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse ListAll()
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(UserGroupStatusProcessor.Find());
+                _userGroupStatusProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_userGroupStatusProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse Update(long id, UserGroupStatusParam param)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Update(id, param);
+                _userGroupStatusProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.UserGroupStatus
 
         public ApiResponse Update(List<UserGroupStatusParam> param)
         {
-            UserGroupStatusProcessor = new UserGroupStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                UserGroupStatusProcessor.Update(param);
+                _userGroupStatusProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

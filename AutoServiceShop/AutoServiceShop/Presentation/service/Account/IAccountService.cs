@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Data.Common;
 using AutoServiceShop.Business.Processor.Converter.Account;
+using AutoServiceShop.Business.Processor.Account;
 
 namespace AutoServiceShop.Presentation.service.Account
 {
     interface IAccountService
     {
+
         ApiResponse FindByPK (long id);
         ApiResponse ListAll ();
         ApiResponse FindByField(string field, string value);

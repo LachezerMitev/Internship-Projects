@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUp
 
         List<Data.Entity.CheckUp> Find();
         Data.Entity.CheckUp Find(long id);
+        List<Data.Entity.CheckUp> FindByField(string field, string value);
     }
 }

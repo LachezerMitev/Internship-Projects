@@ -12,9 +12,45 @@ namespace AutoServiceShop.Business.Processor.Converter.Employee
 {
     class EmployeeParamConverter : IEmployeeParamConverter
     {
-        IEmployeeDao EmployeeDao = new EmployeeDao();
-        IEmployeeStatusDao EmployeeStatusDao = new EmployeeStatusDao();
-        IContractDao ContractDao = new ContractDao();
+        private IEmployeeStatusDao _employeeStatusDao;
+        public IEmployeeStatusDao EmployeeStatusDao
+        {
+
+            set { _employeeStatusDao = value; }
+
+            get
+            {
+                if (_employeeStatusDao == null)
+                {
+                    _employeeStatusDao = new EmployeeStatusDao();
+                    return _employeeStatusDao;
+                }
+                else
+                {
+                    return _employeeStatusDao;
+                }
+            }
+        }
+
+        private IContractDao _contractDao;
+        public IContractDao ContractDao
+        {
+
+            set { _contractDao = value; }
+
+            get
+            {
+                if (_contractDao == null)
+                {
+                    _contractDao = new ContractDao();
+                    return _contractDao;
+                }
+                else
+                {
+                    return _contractDao;
+                }
+            }
+        }
 
         public Data.Entity.Employee Convert(EmployeeParam param, Data.Entity.Employee oldentity)
         {
@@ -34,9 +70,24 @@ namespace AutoServiceShop.Business.Processor.Converter.Employee
                     Name = param.Name
                 };
             }
+<<<<<<< Updated upstream
             
             entity.EmployeeStatus = EmployeeStatusDao.Find(param.EmployeeStatusId);
             entity.Contract = ContractDao.Find(param.ContractId);
+=======
+
+            ConverterStandart(param, entity);
+
+            ConvertSpecific(param, entity);
+
+            return entity;
+        }
+
+        public override Data.Entity.Employee ConvertSpecific(EmployeeParam param, Data.Entity.Employee entity)
+        {
+            entity.EmployeeStatus = _employeeStatusDao.Find(param.EmployeeStatusId);
+            entity.Contract = _contractDao.Find(param.ContractId);
+>>>>>>> Stashed changes
 
             return entity;
         }

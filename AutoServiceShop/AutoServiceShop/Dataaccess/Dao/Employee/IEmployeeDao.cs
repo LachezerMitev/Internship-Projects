@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.Employee
 
         List<Data.Entity.Employee> Find();
         Data.Entity.Employee Find(long id);
+        List<Data.Entity.Employee> FindByField(string field, string value);
     }
 }

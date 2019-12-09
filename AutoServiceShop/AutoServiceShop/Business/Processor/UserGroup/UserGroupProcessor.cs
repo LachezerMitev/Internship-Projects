@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.UserGroup
 {
     class UserGroupProcessor : IUserGroupProcessor
     {
-        IUserGroupDao UserGroupDao = new UserGroupDao();
+        private IUserGroupParamConverter _userGroupParamConverter;
+        public IUserGroupParamConverter UserGroupParamConverter
+        {
+            set => _userGroupParamConverter = value;
+            get
+            {
+                if (_userGroupParamConverter == null)
+                {
+                    _userGroupParamConverter = new UserGroupParamConverter();
+                    return _userGroupParamConverter;
+                }
+                else
+                {
+                    return _userGroupParamConverter;
+                }
+            }
+        }
 
-        IUserGroupParamConverter UserGroupParamConverter = new UserGroupParamConverter();
-        IUserGroupResultConverter UserGroupResultConverter = new UserGroupResultConverter();
+        private IUserGroupResultConverter _userGroupResultConverter;
+        public IUserGroupResultConverter UserGroupResultConverter
+        {
+            set => _userGroupResultConverter = value;
+            get
+            {
+                if (_userGroupResultConverter == null)
+                {
+                    _userGroupResultConverter = new UserGroupResultConverter();
+                    return _userGroupResultConverter;
+                }
+                else
+                {
+                    return _userGroupResultConverter;
+                }
+            }
+        }
+
+        private IUserGroupDao _userGroupDao;
+        public IUserGroupDao UserGroupDataObject
+        {
+            set => _userGroupDao = value;
+            get
+            {
+                if (_userGroupDao == null)
+                {
+                    _userGroupDao = new UserGroupDao();
+                    return _userGroupDao;
+                }
+                else
+                {
+                    return _userGroupDao;
+                }
+            }
+        }
+
 
         public UserGroupResult Create(UserGroupParam param)
         {
-            Data.Entity.UserGroup entity = UserGroupParamConverter.Convert(param, null);
-            UserGroupDao.Save(entity);
 
-            return UserGroupResultConverter.Convert(entity);
+            Data.Entity.UserGroup entity = _userGroupParamConverter.Convert(param, null);
+
+            _userGroupDao.Save(entity);
+
+            return _userGroupResultConverter.Convert(entity);
         }
 
         public List<UserGroupResult> Create(List<UserGroupParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.UserGroup
             List<Data.Entity.UserGroup> entities = new List<Data.Entity.UserGroup>();
             foreach (var item in param)
             {
-                entities.Add(UserGroupParamConverter.Convert(item, null));
+                entities.Add(_userGroupParamConverter.Convert(item, null));
             }
-            UserGroupDao.Save(entities);
+            _userGroupDao.Save(entities);
             List<UserGroupResult> result = new List<UserGroupResult>();
             foreach (var item in entities)
             {
-                result.Add(UserGroupResultConverter.Convert(item));
+                result.Add(_userGroupResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            UserGroupDao.Delete(id);
+            _userGroupDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.UserGroup
             List<Data.Entity.UserGroup> entity = new List<Data.Entity.UserGroup>();
             foreach (var id in idList)
             {
-                entity.Add(UserGroupDao.Find(id));
+                entity.Add(_userGroupDao.Find(id));
             }
             foreach (var id in idList)
             {
-                UserGroupDao.Delete(id);
+                _userGroupDao.Delete(id);
             }
         }
 
         public UserGroupResult Find(long id)
         {
-            Data.Entity.UserGroup entity = UserGroupDao.Find(id);
-            UserGroupResult result = UserGroupResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.UserGroup entity = _userGroupDao.Find(id);
+                UserGroupResult result = _userGroupResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<UserGroupResult> Find()
         {
-            List<Data.Entity.UserGroup> entity = UserGroupDao.Find();
+            List<Data.Entity.UserGroup> UserGroups = _userGroupDao.Find();
             List<UserGroupResult> results = new List<UserGroupResult>();
-            foreach (var item in entity)
+            foreach (var item in UserGroups)
             {
-                results.Add(UserGroupResultConverter.Convert(item));
+                results.Add(_userGroupResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<UserGroupResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.UserGroup> UserGroups = _userGroupDao.FindByField(field, value);
+            List<UserGroupResult> results = new List<UserGroupResult>();
+            foreach (var item in UserGroups)
+            {
+                results.Add(_userGroupResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, UserGroupParam param)
         {
-            Data.Entity.UserGroup oldEntity = UserGroupDao.Find(id);
-            Data.Entity.UserGroup newEntity = UserGroupParamConverter.Convert(param, null);
-            UserGroupDao.Update(newEntity);
+            Data.Entity.UserGroup oldEntity = _userGroupDao.Find(id);
+            Data.Entity.UserGroup newEntity = _userGroupParamConverter.Convert(param, oldEntity);
+            _userGroupDao.Update(newEntity);
         }
 
         public void Update(List<UserGroupParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.UserGroup
             List<Data.Entity.UserGroup> entity = new List<Data.Entity.UserGroup>();
             foreach (var item in param)
             {
-                Data.Entity.UserGroup oldEntity = UserGroupDao.Find(item.Id);
-                Data.Entity.UserGroup newEntity = UserGroupParamConverter.Convert(item, null);
-                UserGroupDao.Update(newEntity);
+                Data.Entity.UserGroup oldEntity = _userGroupDao.Find(item.Id);
+                Data.Entity.UserGroup newEntity = _userGroupParamConverter.Convert(item, oldEntity);
+                _userGroupDao.Update(newEntity);
             }
         }
     }

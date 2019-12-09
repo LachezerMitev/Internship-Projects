@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
                 .Single();
         }
 
+        public List<Data.Entity.AccountStatus> FindByField(string field, string value)
+        {
+            return AccountStatusStorage.AccountStatusList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.AccountStatus Save(Data.Entity.AccountStatus entity)
         {
             AccountStatusStorage.AccountStatusList.Add(entity);

@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
 
         List<Data.Entity.VehicleMakeModel> Find();
         Data.Entity.VehicleMakeModel Find(long id);
+        List<Data.Entity.VehicleMakeModel> FindByField(string field, string value);
     }
 }

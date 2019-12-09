@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.AutoPartStatus
 {
     class AutoPartStatusProcessor : IAutoPartStatusProcessor
     {
-        IAutoPartStatusDao AutoPartStatusDao = new AutoPartStatusDao();
+        private IAutoPartStatusParamConverter _autoPartStatusParamConverter;
+        public IAutoPartStatusParamConverter AutoPartStatusParamConverter
+        {
+            set => _autoPartStatusParamConverter = value;
+            get
+            {
+                if (_autoPartStatusParamConverter == null)
+                {
+                    _autoPartStatusParamConverter = new AutoPartStatusParamConverter();
+                    return _autoPartStatusParamConverter;
+                }
+                else
+                {
+                    return _autoPartStatusParamConverter;
+                }
+            }
+        }
 
-        IAutoPartStatusParamConverter AutoPartStatusParamConverter = new AutoPartStatusParamConverter();
-        IAutoPartStatusResultConverter AutoPartStatusResultConverter = new AutoPartStatusResultConverter();
+        private IAutoPartStatusResultConverter _autoPartStatusResultConverter;
+        public IAutoPartStatusResultConverter AutoPartStatusResultConverter
+        {
+            set => _autoPartStatusResultConverter = value;
+            get
+            {
+                if (_autoPartStatusResultConverter == null)
+                {
+                    _autoPartStatusResultConverter = new AutoPartStatusResultConverter();
+                    return _autoPartStatusResultConverter;
+                }
+                else
+                {
+                    return _autoPartStatusResultConverter;
+                }
+            }
+        }
+
+        private IAutoPartStatusDao _AutoPartStatusDao;
+        public IAutoPartStatusDao AutoPartStatusDataObject
+        {
+            set => _AutoPartStatusDao = value;
+            get
+            {
+                if (_AutoPartStatusDao == null)
+                {
+                    _AutoPartStatusDao = new AutoPartStatusDao();
+                    return _AutoPartStatusDao;
+                }
+                else
+                {
+                    return _AutoPartStatusDao;
+                }
+            }
+        }
+
 
         public AutoPartStatusResult Create(AutoPartStatusParam param)
         {
-            Data.Entity.AutoPartStatus entity = AutoPartStatusParamConverter.Convert(param, null);
-            AutoPartStatusDao.Save(entity);
 
-            return AutoPartStatusResultConverter.Convert(entity);
+            Data.Entity.AutoPartStatus entity = _autoPartStatusParamConverter.Convert(param, null);
+
+            _AutoPartStatusDao.Save(entity);
+
+            return _autoPartStatusResultConverter.Convert(entity);
         }
 
         public List<AutoPartStatusResult> Create(List<AutoPartStatusParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.AutoPartStatus
             List<Data.Entity.AutoPartStatus> entities = new List<Data.Entity.AutoPartStatus>();
             foreach (var item in param)
             {
-                entities.Add(AutoPartStatusParamConverter.Convert(item, null));
+                entities.Add(_autoPartStatusParamConverter.Convert(item, null));
             }
-            AutoPartStatusDao.Save(entities);
+            _AutoPartStatusDao.Save(entities);
             List<AutoPartStatusResult> result = new List<AutoPartStatusResult>();
             foreach (var item in entities)
             {
-                result.Add(AutoPartStatusResultConverter.Convert(item));
+                result.Add(_autoPartStatusResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            AutoPartStatusDao.Delete(id);
+            _AutoPartStatusDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,47 +102,66 @@ namespace AutoServiceShop.Business.Processor.AutoPartStatus
             List<Data.Entity.AutoPartStatus> entity = new List<Data.Entity.AutoPartStatus>();
             foreach (var id in idList)
             {
-                entity.Add(AutoPartStatusDao.Find(id));
+                entity.Add(_AutoPartStatusDao.Find(id));
             }
             foreach (var id in idList)
             {
-                AutoPartStatusDao.Delete(id);
+                _AutoPartStatusDao.Delete(id);
             }
         }
 
         public AutoPartStatusResult Find(long id)
         {
-            Data.Entity.AutoPartStatus entity = AutoPartStatusDao.Find(id);
-            AutoPartStatusResult result = AutoPartStatusResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.AutoPartStatus entity = _AutoPartStatusDao.Find(id);
+                AutoPartStatusResult result = _autoPartStatusResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<AutoPartStatusResult> Find()
         {
-            List<Data.Entity.AutoPartStatus> entity = AutoPartStatusDao.Find();
+            List<Data.Entity.AutoPartStatus> AutoPartStatuss = _AutoPartStatusDao.Find();
             List<AutoPartStatusResult> results = new List<AutoPartStatusResult>();
-            foreach (var item in entity)
+            foreach (var item in AutoPartStatuss)
             {
-                results.Add(AutoPartStatusResultConverter.Convert(item));
+                results.Add(_autoPartStatusResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<AutoPartStatusResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.AutoPartStatus> AutoPartStatuss = _AutoPartStatusDao.FindByField(field, value);
+            List<AutoPartStatusResult> results = new List<AutoPartStatusResult>();
+            foreach (var item in AutoPartStatuss)
+            {
+                results.Add(_autoPartStatusResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, AutoPartStatusParam param)
         {
-            Data.Entity.AutoPartStatus oldEntity = AutoPartStatusDao.Find(id);
-            Data.Entity.AutoPartStatus newEntity = AutoPartStatusParamConverter.Convert(param, null);
-            AutoPartStatusDao.Update(newEntity);
+            Data.Entity.AutoPartStatus oldEntity = _AutoPartStatusDao.Find(id);
+            Data.Entity.AutoPartStatus newEntity = _autoPartStatusParamConverter.Convert(param, oldEntity);
+            _AutoPartStatusDao.Update(newEntity);
         }
 
         public void Update(List<AutoPartStatusParam> param)
         {
-            List<Data.Entity.AutoPart> entity = new List<Data.Entity.AutoPart>();
+            List<Data.Entity.AutoPartStatus> entity = new List<Data.Entity.AutoPartStatus>();
             foreach (var item in param)
             {
-                Data.Entity.AutoPartStatus oldEntity = AutoPartStatusDao.Find(item.Id);
-                Data.Entity.AutoPartStatus newEntity = AutoPartStatusParamConverter.Convert(item, null);
-                AutoPartStatusDao.Update(newEntity);
+                Data.Entity.AutoPartStatus oldEntity = _AutoPartStatusDao.Find(item.Id);
+                Data.Entity.AutoPartStatus newEntity = _autoPartStatusParamConverter.Convert(item, oldEntity);
+                _AutoPartStatusDao.Update(newEntity);
             }
         }
     }

@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.Customer
 {
     class CustomerService : ICustomerService
     {
-        ICustomerProcessor CustomerProcessor = new CustomerProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private ICustomerProcessor _customerProcessor;
+        public ICustomerProcessor CustomerProcessor
+        {
+            set => _customerProcessor = value;
+            get
+            {
+                if (_customerProcessor == null)
+                {
+                    _customerProcessor = new CustomerProcessor();
+                    return _customerProcessor;
+                }
+                else
+                {
+                    return _customerProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(CustomerParam param)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_customerProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse Create(List<CustomerParam> param)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_customerProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse Delete(List<long> idList)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Delete(idList);
+                _customerProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse DeleteById(long id)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Delete(id);
+                _customerProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse FindByPK(long id)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(CustomerProcessor.Find(id));
+                _customerProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_customerProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse ListAll()
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CustomerProcessor.Find());
+                _customerProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_customerProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse Update(long id, CustomerParam param)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Update(id, param);
+                _customerProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.Customer
 
         public ApiResponse Update(List<CustomerParam> param)
         {
-            CustomerProcessor = new CustomerProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CustomerProcessor.Update(param);
+                _customerProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

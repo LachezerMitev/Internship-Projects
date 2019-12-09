@@ -10,7 +10,10 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
 {
     class VehicleStatusParamConverter : IVehicleStatusParamConverter
     {
+<<<<<<< Updated upstream
         IVehicleStatusDao VehicleStatusDao { get; set; }
+=======
+>>>>>>> Stashed changes
 
         public Data.Entity.VehicleStatus Convert(VehicleStatusParam param, Data.Entity.VehicleStatus oldentity)
         {

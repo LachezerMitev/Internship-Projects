@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.Model
 {
     class ModelService : IModelService
     {
-        IModelProcessor ModelProcessor = new ModelProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IModelProcessor _modelProcessor;
+        public IModelProcessor ModelProcessor
+        {
+            set => _modelProcessor = value;
+            get
+            {
+                if (_modelProcessor == null)
+                {
+                    _modelProcessor = new ModelProcessor();
+                    return _modelProcessor;
+                }
+                else
+                {
+                    return _modelProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(ModelParam param)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ModelProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_modelProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse Create(List<ModelParam> param)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ModelProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_modelProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse Delete(List<long> idList)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Delete(idList);
+                _modelProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse DeleteById(long id)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Delete(id);
+                _modelProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse FindByPK(long id)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(ModelProcessor.Find(id));
+                _modelProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_modelProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse ListAll()
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(ModelProcessor.Find());
+                _modelProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_modelProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse Update(long id, ModelParam param)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Update(id, param);
+                _modelProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.Model
 
         public ApiResponse Update(List<ModelParam> param)
         {
-            ModelProcessor = new ModelProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                ModelProcessor.Update(param);
+                _modelProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

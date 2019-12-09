@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPartStatus
 
         List<Data.Entity.AutoPartStatus> Find();
         Data.Entity.AutoPartStatus Find(long id);
+        List<Data.Entity.AutoPartStatus> FindByField(string field, string value);
     }
 }

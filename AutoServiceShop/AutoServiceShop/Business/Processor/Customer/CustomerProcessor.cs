@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.Customer
 {
     class CustomerProcessor : ICustomerProcessor
     {
-        ICustomerDao CustomerDao = new CustomerDao();
+        private ICustomerParamConverter _customerParamConverter;
+        public ICustomerParamConverter CustomerParamConverter
+        {
+            set => _customerParamConverter = value;
+            get
+            {
+                if (_customerParamConverter == null)
+                {
+                    _customerParamConverter = new CustomerParamConverter();
+                    return _customerParamConverter;
+                }
+                else
+                {
+                    return _customerParamConverter;
+                }
+            }
+        }
 
-        ICustomerParamConverter CustomerParamConverter = new CustomerParamConverter();
-        ICustomerResultConverter CustomerResultConverter = new CustomerResultConverter();
+        private ICustomerResultConverter _customerResultConverter;
+        public ICustomerResultConverter CustomerResultConverter
+        {
+            set => _customerResultConverter = value;
+            get
+            {
+                if (_customerResultConverter == null)
+                {
+                    _customerResultConverter = new CustomerResultConverter();
+                    return _customerResultConverter;
+                }
+                else
+                {
+                    return _customerResultConverter;
+                }
+            }
+        }
+
+        private ICustomerDao _customerDao;
+        public ICustomerDao CustomerDataObject
+        {
+            set => _customerDao = value;
+            get
+            {
+                if (_customerDao == null)
+                {
+                    _customerDao = new CustomerDao();
+                    return _customerDao;
+                }
+                else
+                {
+                    return _customerDao;
+                }
+            }
+        }
+
 
         public CustomerResult Create(CustomerParam param)
         {
-            Data.Entity.Customer entity = CustomerParamConverter.Convert(param, null);
-            CustomerDao.Save(entity);
 
-            return CustomerResultConverter.Convert(entity);
+            Data.Entity.Customer entity = _customerParamConverter.Convert(param, null);
+
+            _customerDao.Save(entity);
+
+            return _customerResultConverter.Convert(entity);
         }
 
         public List<CustomerResult> Create(List<CustomerParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.Customer
             List<Data.Entity.Customer> entities = new List<Data.Entity.Customer>();
             foreach (var item in param)
             {
-                entities.Add(CustomerParamConverter.Convert(item, null));
+                entities.Add(_customerParamConverter.Convert(item, null));
             }
-            CustomerDao.Save(entities);
+            _customerDao.Save(entities);
             List<CustomerResult> result = new List<CustomerResult>();
             foreach (var item in entities)
             {
-                result.Add(CustomerResultConverter.Convert(item));
+                result.Add(_customerResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            CustomerDao.Delete(id);
+            _customerDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.Customer
             List<Data.Entity.Customer> entity = new List<Data.Entity.Customer>();
             foreach (var id in idList)
             {
-                entity.Add(CustomerDao.Find(id));
+                entity.Add(_customerDao.Find(id));
             }
             foreach (var id in idList)
             {
-                CustomerDao.Delete(id);
+                _customerDao.Delete(id);
             }
         }
 
         public CustomerResult Find(long id)
         {
-            Data.Entity.Customer entity = CustomerDao.Find(id);
-            CustomerResult result = CustomerResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.Customer entity = _customerDao.Find(id);
+                CustomerResult result = _customerResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<CustomerResult> Find()
         {
-            List<Data.Entity.Customer> entity = CustomerDao.Find();
+            List<Data.Entity.Customer> Customers = _customerDao.Find();
             List<CustomerResult> results = new List<CustomerResult>();
-            foreach (var item in entity)
+            foreach (var item in Customers)
             {
-                results.Add(CustomerResultConverter.Convert(item));
+                results.Add(_customerResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<CustomerResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.Customer> Customers = _customerDao.FindByField(field, value);
+            List<CustomerResult> results = new List<CustomerResult>();
+            foreach (var item in Customers)
+            {
+                results.Add(_customerResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, CustomerParam param)
         {
-            Data.Entity.Customer oldEntity = CustomerDao.Find(id);
-            Data.Entity.Customer newEntity = CustomerParamConverter.Convert(param, null);
-            CustomerDao.Update(newEntity);
+            Data.Entity.Customer oldEntity = _customerDao.Find(id);
+            Data.Entity.Customer newEntity = _customerParamConverter.Convert(param, oldEntity);
+            _customerDao.Update(newEntity);
         }
 
         public void Update(List<CustomerParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.Customer
             List<Data.Entity.Customer> entity = new List<Data.Entity.Customer>();
             foreach (var item in param)
             {
-                Data.Entity.Customer oldEntity = CustomerDao.Find(item.Id);
-                Data.Entity.Customer newEntity = CustomerParamConverter.Convert(item, null);
-                CustomerDao.Update(newEntity);
+                Data.Entity.Customer oldEntity = _customerDao.Find(item.Id);
+                Data.Entity.Customer newEntity = _customerParamConverter.Convert(item, oldEntity);
+                _customerDao.Update(newEntity);
             }
         }
     }

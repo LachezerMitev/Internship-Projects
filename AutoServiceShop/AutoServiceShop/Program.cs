@@ -8,6 +8,10 @@ using AutoServiceShop.Business.Processor.Converter.Account;
 using AutoServiceShop.Presentation.service.Account;
 using AutoServiceShop.Data.Common;
 using System.Reflection;
+using AutoServiceShop.Presentation.service.AccountStatus;
+using AutoServiceShop.Presentation.service.AutoPart;
+using AutoServiceShop.Presentation.service.User;
+using AutoServiceShop.Business.Processor.Account;
 
 namespace AutoServiceShop
 {
@@ -29,7 +33,8 @@ namespace AutoServiceShop
                 UserId = 11
             };
 
-            AccountService testService = new AccountService();
+
+            IAccountService testService = ProgramFactory.ResolveSpecific<IAccountService>(ProgramFactory.BuildContainer());
 
             Console.WriteLine("Adding an Account");
 
@@ -69,7 +74,40 @@ namespace AutoServiceShop
 
             Console.WriteLine("_______________________________________________");
 
+<<<<<<< Updated upstream
             Console.ReadLine();
+=======
+
+            Console.WriteLine("Updating Lubo");
+
+            testParam.FirstName = "Lubo";
+            testParam.Surname = "Tapak";
+            testParam.LastName = "Tapak";
+            testParam.Type = "BIG Idiot";
+            testParam.Code = "ORTA";
+            testParam.Description = "Well, He is an even bigger idiot";
+            testParam.Name = "idiota";
+            testParam.Id = 1;
+            testParam.AccountStatusId = 1;
+            testParam.UserId = 11;
+
+            ApiResponse updateLubo = testService.Update(1, testParam);
+
+            Console.WriteLine(updateLubo.text);
+
+            Console.WriteLine("_______________________________________________");
+
+            //Console.WriteLine("_______________________________________________");
+            //Console.WriteLine("Listing all accounts");
+
+            //UserService test = new UserService();
+
+            //ApiResponse lis = test.ListAll();
+
+            //Console.WriteLine(lis.text);
+
+            //Console.WriteLine("_______________________________________________");
+>>>>>>> Stashed changes
 
             Assembly executing = Assembly.GetExecutingAssembly();
 
@@ -104,9 +142,15 @@ namespace AutoServiceShop
                     // Display each method 
                     Console.WriteLine("--> Property : {0}", property.Name);
 
+<<<<<<< Updated upstream
                     
                 }
             }
+=======
+
+            //    }
+            //}
+>>>>>>> Stashed changes
             Console.ReadLine();
         }
     }

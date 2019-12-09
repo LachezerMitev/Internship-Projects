@@ -12,17 +12,31 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 {
     class CheckUpStatusService : ICheckUpStatusService
     {
-        ICheckUpStatusProcessor CheckUpStatusProcessor = new CheckUpStatusProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private ICheckUpStatusProcessor _checkUpStatusProcessor;
+        public ICheckUpStatusProcessor CheckUpStatusProcessor
+        {
+            set => _checkUpStatusProcessor = value;
+            get
+            {
+                if (_checkUpStatusProcessor == null)
+                {
+                    _checkUpStatusProcessor = new CheckUpStatusProcessor();
+                    return _checkUpStatusProcessor;
+                }
+                else
+                {
+                    return _checkUpStatusProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(CheckUpStatusParam param)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CheckUpStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_checkUpStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -39,12 +53,11 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse Create(List<CheckUpStatusParam> param)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CheckUpStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_checkUpStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -60,12 +73,11 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse Delete(List<long> idList)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Delete(idList);
+                _checkUpStatusProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -82,12 +94,11 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse DeleteById(long id)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Delete(id);
+                _checkUpStatusProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -104,13 +115,12 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse FindByPK(long id)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(CheckUpStatusProcessor.Find(id));
+                _checkUpStatusProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_checkUpStatusProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -126,13 +136,12 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse ListAll()
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(CheckUpStatusProcessor.Find());
+                _checkUpStatusProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_checkUpStatusProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -148,12 +157,11 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse Update(long id, CheckUpStatusParam param)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Update(id, param);
+                _checkUpStatusProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -170,12 +178,11 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
 
         public ApiResponse Update(List<CheckUpStatusParam> param)
         {
-            CheckUpStatusProcessor = new CheckUpStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                CheckUpStatusProcessor.Update(param);
+                _checkUpStatusProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

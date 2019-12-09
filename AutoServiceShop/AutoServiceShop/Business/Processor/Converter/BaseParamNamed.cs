@@ -8,6 +8,10 @@ namespace AutoServiceShop.Business.Processor.Converter
 {
     class BaseParamNamed : BaseParam
     {
+<<<<<<< Updated upstream
+=======
+        [ParamProperty(true, "UniCode", "Code")]
+>>>>>>> Stashed changes
         public string Code { get; set; }
 
         public string Name { get; set; }

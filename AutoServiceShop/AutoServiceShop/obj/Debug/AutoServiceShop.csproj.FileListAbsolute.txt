@@ -7,4 +7,10 @@ C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServic
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CopyComplete
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.exe
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.pdb
+<<<<<<< Updated upstream
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csprojAssemblyReference.cache
+=======
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.dll
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.pdb
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.xml
+>>>>>>> Stashed changes

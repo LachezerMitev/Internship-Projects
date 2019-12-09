@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.Customer
 
         List<Data.Entity.Customer> Find();
         Data.Entity.Customer Find(long id);
+        List<Data.Entity.Customer> FindByField(string field, string value);
     }
 }

@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 {
     class EmployeeStatusService : IEmployeeStatusService
     {
-        IEmployeeStatusProcessor EmployeeStatusProcessor = new EmployeeStatusProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IEmployeeStatusProcessor _employeeStatusProcessor;
+        public IEmployeeStatusProcessor EmployeeStatusProcessor
+        {
+            set => _employeeStatusProcessor = value;
+            get
+            {
+                if (_employeeStatusProcessor == null)
+                {
+                    _employeeStatusProcessor = new EmployeeStatusProcessor();
+                    return _employeeStatusProcessor;
+                }
+                else
+                {
+                    return _employeeStatusProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(EmployeeStatusParam param)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(EmployeeStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_employeeStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse Create(List<EmployeeStatusParam> param)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(EmployeeStatusProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_employeeStatusProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse Delete(List<long> idList)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Delete(idList);
+                _employeeStatusProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse DeleteById(long id)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Delete(id);
+                _employeeStatusProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse FindByPK(long id)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(EmployeeStatusProcessor.Find(id));
+                _employeeStatusProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_employeeStatusProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse ListAll()
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(EmployeeStatusProcessor.Find());
+                _employeeStatusProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_employeeStatusProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse Update(long id, EmployeeStatusParam param)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Update(id, param);
+                _employeeStatusProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.EmployeeStatus
 
         public ApiResponse Update(List<EmployeeStatusParam> param)
         {
-            EmployeeStatusProcessor = new EmployeeStatusProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                EmployeeStatusProcessor.Update(param);
+                _employeeStatusProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

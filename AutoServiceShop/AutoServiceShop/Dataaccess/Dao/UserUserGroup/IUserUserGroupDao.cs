@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.UserUserGroup
 
         List<Data.Entity.UserUserGroup> Find();
         Data.Entity.UserUserGroup Find(long id);
+        List<Data.Entity.UserUserGroup> FindByField(string field, string value);
     }
 }

@@ -11,17 +11,31 @@ namespace AutoServiceShop.Presentation.service.Make
 {
     class MakeService : IMakeService
     {
-        IMakeProcessor MakeProcessor = new MakeProcessor();
-        public ApiResponse Response = new ApiResponse();
+        private IMakeProcessor _makeProcessor;
+        public IMakeProcessor MakeProcessor
+        {
+            set => _makeProcessor = value;
+            get
+            {
+                if (_makeProcessor == null)
+                {
+                    _makeProcessor = new MakeProcessor();
+                    return _makeProcessor;
+                }
+                else
+                {
+                    return _makeProcessor;
+                }
+            }
+        }
 
         public ApiResponse Create(MakeParam param)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(MakeProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_makeProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -38,12 +52,11 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse Create(List<MakeParam> param)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                Response.text = JsonConverter.JsonConverter.ObjToJson(MakeProcessor.Create(param));
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_makeProcessor.Create(param));
                 Response.result = true;
 
                 return Response;
@@ -59,12 +72,11 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse Delete(List<long> idList)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Delete(idList);
+                _makeProcessor.Delete(idList);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -81,12 +93,11 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse DeleteById(long id)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Delete(id);
+                _makeProcessor.Delete(id);
                 Response.text = "Entity was successfully removed from the system.";
                 Response.result = true;
 
@@ -103,13 +114,12 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse FindByPK(long id)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Find(id);
-                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(MakeProcessor.Find(id));
+                _makeProcessor.Find(id);
+                Response.text = "Account with this PK has been found" + Environment.NewLine + JsonConverter.JsonConverter.ObjToJson(_makeProcessor.Find(id));
                 Response.result = true;
 
                 return Response;
@@ -125,13 +135,12 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse ListAll()
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Find();
-                Response.text = JsonConverter.JsonConverter.ObjToJson(MakeProcessor.Find());
+                _makeProcessor.Find();
+                Response.text = JsonConverter.JsonConverter.ObjToJson(_makeProcessor.Find());
                 Response.result = true;
 
                 return Response;
@@ -147,12 +156,11 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse Update(long id, MakeParam param)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Update(id, param);
+                _makeProcessor.Update(id, param);
                 Response.text = "Entity was successfully updated";
                 Response.result = true;
 
@@ -169,12 +177,11 @@ namespace AutoServiceShop.Presentation.service.Make
 
         public ApiResponse Update(List<MakeParam> param)
         {
-            MakeProcessor = new MakeProcessor();
-            Response = new ApiResponse();
+            ApiResponse Response = new ApiResponse();
 
             try
             {
-                MakeProcessor.Update(param);
+                _makeProcessor.Update(param);
 
                 Response.text = "Entities were successfully updated.";
                 Response.result = true;

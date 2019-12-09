@@ -10,8 +10,7 @@ using AutoServiceShop.Dataaccess.Dao.Account;
 namespace AutoServiceShop.Business.Processor.Account
 {
     interface IAccountProcessor
-    {
-
+    {   
         AccountResult Create(AccountParam param);
         List<AccountResult> Create(List<AccountParam> param);
 

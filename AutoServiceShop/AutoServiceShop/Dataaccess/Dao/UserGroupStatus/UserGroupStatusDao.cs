@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroupStatus
                 .Single();
         }
 
+        public List<Data.Entity.UserGroupStatus> FindByField(string field, string value)
+        {
+            return UserGroupStatusStorage.UserGroupStatusList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.UserGroupStatus Save(Data.Entity.UserGroupStatus entity)
         {
 

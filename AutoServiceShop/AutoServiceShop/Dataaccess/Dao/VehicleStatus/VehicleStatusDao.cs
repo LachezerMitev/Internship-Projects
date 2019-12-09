@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
                 .Single();
         }
 
+        public List<Data.Entity.VehicleStatus> FindByField(string field, string value)
+        {
+            return VehicleStatusStorage.VehicleStatusList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.VehicleStatus Save(Data.Entity.VehicleStatus entity)
         {
 

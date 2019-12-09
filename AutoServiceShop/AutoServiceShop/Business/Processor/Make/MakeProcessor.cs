@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.Make
 {
     class MakeProcessor : IMakeProcessor
     {
-        IMakeDao MakeDao = new MakeDao();
+        private IMakeParamConverter _makeParamConverter;
+        public IMakeParamConverter MakeParamConverter
+        {
+            set => _makeParamConverter = value;
+            get
+            {
+                if (_makeParamConverter == null)
+                {
+                    _makeParamConverter = new MakeParamConverter();
+                    return _makeParamConverter;
+                }
+                else
+                {
+                    return _makeParamConverter;
+                }
+            }
+        }
 
-        IMakeParamConverter MakeParamConverter = new MakeParamConverter();
-        IMakeResultConverter MakeResultConverter = new MakeResultConverter();
+        private IMakeResultConverter _makeResultConverter;
+        public IMakeResultConverter MakeResultConverter
+        {
+            set => _makeResultConverter = value;
+            get
+            {
+                if (_makeResultConverter == null)
+                {
+                    _makeResultConverter = new MakeResultConverter();
+                    return _makeResultConverter;
+                }
+                else
+                {
+                    return _makeResultConverter;
+                }
+            }
+        }
+
+        private IMakeDao _makeDao;
+        public IMakeDao MakeDataObject
+        {
+            set => _makeDao = value;
+            get
+            {
+                if (_makeDao == null)
+                {
+                    _makeDao = new MakeDao();
+                    return _makeDao;
+                }
+                else
+                {
+                    return _makeDao;
+                }
+            }
+        }
+
 
         public MakeResult Create(MakeParam param)
         {
-            Data.Entity.Make entity = MakeParamConverter.Convert(param, null);
-            MakeDao.Save(entity);
 
-            return MakeResultConverter.Convert(entity);
+            Data.Entity.Make entity = _makeParamConverter.Convert(param, null);
+
+            _makeDao.Save(entity);
+
+            return _makeResultConverter.Convert(entity);
         }
 
         public List<MakeResult> Create(List<MakeParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.Make
             List<Data.Entity.Make> entities = new List<Data.Entity.Make>();
             foreach (var item in param)
             {
-                entities.Add(MakeParamConverter.Convert(item, null));
+                entities.Add(_makeParamConverter.Convert(item, null));
             }
-            MakeDao.Save(entities);
+            _makeDao.Save(entities);
             List<MakeResult> result = new List<MakeResult>();
             foreach (var item in entities)
             {
-                result.Add(MakeResultConverter.Convert(item));
+                result.Add(_makeResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            MakeDao.Delete(id);
+            _makeDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.Make
             List<Data.Entity.Make> entity = new List<Data.Entity.Make>();
             foreach (var id in idList)
             {
-                entity.Add(MakeDao.Find(id));
+                entity.Add(_makeDao.Find(id));
             }
             foreach (var id in idList)
             {
-                MakeDao.Delete(id);
+                _makeDao.Delete(id);
             }
         }
 
         public MakeResult Find(long id)
         {
-            Data.Entity.Make entity = MakeDao.Find(id);
-            MakeResult result = MakeResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.Make entity = _makeDao.Find(id);
+                MakeResult result = _makeResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<MakeResult> Find()
         {
-            List<Data.Entity.Make> entity = MakeDao.Find();
+            List<Data.Entity.Make> Makes = _makeDao.Find();
             List<MakeResult> results = new List<MakeResult>();
-            foreach (var item in entity)
+            foreach (var item in Makes)
             {
-                results.Add(MakeResultConverter.Convert(item));
+                results.Add(_makeResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<MakeResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.Make> Makes = _makeDao.FindByField(field, value);
+            List<MakeResult> results = new List<MakeResult>();
+            foreach (var item in Makes)
+            {
+                results.Add(_makeResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, MakeParam param)
         {
-            Data.Entity.Make oldEntity = MakeDao.Find(id);
-            Data.Entity.Make newEntity = MakeParamConverter.Convert(param, null);
-            MakeDao.Update(newEntity);
+            Data.Entity.Make oldEntity = _makeDao.Find(id);
+            Data.Entity.Make newEntity = _makeParamConverter.Convert(param, oldEntity);
+            _makeDao.Update(newEntity);
         }
 
         public void Update(List<MakeParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.Make
             List<Data.Entity.Make> entity = new List<Data.Entity.Make>();
             foreach (var item in param)
             {
-                Data.Entity.Make oldEntity = MakeDao.Find(item.Id);
-                Data.Entity.Make newEntity = MakeParamConverter.Convert(item, null);
-                MakeDao.Update(newEntity);
+                Data.Entity.Make oldEntity = _makeDao.Find(item.Id);
+                Data.Entity.Make newEntity = _makeParamConverter.Convert(item, oldEntity);
+                _makeDao.Update(newEntity);
             }
         }
     }

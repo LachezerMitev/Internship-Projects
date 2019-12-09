@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.Employee
                 .Single();
         }
 
+        public List<Data.Entity.Employee> FindByField(string field, string value)
+        {
+            return EmployeeStorage.EmployeeList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.Employee Save(Data.Entity.Employee entity)
         {
 

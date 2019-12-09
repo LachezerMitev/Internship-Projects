@@ -20,5 +20,6 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPart
 
         List<Data.Entity.AutoPart> Find();
         Data.Entity.AutoPart Find(long id);
+        List<Data.Entity.AutoPart> FindByField(string field, string value);
     }
 }

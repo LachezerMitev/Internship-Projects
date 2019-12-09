@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.Issue
 {
     class IssueProcessor : IIssueProcessor
     {
-        IIssueDao IssueDao = new IssueDao();
+        private IIssueParamConverter _issueParamConverter;
+        public IIssueParamConverter IssueParamConverter
+        {
+            set => _issueParamConverter = value;
+            get
+            {
+                if (_issueParamConverter == null)
+                {
+                    _issueParamConverter = new IssueParamConverter();
+                    return _issueParamConverter;
+                }
+                else
+                {
+                    return _issueParamConverter;
+                }
+            }
+        }
 
-        IIssueParamConverter IssueParamConverter = new IssueParamConverter();
-        IIssueResultConverter IssueResultConverter = new IssueResultConverter();
+        private IIssueResultConverter _issueResultConverter;
+        public IIssueResultConverter IssueResultConverter
+        {
+            set => _issueResultConverter = value;
+            get
+            {
+                if (_issueResultConverter == null)
+                {
+                    _issueResultConverter = new IssueResultConverter();
+                    return _issueResultConverter;
+                }
+                else
+                {
+                    return _issueResultConverter;
+                }
+            }
+        }
+
+        private IIssueDao _issueDao;
+        public IIssueDao IssueDataObject
+        {
+            set => _issueDao = value;
+            get
+            {
+                if (_issueDao == null)
+                {
+                    _issueDao = new IssueDao();
+                    return _issueDao;
+                }
+                else
+                {
+                    return _issueDao;
+                }
+            }
+        }
+
 
         public IssueResult Create(IssueParam param)
         {
-            Data.Entity.Issue entity = IssueParamConverter.Convert(param, null);
-            IssueDao.Save(entity);
 
-            return IssueResultConverter.Convert(entity);
+            Data.Entity.Issue entity = _issueParamConverter.Convert(param, null);
+
+            _issueDao.Save(entity);
+
+            return _issueResultConverter.Convert(entity);
         }
 
         public List<IssueResult> Create(List<IssueParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.Issue
             List<Data.Entity.Issue> entities = new List<Data.Entity.Issue>();
             foreach (var item in param)
             {
-                entities.Add(IssueParamConverter.Convert(item, null));
+                entities.Add(_issueParamConverter.Convert(item, null));
             }
-            IssueDao.Save(entities);
+            _issueDao.Save(entities);
             List<IssueResult> result = new List<IssueResult>();
             foreach (var item in entities)
             {
-                result.Add(IssueResultConverter.Convert(item));
+                result.Add(_issueResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            IssueDao.Delete(id);
+            _issueDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.Issue
             List<Data.Entity.Issue> entity = new List<Data.Entity.Issue>();
             foreach (var id in idList)
             {
-                entity.Add(IssueDao.Find(id));
+                entity.Add(_issueDao.Find(id));
             }
             foreach (var id in idList)
             {
-                IssueDao.Delete(id);
+                _issueDao.Delete(id);
             }
         }
 
         public IssueResult Find(long id)
         {
-            Data.Entity.Issue entity = IssueDao.Find(id);
-            IssueResult result = IssueResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.Issue entity = _issueDao.Find(id);
+                IssueResult result = _issueResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<IssueResult> Find()
         {
-            List<Data.Entity.Issue> entity = IssueDao.Find();
+            List<Data.Entity.Issue> Issues = _issueDao.Find();
             List<IssueResult> results = new List<IssueResult>();
-            foreach (var item in entity)
+            foreach (var item in Issues)
             {
-                results.Add(IssueResultConverter.Convert(item));
+                results.Add(_issueResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<IssueResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.Issue> Issues = _issueDao.FindByField(field, value);
+            List<IssueResult> results = new List<IssueResult>();
+            foreach (var item in Issues)
+            {
+                results.Add(_issueResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, IssueParam param)
         {
-            Data.Entity.Issue oldEntity = IssueDao.Find(id);
-            Data.Entity.Issue newEntity = IssueParamConverter.Convert(param, null);
-            IssueDao.Update(newEntity);
+            Data.Entity.Issue oldEntity = _issueDao.Find(id);
+            Data.Entity.Issue newEntity = _issueParamConverter.Convert(param, oldEntity);
+            _issueDao.Update(newEntity);
         }
 
         public void Update(List<IssueParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.Issue
             List<Data.Entity.Issue> entity = new List<Data.Entity.Issue>();
             foreach (var item in param)
             {
-                Data.Entity.Issue oldEntity = IssueDao.Find(item.Id);
-                Data.Entity.Issue newEntity = IssueParamConverter.Convert(item, null);
-                IssueDao.Update(newEntity);
+                Data.Entity.Issue oldEntity = _issueDao.Find(item.Id);
+                Data.Entity.Issue newEntity = _issueParamConverter.Convert(item, oldEntity);
+                _issueDao.Update(newEntity);
             }
         }
     }

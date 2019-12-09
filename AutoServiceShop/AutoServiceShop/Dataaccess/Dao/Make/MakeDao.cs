@@ -38,6 +38,12 @@ namespace AutoServiceShop.Dataaccess.Dao.Make
                 .Single();
         }
 
+        public List<Data.Entity.Make> FindByField(string field, string value)
+        {
+            return MakeStorage.MakeList.Where
+                (account => account.GetType().GetProperty(field).GetValue(account, null).ToString().Equals(value)).ToList();
+        }
+
         public Data.Entity.Make Save(Data.Entity.Make entity)
         {
 

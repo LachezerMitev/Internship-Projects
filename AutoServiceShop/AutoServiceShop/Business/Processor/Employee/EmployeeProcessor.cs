@@ -11,17 +11,69 @@ namespace AutoServiceShop.Business.Processor.Employee
 {
     class EmployeeProcessor : IEmployeeProcessor
     {
-        IEmployeeDao EmployeeDao = new EmployeeDao();
+        private IEmployeeParamConverter _employeeParamConverter;
+        public IEmployeeParamConverter EmployeeParamConverter
+        {
+            set => _employeeParamConverter = value;
+            get
+            {
+                if (_employeeParamConverter == null)
+                {
+                    _employeeParamConverter = new EmployeeParamConverter();
+                    return _employeeParamConverter;
+                }
+                else
+                {
+                    return _employeeParamConverter;
+                }
+            }
+        }
 
-        IEmployeeParamConverter EmployeeParamConverter = new EmployeeParamConverter();
-        IEmployeeResultConverter EmployeeResultConverter = new EmployeeResultConverter();
+        private IEmployeeResultConverter _employeeResultConverter;
+        public IEmployeeResultConverter EmployeeResultConverter
+        {
+            set => _employeeResultConverter = value;
+            get
+            {
+                if (_employeeResultConverter == null)
+                {
+                    _employeeResultConverter = new EmployeeResultConverter();
+                    return _employeeResultConverter;
+                }
+                else
+                {
+                    return _employeeResultConverter;
+                }
+            }
+        }
+
+        private IEmployeeDao _employeeDao;
+        public IEmployeeDao EmployeeDataObject
+        {
+            set => _employeeDao = value;
+            get
+            {
+                if (_employeeDao == null)
+                {
+                    _employeeDao = new EmployeeDao();
+                    return _employeeDao;
+                }
+                else
+                {
+                    return _employeeDao;
+                }
+            }
+        }
+
 
         public EmployeeResult Create(EmployeeParam param)
         {
-            Data.Entity.Employee entity = EmployeeParamConverter.Convert(param, null);
-            EmployeeDao.Save(entity);
 
-            return EmployeeResultConverter.Convert(entity);
+            Data.Entity.Employee entity = _employeeParamConverter.Convert(param, null);
+
+            _employeeDao.Save(entity);
+
+            return _employeeResultConverter.Convert(entity);
         }
 
         public List<EmployeeResult> Create(List<EmployeeParam> param)
@@ -29,20 +81,20 @@ namespace AutoServiceShop.Business.Processor.Employee
             List<Data.Entity.Employee> entities = new List<Data.Entity.Employee>();
             foreach (var item in param)
             {
-                entities.Add(EmployeeParamConverter.Convert(item, null));
+                entities.Add(_employeeParamConverter.Convert(item, null));
             }
-            EmployeeDao.Save(entities);
+            _employeeDao.Save(entities);
             List<EmployeeResult> result = new List<EmployeeResult>();
             foreach (var item in entities)
             {
-                result.Add(EmployeeResultConverter.Convert(item));
+                result.Add(_employeeResultConverter.Convert(item));
             }
             return result;
         }
 
         public void Delete(long id)
         {
-            EmployeeDao.Delete(id);
+            _employeeDao.Delete(id);
         }
 
         public void Delete(List<long> idList)
@@ -50,37 +102,56 @@ namespace AutoServiceShop.Business.Processor.Employee
             List<Data.Entity.Employee> entity = new List<Data.Entity.Employee>();
             foreach (var id in idList)
             {
-                entity.Add(EmployeeDao.Find(id));
+                entity.Add(_employeeDao.Find(id));
             }
             foreach (var id in idList)
             {
-                EmployeeDao.Delete(id);
+                _employeeDao.Delete(id);
             }
         }
 
         public EmployeeResult Find(long id)
         {
-            Data.Entity.Employee entity = EmployeeDao.Find(id);
-            EmployeeResult result = EmployeeResultConverter.Convert(entity);
-            return result;
+            try
+            {
+                Data.Entity.Employee entity = _employeeDao.Find(id);
+                EmployeeResult result = _employeeResultConverter.Convert(entity);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public List<EmployeeResult> Find()
         {
-            List<Data.Entity.Employee> entity = EmployeeDao.Find();
+            List<Data.Entity.Employee> Employees = _employeeDao.Find();
             List<EmployeeResult> results = new List<EmployeeResult>();
-            foreach (var item in entity)
+            foreach (var item in Employees)
             {
-                results.Add(EmployeeResultConverter.Convert(item));
+                results.Add(_employeeResultConverter.Convert(item));
+            }
+            return results;
+        }
+
+        public List<EmployeeResult> FindByField(string field, string value)
+        {
+            List<Data.Entity.Employee> Employees = _employeeDao.FindByField(field, value);
+            List<EmployeeResult> results = new List<EmployeeResult>();
+            foreach (var item in Employees)
+            {
+                results.Add(_employeeResultConverter.Convert(item));
             }
             return results;
         }
 
         public void Update(long id, EmployeeParam param)
         {
-            Data.Entity.Employee oldEntity = EmployeeDao.Find(id);
-            Data.Entity.Employee newEntity = EmployeeParamConverter.Convert(param, null);
-            EmployeeDao.Update(newEntity);
+            Data.Entity.Employee oldEntity = _employeeDao.Find(id);
+            Data.Entity.Employee newEntity = _employeeParamConverter.Convert(param, oldEntity);
+            _employeeDao.Update(newEntity);
         }
 
         public void Update(List<EmployeeParam> param)
@@ -88,9 +159,9 @@ namespace AutoServiceShop.Business.Processor.Employee
             List<Data.Entity.Employee> entity = new List<Data.Entity.Employee>();
             foreach (var item in param)
             {
-                Data.Entity.Employee oldEntity = EmployeeDao.Find(item.Id);
-                Data.Entity.Employee newEntity = EmployeeParamConverter.Convert(item, null);
-                EmployeeDao.Update(newEntity);
+                Data.Entity.Employee oldEntity = _employeeDao.Find(item.Id);
+                Data.Entity.Employee newEntity = _employeeParamConverter.Convert(item, oldEntity);
+                _employeeDao.Update(newEntity);
             }
         }
     }
