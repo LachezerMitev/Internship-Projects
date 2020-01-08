@@ -8,6 +8,7 @@ using AutoServiceShop.Dataaccess.Dao.AccountStatus;
 
 namespace AutoServiceShop.Dataaccess.Dao.Account
 {
+<<<<<<< Updated upstream
     class AccountStorage
     {
 
@@ -16,6 +17,12 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
 
         public static List<Data.Entity.Account> AccountList = new List<Data.Entity.Account>();
         public static Dictionary<long, Data.Entity.Account> AccountDictionary= new Dictionary<long, Data.Entity.Account>();
+=======
+    public class AccountStorage : BaseStorage<Data.Entity.Account, long>
+    { 
+        public static List<Data.Entity.Account> List = new List<Data.Entity.Account>();
+        public static Dictionary<long, Data.Entity.Account> Dictionary = new Dictionary<long, Data.Entity.Account>();
+>>>>>>> Stashed changes
 
         static AccountStorage()
         {
@@ -47,6 +54,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
                 User = UserDao.Find(21)
             };
 
+<<<<<<< Updated upstream
             Data.Entity.Account account3 = new Data.Entity.Account
             {
                 FirstName = "Petar",
@@ -175,5 +183,15 @@ namespace AutoServiceShop.Dataaccess.Dao.Account
             AccountDictionary.Add(account10.Id, account10);
 
         }
+=======
+            List = JsonConvert.DeserializeObject<List<Data.Entity.Account>>(json);
+
+            Dictionary = List.ToDictionary(x => x.Id, x => x);
+        }
+
+        public override Dictionary<long, Data.Entity.Account> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\Accounts.json";
+>>>>>>> Stashed changes
     }
 }

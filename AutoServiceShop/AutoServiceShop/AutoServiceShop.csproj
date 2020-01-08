@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,10 +36,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+>>>>>>> Stashed changes
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,36 +62,82 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Processor\AccountType\AccountTypeProcessor.cs" />
+    <Compile Include="Business\Processor\AccountType\IAccountTypeProcessor.cs" />
+    <Compile Include="Business\Processor\Common\BaseProcessor.cs" />
+    <Compile Include="Business\Processor\Common\IBaseProcessor.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\AccountTypeParam.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\AccountTypeParamConverter.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\AccountTypeResult.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\AccountTypeResultConverter.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\IAccountTypeParamConverter.cs" />
+    <Compile Include="Business\Processor\Converter\AccountType\IAccountTypeResultConverter.cs" />
     <Compile Include="Business\Processor\Converter\BaseParam.cs" />
     <Compile Include="Business\Processor\Converter\BaseParamNamed.cs" />
     <Compile Include="Business\Processor\Converter\BaseResult.cs" />
     <Compile Include="Business\Processor\Converter\BaseResultNamed.cs" />
+    <Compile Include="Business\Processor\Converter\Common\Attributes\ParamProperty.cs" />
+    <Compile Include="Business\Processor\Converter\Common\Attributes\ResultProperty.cs" />
+    <Compile Include="Business\Processor\Converter\Common\BaseParamConverter.cs" />
+    <Compile Include="Business\Processor\Converter\Common\BaseResultConverter.cs" />
+    <Compile Include="Business\Processor\Converter\Common\IBaseParamConverter.cs" />
+    <Compile Include="Business\Processor\Converter\Common\IBaseResultConverter.cs" />
+    <Compile Include="Dataaccess\Dao\AccountStatus\AccountStatusDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\AccountType\AccountTypeDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\AccountType\AccountTypeDaoFile.cs" />
+    <Compile Include="Dataaccess\Dao\AccountType\AccountTypeStorage.cs" />
+    <Compile Include="Dataaccess\Dao\AccountType\IAccountTypeDao.cs" />
+    <Compile Include="Dataaccess\Dao\Account\AccountDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\AutoPartStatus\AutoPartStatusDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\AutoPart\AutoPartDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\AutoServiceShopContext.cs" />
     <Compile Include="Dataaccess\Dao\AccountStatus\AccountStatusStorage.cs" />
     <Compile Include="Dataaccess\Dao\Account\AccountStorage.cs" />
     <Compile Include="Dataaccess\Dao\AutoPartStatus\AutoPartStatusStorage.cs" />
     <Compile Include="Dataaccess\Dao\AutoPart\AutoPartStorage.cs" />
+    <Compile Include="Dataaccess\Dao\CheckUpStatus\CheckUpStatusDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\CheckUpStatus\CheckUpStatusStorage.cs" />
+    <Compile Include="Dataaccess\Dao\CheckUp\CheckUpDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\CheckUp\CheckUpStorage.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Dataaccess\Dao\Common\BaseDaoEF.cs" />
+    <Compile Include="Dataaccess\Dao\Common\BaseDaoFile.cs" />
+    <Compile Include="Dataaccess\Dao\Common\BaseStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Common\IBaseDao.cs" />
+    <Compile Include="Dataaccess\Dao\Common\IBaseStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Common\StorageInstanceFactory.cs" />
+    <Compile Include="Dataaccess\Dao\ContractStatus\ContractStatusDaoEF.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Dataaccess\Dao\ContractStatus\ContractStatusStorage.cs" />
+    <Compile Include="Dataaccess\Dao\ContractType\ContractTypeDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\ContractType\ContractTypeStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Contract\ContractDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\Contract\ContractStorage.cs" />
-    <Compile Include="Dataaccess\Dao\CustomerStatus\CustomerStatusStorage.cs" />
-    <Compile Include="Dataaccess\Dao\Customer\CustomerStorage.cs" />
-    <Compile Include="Dataaccess\Dao\EmployeeStatus\EmployeeStatusStorage.cs" />
-    <Compile Include="Dataaccess\Dao\Employee\EmployeeStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Issue\IssueDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\Issue\IssueStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Make\MakeDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\Make\MakeStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Model\ModelDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\Model\ModelStorage.cs" />
+    <Compile Include="Dataaccess\Dao\UserGroupStatus\UserGroupStatusDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\UserGroupStatus\UserGroupStatusStorage.cs" />
+    <Compile Include="Dataaccess\Dao\UserGroup\UserGroupDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\UserGroup\UserGroupStorage.cs" />
+    <Compile Include="Dataaccess\Dao\UserUserGroup\UserUserGroupDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\UserUserGroup\UserUserGroupStorage.cs" />
+    <Compile Include="Dataaccess\Dao\User\UserDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\User\UserStorage.cs" />
+    <Compile Include="Dataaccess\Dao\VehicleMakeModel\VehicleMakeModelDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\VehicleMakeModel\VehicleMakeModelStorage.cs" />
+    <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusStorage.cs" />
+    <Compile Include="Dataaccess\Dao\Vehicle\VehicleDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\Vehicle\VehicleStorage.cs" />
     <Compile Include="Data\Common\ApiResponse.cs" />
     <Compile Include="Data\Entity\Account.cs" />
     <Compile Include="Data\Entity\AccountStatus.cs" />
+    <Compile Include="Data\Entity\AccountType.cs" />
     <Compile Include="Data\Entity\AutoPart.cs" />
     <Compile Include="Data\Entity\AutoPartStatus.cs" />
     <Compile Include="Business\Processor\AccountStatus\AccountStatusProcessor.cs" />
@@ -150,30 +212,6 @@
     <Compile Include="Business\Processor\Converter\Contract\ContractResultConverter.cs" />
     <Compile Include="Business\Processor\Converter\Contract\IContractParamconverter.cs" />
     <Compile Include="Business\Processor\Converter\Contract\IContractResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\CustomerStatusParam.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\CustomerStatusParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\CustomerStatusResult.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\CustomerStatusResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\ICustomerStatusParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\CustomerStatus\ICustomerStatusResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\CustomerParam.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\CustomerParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\CustomerResult.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\CustomerResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\ICustomerParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Customer\ICustomerResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\EmployeeStatusParam.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\EmployeeStatusParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\EmployeeStatusResult.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\EmployeeStatusResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\IEmployeeStatusParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\EmployeeStatus\IEmployeeStatusResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\EmployeeParam.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\EmployeeParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\EmployeeResult.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\EmployeeResultConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\IEmployeeParamConverter.cs" />
-    <Compile Include="Business\Processor\Converter\Employee\IEmployeeResultConverter.cs" />
     <Compile Include="Business\Processor\Converter\Issue\IIssueParamConverter.cs" />
     <Compile Include="Business\Processor\Converter\Issue\IIssueResultConverter.cs" />
     <Compile Include="Business\Processor\Converter\Issue\IssueParam.cs" />
@@ -234,14 +272,6 @@
     <Compile Include="Business\Processor\Converter\Vehicle\VehicleParamConverter.cs" />
     <Compile Include="Business\Processor\Converter\Vehicle\VehicleResult.cs" />
     <Compile Include="Business\Processor\Converter\Vehicle\VehicleResultConverter.cs" />
-    <Compile Include="Business\Processor\CustomerStatus\CustomerStatusProcessor.cs" />
-    <Compile Include="Business\Processor\CustomerStatus\ICustomerStatusProcessor.cs" />
-    <Compile Include="Business\Processor\Customer\CustomerProcessor.cs" />
-    <Compile Include="Business\Processor\Customer\ICustomerProcessor.cs" />
-    <Compile Include="Business\Processor\EmployeeStatus\EmployeeStatusProcessor.cs" />
-    <Compile Include="Business\Processor\EmployeeStatus\IEmployeeStatusProcessor.cs" />
-    <Compile Include="Business\Processor\Employee\EmployeeProcessor.cs" />
-    <Compile Include="Business\Processor\Employee\IEmployeeProcessor.cs" />
     <Compile Include="Business\Processor\Issue\IIssueProcessor.cs" />
     <Compile Include="Business\Processor\Issue\IssueProcessor.cs" />
     <Compile Include="Business\Processor\Make\IMakeProcessor.cs" />
@@ -267,64 +297,79 @@
     <Compile Include="Data\Entity\Contract.cs" />
     <Compile Include="Data\Entity\ContractStatus.cs" />
     <Compile Include="Data\Entity\ContractType.cs" />
-    <Compile Include="Data\Entity\Customer.cs" />
-    <Compile Include="Data\Entity\CustomerStatus.cs" />
-    <Compile Include="Dataaccess\Dao\AccountStatus\AccountStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\AccountStatus\AccountStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\AccountStatus\IAccountStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\Account\AccountDao.cs" />
+    <Compile Include="Dataaccess\Dao\Account\AccountDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\Account\IAccountDao.cs" />
-    <Compile Include="Dataaccess\Dao\AutoPartStatus\AutoPartStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\AutoPartStatus\AutoPartStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\AutoPartStatus\IAutoPartStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\AutoPart\AutoPartDao.cs" />
+    <Compile Include="Dataaccess\Dao\AutoPart\AutoPartDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\AutoPart\IAutoPartDao.cs" />
-    <Compile Include="Dataaccess\Dao\CheckUpStatus\CheckUpStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\CheckUpStatus\CheckUpStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\CheckUpStatus\ICheckUpStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\CheckUp\CheckUpDao.cs" />
+    <Compile Include="Dataaccess\Dao\CheckUp\CheckUpDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\CheckUp\ICheckUpDao.cs" />
-    <Compile Include="Dataaccess\Dao\ContractStatus\ContractStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\ContractStatus\ContractStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\ContractStatus\IContractStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\ContractType\ContractTypeDao.cs" />
+    <Compile Include="Dataaccess\Dao\ContractType\ContractTypeDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\ContractType\IContractTypeDao.cs" />
-    <Compile Include="Dataaccess\Dao\Contract\ContractDao.cs" />
+    <Compile Include="Dataaccess\Dao\Contract\ContractDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\Contract\IContractDao.cs" />
-    <Compile Include="Dataaccess\Dao\CustomerStatus\CustomerStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\CustomerStatus\ICustomerStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\Customer\CustomerDao.cs" />
-    <Compile Include="Dataaccess\Dao\Customer\ICustomerDao.cs" />
-    <Compile Include="Dataaccess\Dao\EmployeeStatus\EmployeeStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\EmployeeStatus\IEmployeeStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\Employee\EmployeeDao.cs" />
-    <Compile Include="Dataaccess\Dao\Employee\IEmployeeDao.cs" />
     <Compile Include="Dataaccess\Dao\Issue\IIssueDao.cs" />
-    <Compile Include="Dataaccess\Dao\Issue\IssueDao.cs" />
+    <Compile Include="Dataaccess\Dao\Issue\IssueDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\Make\IMakeDao.cs" />
-    <Compile Include="Dataaccess\Dao\Make\MakeDao.cs" />
+    <Compile Include="Dataaccess\Dao\Make\MakeDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\Model\IModelDao.cs" />
-    <Compile Include="Dataaccess\Dao\Model\ModelDao.cs" />
+    <Compile Include="Dataaccess\Dao\Model\ModelDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\UserGroupStatus\IUserGroupStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\UserGroupStatus\UserGroupStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\UserGroupStatus\UserGroupStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\UserGroup\IUserGroupDao.cs" />
-    <Compile Include="Dataaccess\Dao\UserGroup\UserGroupDao.cs" />
+    <Compile Include="Dataaccess\Dao\UserGroup\UserGroupDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\UserUserGroup\IUserUserGroupDao.cs" />
-    <Compile Include="Dataaccess\Dao\UserUserGroup\UserUserGroupDao.cs" />
+    <Compile Include="Dataaccess\Dao\UserUserGroup\UserUserGroupDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\User\IUserDao.cs" />
-    <Compile Include="Dataaccess\Dao\User\UserDao.cs" />
+    <Compile Include="Dataaccess\Dao\User\UserDaoEF.cs" />
     <Compile Include="Dataaccess\Dao\VehicleMakeModel\IVehicleMakeModelDao.cs" />
-    <Compile Include="Dataaccess\Dao\VehicleMakeModel\VehicleMakeModelDao.cs" />
+    <Compile Include="Dataaccess\Dao\VehicleMakeModel\VehicleMakeModelDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\VehicleStatus\IVehicleStatusDao.cs" />
-    <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusDao.cs" />
+    <Compile Include="Dataaccess\Dao\VehicleStatus\VehicleStatusDaoFile.cs" />
     <Compile Include="Dataaccess\Dao\Vehicle\IVehicleDao.cs" />
-    <Compile Include="Dataaccess\Dao\Vehicle\VehicleDao.cs" />
-    <Compile Include="Data\Entity\Employee.cs" />
-    <Compile Include="Data\Entity\EmployeeStatus.cs" />
+    <Compile Include="Dataaccess\Dao\Vehicle\VehicleDaoFile.cs" />
     <Compile Include="Data\Entity\Issue.cs" />
     <Compile Include="Data\Entity\Make.cs" />
     <Compile Include="Data\Entity\Model.cs" />
     <Compile Include="Data\Entity\Persistent.cs" />
     <Compile Include="Data\Entity\NamedPersistent.cs" />
+    <Compile Include="FactoryDI\AccountFactory.cs" />
+    <Compile Include="FactoryDI\AccountStatusFactory.cs" />
+    <Compile Include="FactoryDI\AccountTypeFactory.cs" />
+    <Compile Include="FactoryDI\AutoPartFactory.cs" />
+    <Compile Include="FactoryDI\AutoPartStatusFactory.cs" />
+    <Compile Include="FactoryDI\CheckUpFactory.cs" />
+    <Compile Include="FactoryDI\CheckUpStatusFactory.cs" />
+    <Compile Include="FactoryDI\ContractFactory.cs" />
+    <Compile Include="FactoryDI\ContractStatusFactory.cs" />
+    <Compile Include="FactoryDI\ContractTypeFactory.cs" />
+    <Compile Include="FactoryDI\IssueFactory.cs" />
+    <Compile Include="FactoryDI\MakeFactory.cs" />
+    <Compile Include="FactoryDI\ModelFactory.cs" />
+    <Compile Include="FactoryDI\UserFactory.cs" />
+    <Compile Include="FactoryDI\UserGroupFactory.cs" />
+    <Compile Include="FactoryDI\UserGroupStatusFactory.cs" />
+    <Compile Include="FactoryDI\UserUserGroupFactory.cs" />
+    <Compile Include="FactoryDI\VehicleFactory.cs" />
+    <Compile Include="FactoryDI\VehicleMakeModelFactory.cs" />
+    <Compile Include="FactoryDI\VehicleStatusFactory.cs" />
+    <Compile Include="Migrations\202001071501124_AutoServiceShopMigration.cs" />
+    <Compile Include="Migrations\202001071501124_AutoServiceShopMigration.designer.cs">
+      <DependentUpon>202001071501124_AutoServiceShopMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presentation\JsonConverter\JsonConverter.cs" />
     <Compile Include="Presentation\service\AccountStatus\AccountStatusStatus.cs" />
     <Compile Include="Presentation\service\AccountStatus\IAccountStatusService.cs" />
+    <Compile Include="Presentation\service\AccountType\AccountTypeService.cs" />
+    <Compile Include="Presentation\service\AccountType\IAccountTypeService.cs" />
     <Compile Include="Presentation\service\Account\AccountService.cs" />
     <Compile Include="Presentation\service\Account\IAccountService.cs" />
     <Compile Include="Presentation\service\AutoPartStatus\AutoPartStatusService.cs" />
@@ -335,20 +380,14 @@
     <Compile Include="Presentation\service\CheckUpStatus\ICheckUpStatusService.cs" />
     <Compile Include="Presentation\service\CheckUp\CheckUpService.cs" />
     <Compile Include="Presentation\service\CheckUp\ICheckUpService.cs" />
+    <Compile Include="Presentation\service\Common\BaseService.cs" />
+    <Compile Include="Presentation\service\Common\IBaseService.cs" />
     <Compile Include="Presentation\service\ContractStatus\ContractStatusService.cs" />
     <Compile Include="Presentation\service\ContractStatus\IContractStatusService.cs" />
     <Compile Include="Presentation\service\ContractType\ContractTypeService.cs" />
     <Compile Include="Presentation\service\ContractType\IContractTypeService.cs" />
     <Compile Include="Presentation\service\Contract\ContractService.cs" />
     <Compile Include="Presentation\service\Contract\IContractService.cs" />
-    <Compile Include="Presentation\service\CustomerStatus\CustomerStatusService.cs" />
-    <Compile Include="Presentation\service\CustomerStatus\ICustomerStatusService.cs" />
-    <Compile Include="Presentation\service\Customer\CustomerService.cs" />
-    <Compile Include="Presentation\service\Customer\ICustomerService.cs" />
-    <Compile Include="Presentation\service\EmployeeStatus\EmployeeStatusService.cs" />
-    <Compile Include="Presentation\service\EmployeeStatus\IEmployeeStatusService.cs" />
-    <Compile Include="Presentation\service\Employee\EmployeeService.cs" />
-    <Compile Include="Presentation\service\Employee\IEmployeeService.cs" />
     <Compile Include="Presentation\service\Issue\IIssueService.cs" />
     <Compile Include="Presentation\service\Issue\IssueService.cs" />
     <Compile Include="Presentation\service\Make\IMakeService.cs" />
@@ -381,8 +420,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+<<<<<<< Updated upstream
+=======
+    <None Include="DataBase\Accounts.json" />
+    <None Include="DataBase\AccountsBackup.json" />
+    <None Include="DataBase\AccountStatuses.json" />
+    <None Include="DataBase\AccountTypes.json" />
+    <None Include="DataBase\AutoParts.json" />
+    <None Include="DataBase\AutoPartStatuses.json" />
+    <None Include="DataBase\CheckUps.json" />
+    <None Include="DataBase\CheckUpStatuses.json" />
+    <None Include="DataBase\Contracts.json" />
+    <None Include="DataBase\ContractStatuses.json" />
+    <None Include="DataBase\ContractTypes.json" />
+    <None Include="DataBase\Issues.json" />
+    <None Include="DataBase\Lubo.json" />
+    <None Include="DataBase\Makes.json" />
+    <None Include="DataBase\Models.json" />
+    <None Include="DataBase\UserGroups.json" />
+    <None Include="DataBase\UserGroupStatuses.json" />
+    <None Include="DataBase\Users.json" />
+    <None Include="DataBase\UserUserGroups.json" />
+    <None Include="DataBase\VehicleMakeModels.json" />
+    <None Include="DataBase\Vehicles.json" />
+    <None Include="DataBase\VehicleStatuses.json" />
+>>>>>>> Stashed changes
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001071501124_AutoServiceShopMigration.resx">
+      <DependentUpon>202001071501124_AutoServiceShopMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.AutoPart
 {
-    class AutoPartParam : BaseParamNamed
+    public class AutoPartParam : BaseParamNamed
     {
         public long AutoPartStatusId { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Issue
 {
-    class IssueParam : BaseParamNamed
+    public class IssueParam : BaseParamNamed
     {
     }
 }

@@ -3,24 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
-    class UserUserGroupResultConverter : IUserUserGroupResultConverter
+    class UserUserGroupResultConverter : BaseResultConverter<Data.Entity.UserUserGroup, UserUserGroupResult>, IUserUserGroupResultConverter
     {
-        public UserUserGroupResult Convert(Data.Entity.UserUserGroup param)
+        public override void ConvertSpecific(Data.Entity.UserUserGroup param, UserUserGroupResult result)
         {
-            UserUserGroupResult result = new UserUserGroupResult()
-            {
-                Id = param.Id,
-
-                UserId = param.User.Id,
-                Username = param.User.Username,
-                UserGroupList = param.UserGroupList
-            };
-
-            return result;
+            result.UserId = param.User.Id;
+            result.Username = param.User.Username;
         }
     }
 }

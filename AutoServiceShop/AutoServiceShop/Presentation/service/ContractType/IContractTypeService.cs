@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.ContractType;
+using AutoServiceShop.Dataaccess.Dao.ContractType;
 
 namespace AutoServiceShop.Presentation.service.ContractType
 {
-    interface IContractTypeService
+    public interface IContractTypeService
+        : IBaseService<IContractTypeProcessor, IContractTypeParamConverter, IContractTypeResultConverter, ContractTypeParam, ContractTypeResult, IContractTypeDao, long, Data.Entity.ContractType>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(ContractTypeParam param);
-        ApiResponse Create(List<ContractTypeParam> param);
-
-        ApiResponse Update(long id, ContractTypeParam param);
-        ApiResponse Update(List<ContractTypeParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(ContractTypeParam param);
-        void ValidateParameters(List<ContractTypeParam> param);
     }
 }

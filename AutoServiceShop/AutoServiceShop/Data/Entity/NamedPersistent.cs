@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Entity
 {
-    class NamedPersistent : Persistent
+    public class NamedPersistent : Persistent
     {
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        
     }
 }

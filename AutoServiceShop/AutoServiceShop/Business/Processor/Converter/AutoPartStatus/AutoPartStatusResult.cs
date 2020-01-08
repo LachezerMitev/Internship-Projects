@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.AutoPartStatus
 {
-    class AutoPartStatusResult : BaseResultNamed
+    public class AutoPartStatusResult : BaseResultNamed
     {
     }
 }

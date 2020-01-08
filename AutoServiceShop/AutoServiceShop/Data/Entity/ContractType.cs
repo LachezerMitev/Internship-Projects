@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Entity
 {
-    class ContractType : NamedPersistent
+    public class ContractType : NamedPersistent
     {
     }
 }

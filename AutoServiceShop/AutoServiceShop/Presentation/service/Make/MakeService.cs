@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Converter.Make;
 using AutoServiceShop.Business.Processor.Make;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.Make;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.Make
 {
-    class MakeService : IMakeService
+    public class MakeService
+        : BaseService<IMakeProcessor, IMakeParamConverter, IMakeResultConverter, MakeParam, MakeResult, IMakeDao, long, Data.Entity.Make>, IMakeService
     {
+<<<<<<< Updated upstream
         IMakeProcessor MakeProcessor = new MakeProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +203,8 @@ namespace AutoServiceShop.Presentation.service.Make
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
 {
-    class CheckUpStatusResultConverter : ICheckUpStatusResultConverter
+    class CheckUpStatusResultConverter : BaseResultConverter<Data.Entity.CheckUpStatus, CheckUpStatusResult>, ICheckUpStatusResultConverter
     {
-        public CheckUpStatusResult Convert(Data.Entity.CheckUpStatus param)
+        public override void ConvertSpecific(Data.Entity.CheckUpStatus param, CheckUpStatusResult result)
         {
-            CheckUpStatusResult result = new CheckUpStatusResult()
-            {
-                Code = param.Code,
-                Id = param.Id,
-                Description = param.Description,
-                Name = param.Name
-            };
-
-            return result;
+            throw new NotImplementedException();
         }
     }
 }

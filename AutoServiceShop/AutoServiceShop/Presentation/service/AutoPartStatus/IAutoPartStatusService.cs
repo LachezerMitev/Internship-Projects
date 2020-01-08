@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.AutoPartStatus;
+using AutoServiceShop.Dataaccess.Dao.AutoPartStatus;
 
 namespace AutoServiceShop.Presentation.service.AutoPartStatus
 {
-    interface IAutoPartStatusService
+    public interface IAutoPartStatusService
+        : IBaseService<IAutoPartStatusProcessor, IAutoPartStatusParamConverter, IAutoPartStatusResultConverter, AutoPartStatusParam, AutoPartStatusResult, IAutoPartStatusDao, long, Data.Entity.AutoPartStatus>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(AutoPartStatusParam param);
-        ApiResponse Create(List<AutoPartStatusParam> param);
-
-        ApiResponse Update(long id, AutoPartStatusParam param);
-        ApiResponse Update(List<AutoPartStatusParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(AutoPartStatusParam param);
-        void ValidateParameters(List<AutoPartStatusParam> param);
     }
 }

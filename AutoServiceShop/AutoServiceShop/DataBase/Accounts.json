@@ -1,0 +1,242 @@
+{
+  "1": {
+    "FirstName": "Gosho",
+    "Surname": "Ivanov",
+    "LastName": "Golemiq",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 11
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "ASCI",
+      "Name": "Working",
+      "Description": "Well, He works...... stuff..... idk",
+      "Id": 1
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "ORTA",
+    "Name": "Georgi",
+    "Description": "Well, He works...... stuff..... idk",
+    "Id": 1
+  },
+  "2": {
+    "FirstName": "Ivan",
+    "Surname": "Georgiev",
+    "LastName": "Shotlekov",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 21
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "ASCI",
+      "Name": "Working",
+      "Description": "Active",
+      "Id": 2
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "PVRT",
+    "Name": "Ivan",
+    "Description": "Engine specialist",
+    "Id": 2
+  },
+  "3": {
+    "FirstName": "Petar",
+    "Surname": "Petrov",
+    "LastName": "Petrov",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 31
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "DOBF",
+      "Name": "Working",
+      "Description": "Active",
+      "Id": 3
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "KVPK",
+    "Name": "Petar",
+    "Description": "Car",
+    "Id": 3
+  },
+  "4": {
+    "FirstName": "Dimitar",
+    "Surname": "Latunov",
+    "LastName": "Mitev",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 41
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "SASS",
+      "Name": "Idle",
+      "Description": "Inactive",
+      "Id": 4
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "KLMN",
+    "Name": "Mitko",
+    "Description": "Motorcycle",
+    "Id": 4
+  },
+  "5": {
+    "FirstName": "Mitko",
+    "Surname": "Borislav",
+    "LastName": "Petrov",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 51
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "IDFA",
+      "Name": "Working",
+      "Description": "Active",
+      "Id": 5
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "LKVF",
+    "Name": "Mitko",
+    "Description": "System Administrator",
+    "Id": 5
+  },
+  "6": {
+    "FirstName": "Joro",
+    "Surname": "Spasimirov",
+    "LastName": "Angelov",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 61
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "DFON",
+      "Name": "Ill",
+      "Description": "Active",
+      "Id": 6
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "OSDA",
+    "Name": "Joro",
+    "Description": "Suspension intern",
+    "Id": 6
+  },
+  "7": {
+    "FirstName": "Georgi",
+    "Surname": "Ivanov",
+    "LastName": "Peshev",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 71
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "SPZN",
+      "Name": "Working",
+      "Description": "Active",
+      "Id": 7
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "ARTI",
+    "Name": "Joro",
+    "Description": "General intern",
+    "Id": 7
+  },
+  "8": {
+    "FirstName": "Georgi",
+    "Surname": "Penev",
+    "LastName": "Tenev",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 81
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "STRL",
+      "Name": "Idle",
+      "Description": "Inactive",
+      "Id": 8
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "PROS",
+    "Name": "Gergi",
+    "Description": "Senior Suspension specialist",
+    "Id": 8
+  },
+  "9": {
+    "FirstName": "Stanislav",
+    "Surname": "Tenev",
+    "LastName": "Proiski",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 91
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "ODIN",
+      "Name": "Idle",
+      "Description": "Inactive",
+      "Id": 9
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "MAKF",
+    "Name": "Stanislav",
+    "Description": "Electrical specialist",
+    "Id": 9
+  },
+  "10": {
+    "FirstName": "Teodor",
+    "Surname": "Spasov",
+    "LastName": "Georgiev",
+    "UserId": 0,
+    "User": {
+      "Username": "Joro",
+      "Password": "123",
+      "Id": 101
+    },
+    "AccountStatusId": 0,
+    "AccountStatus": {
+      "Code": "ARES",
+      "Name": "Working",
+      "Description": "Inactive",
+      "Id": 10
+    },
+    "AccountTypeId": 0,
+    "AccountType": null,
+    "Code": "IFHE",
+    "Name": "Tedo",
+    "Description": "Car",
+    "Id": 10
+  }
+}

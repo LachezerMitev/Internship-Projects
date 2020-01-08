@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 {
-    class VehicleMakeModelResultConverter : IVehicleMakeModelResultConverter
+    class VehicleMakeModelResultConverter : BaseResultConverter<Data.Entity.VehicleMakeModel, VehicleMakeModelResult>, IVehicleMakeModelResultConverter
     {
-        public VehicleMakeModelResult Convert(Data.Entity.VehicleMakeModel param)
+        public override void ConvertSpecific(Data.Entity.VehicleMakeModel param, VehicleMakeModelResult result)
         {
-            VehicleMakeModelResult result = new VehicleMakeModelResult()
-            {
-                Id = param.Id,
+            result.VehicleId = param.Vehicle.Id;
+            result.VehicleName = param.Vehicle.Name;
 
-                VehicleId = param.Vehicle.Id,
-                VehicleName = param.Vehicle.Name,
+            result.Modelid = param.Model.Id;
+            result.ModelName = param.Model.Name;
 
-                Modelid = param.Model.Id,
-                ModelName = param.Model.Name,
-
-                MakeId = param.Make.Id,
-                MakeName = param.Make.Name
-            };
-
-            return result;
+            result.MakeId = param.Make.Id;
+            result.MakeName = param.Make.Name;
         }
     }
 }

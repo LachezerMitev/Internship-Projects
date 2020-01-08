@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.VehicleMakeModel;
+using AutoServiceShop.Dataaccess.Dao.VehicleMakeModel;
 
 namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 {
-    interface IVehicleMakeModelService
+    public interface IVehicleMakeModelService
+        : IBaseService<IVehicleMakeModelProcessor, IVehicleMakeModelParamConverter, IVehicleMakeModelResultConverter, VehicleMakeModelParam, VehicleMakeModelResult, IVehicleMakeModelDao, long, Data.Entity.VehicleMakeModel>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(VehicleMakeModelParam param);
-        ApiResponse Create(List<VehicleMakeModelParam> param);
-
-        ApiResponse Update(long id, VehicleMakeModelParam param);
-        ApiResponse Update(List<VehicleMakeModelParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(VehicleMakeModelParam param);
-        void ValidateParameters(List<VehicleMakeModelParam> param);
     }
 }

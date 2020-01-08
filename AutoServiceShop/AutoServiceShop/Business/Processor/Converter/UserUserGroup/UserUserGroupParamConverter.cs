@@ -6,32 +6,54 @@ using System.Threading.Tasks;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.UserUserGroup;
 using AutoServiceShop.Dataaccess.Dao.User;
+using AutoServiceShop.Business.Processor.Converter.Common;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
-    class UserUserGroupParamConverter : IUserUserGroupParamConverter
+    class UserUserGroupParamConverter : BaseParamConverter<UserUserGroupParam, Data.Entity.UserUserGroup>, IUserUserGroupParamConverter
     {
+<<<<<<< Updated upstream
         IUserUserGroupDao UserUserGroupDao = new UserUserGroupDao();
         IUserDao UserDao = new UserDao();
-
-        public Data.Entity.UserUserGroup Convert(UserUserGroupParam param, Data.Entity.UserUserGroup oldentity)
+=======
+        private IUserDao _userDao;
+        public IUserDao UserDao
         {
-            Data.Entity.UserUserGroup entity = null;
 
-            if (oldentity != null)
+            set { _userDao = value; }
+
+            get
             {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.UserUserGroup
+                if (_userDao == null)
                 {
-                    Id = param.Id
-                };
+                    return _userDao;
+                }
+                else
+                {
+                    return _userDao;
+                }
             }
+        }
+>>>>>>> Stashed changes
 
+        
+
+<<<<<<< Updated upstream
             entity.UserGroupList = param.UserGroupList;
             entity.User = UserDao.Find(param.UserId);
+=======
+        public override void ConvertSpecific(UserUserGroupParam param, Data.Entity.UserUserGroup entity)
+        {
+            entity.User = _userDao.Find(param.UserId);
+        }
+
+        public override Data.Entity.UserUserGroup GetResult(UserUserGroupParam param)
+        {
+            Data.Entity.UserUserGroup entity = new Data.Entity.UserUserGroup
+            {
+                Id = param.Id
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

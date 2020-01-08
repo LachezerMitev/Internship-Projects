@@ -3,37 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.UserGroup;
 using AutoServiceShop.Dataaccess.Dao.UserGroupStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserGroup
 {
-    class UserGroupParamConverter : IUserGroupParamConverter
+    class UserGroupParamConverter : BaseParamConverter<UserGroupParam, Data.Entity.UserGroup>, IUserGroupParamConverter
     {
-        IUserGroupDao UserGroupDao = new UserGroupDao();
-        IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
-
-        public Data.Entity.UserGroup Convert(UserGroupParam param, Data.Entity.UserGroup oldentity)
+        private IUserGroupDao _userGroupDao;
+        public IUserGroupDao UserGroupDao
         {
-            Data.Entity.UserGroup entity = null;
 
-            if (oldentity != null)
+            set { _userGroupDao = value; }
+
+            get
             {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.UserGroup
+                if (_userGroupDao == null)
                 {
-                    Code = param.Code,
-                    Id = param.Id,
-                    Description = param.Description,
-                    Name = param.Name
-                };
+                    return _userGroupDao;
+                }
+                else
+                {
+                    return _userGroupDao;
+                }
             }
+        }
 
+        private IUserGroupStatusDao _userGroupStatusDao;
+        public IUserGroupStatusDao UserGroupStatusDao
+        {
+
+            set { _userGroupStatusDao = value; }
+
+            get
+            {
+                if (_userGroupStatusDao == null)
+                {
+                    return _userGroupStatusDao;
+                }
+                else
+                {
+                    return _userGroupStatusDao;
+                }
+            }
+        }
+
+        
+
+        public override void ConvertSpecific(UserGroupParam param, Data.Entity.UserGroup entity)
+        {
             entity.UserGroupStatus = UserGroupStatusDao.Find(param.UserGroupStatusId);
+        }
+
+        public override Data.Entity.UserGroup GetResult(UserGroupParam param)
+        {
+            Data.Entity.UserGroup entity = new Data.Entity.UserGroup
+            {
+                Id = param.Id,
+                Code = param.Code
+            };
 
             return entity;
         }

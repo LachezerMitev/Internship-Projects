@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUp
 {
-    class CheckUpParam : BaseParamNamed
+    public class CheckUpParam : BaseParamNamed
     {
         public long CheckUpStatusId { get; set; }
 

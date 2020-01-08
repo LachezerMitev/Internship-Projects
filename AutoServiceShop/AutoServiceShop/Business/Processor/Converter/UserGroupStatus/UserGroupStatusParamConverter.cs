@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.UserGroupStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserGroupStatus
 {
-    class UserGroupStatusParamConverter : IUserGroupStatusParamConverter
+    class UserGroupStatusParamConverter : BaseParamConverter<UserGroupStatusParam, Data.Entity.UserGroupStatus>, IUserGroupStatusParamConverter
     {
         IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
 
-        public Data.Entity.UserGroupStatus Convert(UserGroupStatusParam param, Data.Entity.UserGroupStatus oldentity)
+        public override void ConvertSpecific(UserGroupStatusParam param, Data.Entity.UserGroupStatus entity) { }
+
+        public override Data.Entity.UserGroupStatus GetResult(UserGroupStatusParam param)
         {
-            Data.Entity.UserGroupStatus entity = null;
-
-            if (oldentity != null)
+            Data.Entity.UserGroupStatus entity = new Data.Entity.UserGroupStatus
             {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.UserGroupStatus
-                {
-                    Code = param.Code,
-                    Id = param.Id,
-                    Description = param.Description,
-                    Name = param.Name
-                };
-            }
-
+                Id = param.Id,
+                Code = param.Code
+            };
 
             return entity;
         }

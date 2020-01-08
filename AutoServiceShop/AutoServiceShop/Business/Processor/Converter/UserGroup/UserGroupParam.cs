@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserGroup
 {
-    class UserGroupParam : BaseParamNamed
+    public class UserGroupParam : BaseParamNamed
     {
         public long UserGroupStatusId { get; set; }
         public string UserGroupStatusName { get; set; }

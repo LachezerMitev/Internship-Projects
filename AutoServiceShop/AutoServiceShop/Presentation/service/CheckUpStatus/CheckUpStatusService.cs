@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.CheckUpStatus;
 using AutoServiceShop.Business.Processor.Converter.CheckUpStatus;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.CheckUpStatus;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.CheckUpStatus
 {
-    class CheckUpStatusService : ICheckUpStatusService
+    public class CheckUpStatusService
+        : BaseService<ICheckUpStatusProcessor, ICheckUpStatusParamConverter, ICheckUpStatusResultConverter, CheckUpStatusParam, CheckUpStatusResult, ICheckUpStatusDao, long, Data.Entity.CheckUpStatus>, ICheckUpStatusService
     {
+<<<<<<< Updated upstream
         ICheckUpStatusProcessor CheckUpStatusProcessor = new CheckUpStatusProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +204,8 @@ namespace AutoServiceShop.Presentation.service.CheckUpStatus
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

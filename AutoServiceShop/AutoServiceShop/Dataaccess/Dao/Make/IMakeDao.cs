@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.Make
 {
-    interface IMakeDao
+    public interface IMakeDao : IBaseDao<Data.Entity.Make, long>
     {
+<<<<<<< Updated upstream
         Data.Entity.Make Save(Data.Entity.Make entity);
         List<Data.Entity.Make> Save(List<Data.Entity.Make> entity);
 
@@ -20,5 +22,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Make
 
         List<Data.Entity.Make> Find();
         Data.Entity.Make Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Entity
 {
-    class Make : NamedPersistent
+    public class Make : NamedPersistent
     {
     }
 }

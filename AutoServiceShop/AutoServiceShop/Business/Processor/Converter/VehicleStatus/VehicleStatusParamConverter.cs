@@ -3,34 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.VehicleStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
 {
-    class VehicleStatusParamConverter : IVehicleStatusParamConverter
+    class VehicleStatusParamConverter : BaseParamConverter<VehicleStatusParam, Data.Entity.VehicleStatus>, IVehicleStatusParamConverter
     {
+<<<<<<< Updated upstream
         IVehicleStatusDao VehicleStatusDao { get; set; }
+=======
+>>>>>>> Stashed changes
 
-        public Data.Entity.VehicleStatus Convert(VehicleStatusParam param, Data.Entity.VehicleStatus oldentity)
+        public override void ConvertSpecific(VehicleStatusParam param, Data.Entity.VehicleStatus entity) { }
+
+        public override Data.Entity.VehicleStatus GetResult(VehicleStatusParam param)
         {
-            Data.Entity.VehicleStatus entity = null;
+            Data.Entity.VehicleStatus entity = new Data.Entity.VehicleStatus
+            {
+                Id = param.Id,
+                Code = param.Code
+            };
 
-            if (oldentity != null)
-            {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.VehicleStatus
-                {
-                    Code = param.Code,
-                    Id = param.Id,
-                    Description = param.Description,
-                    Name = param.Name
-                };
-            }
-            
             return entity;
         }
     }

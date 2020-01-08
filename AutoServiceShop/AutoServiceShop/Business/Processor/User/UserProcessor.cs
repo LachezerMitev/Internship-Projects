@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.User;
 using AutoServiceShop.Business.Processor.Converter.User;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.User
 {
-    class UserProcessor : IUserProcessor
+    public class UserProcessor : 
+        BaseProcessor<IUserParamConverter, IUserResultConverter, UserParam, UserResult, IUserDao, long, Data.Entity.User>, IUserProcessor
     {
+<<<<<<< Updated upstream
         IUserDao UserDao = new UserDao();
 
         IUserParamConverter UserParamConverter = new UserParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.User
                 UserDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

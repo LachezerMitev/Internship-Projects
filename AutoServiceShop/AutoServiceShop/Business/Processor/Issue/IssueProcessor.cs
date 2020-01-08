@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Issue;
 using AutoServiceShop.Business.Processor.Converter.Issue;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Issue
 {
-    class IssueProcessor : IIssueProcessor
+    public class IssueProcessor
+        : BaseProcessor<IIssueParamConverter, IIssueResultConverter, IssueParam, IssueResult, IIssueDao, long, Data.Entity.Issue>, IIssueProcessor
     {
+<<<<<<< Updated upstream
         IIssueDao IssueDao = new IssueDao();
 
         IIssueParamConverter IssueParamConverter = new IssueParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.Issue
                 IssueDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

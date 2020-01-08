@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Converter.UserGroup;
 using AutoServiceShop.Business.Processor.UserGroup;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.UserGroup;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.UserGroup
 {
-    class UserGroupService : IUserGroupService
+    public class UserGroupService
+        : BaseService<IUserGroupProcessor, IUserGroupParamConverter, IUserGroupResultConverter, UserGroupParam, UserGroupResult, IUserGroupDao, long, Data.Entity.UserGroup>, IUserGroupService
     {
+<<<<<<< Updated upstream
         IUserGroupProcessor UserGroupProcessor = new UserGroupProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +203,8 @@ namespace AutoServiceShop.Presentation.service.UserGroup
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

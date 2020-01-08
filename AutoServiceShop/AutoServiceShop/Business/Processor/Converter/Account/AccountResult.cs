@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Account
 {
-    class AccountResult : BaseResultNamed
+    public class AccountResult : BaseResultNamed
     {
         public string FirstName { get; set; }
 
@@ -18,11 +18,14 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
 
         public long UserId { get; set; }
 
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         public long AccountStatusId { get; set; }
 
         public string AccountStatusName { get; set; }
 
+        public long AccountTypeId { get; set; }
+
+        public string AccountTypeName { get; set; }
     }
 }

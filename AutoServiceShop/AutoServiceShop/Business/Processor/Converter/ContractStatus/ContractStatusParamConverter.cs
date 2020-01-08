@@ -3,34 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.ContractStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.ContractStatus
 {
-    class ContractStatusParamConverter : IContractStatusParamConverter
+    class ContractStatusParamConverter : BaseParamConverter<ContractStatusParam, Data.Entity.ContractStatus>, IContractStatusParamConverter
     {
         IContractStatusDao ContractStatusDao = new ContractStatusDao();
 
-        public Data.Entity.ContractStatus Convert(ContractStatusParam param, Data.Entity.ContractStatus oldentity)
-        {
-            Data.Entity.ContractStatus entity = null;
+        public override void ConvertSpecific(ContractStatusParam param, Data.Entity.ContractStatus entity) { }
 
-            if (oldentity != null)
+        public override Data.Entity.ContractStatus GetResult(ContractStatusParam param)
+        {
+            Data.Entity.ContractStatus entity = new Data.Entity.ContractStatus
             {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.ContractStatus
-                {
-                    Code = param.Code,
-                    Id = param.Id,
-                    Description = param.Description,
-                    Name = param.Name
-                };
-            }
-            
+                Code = param.Code,
+                Id = param.Id,
+            };
+
             return entity;
         }
     }

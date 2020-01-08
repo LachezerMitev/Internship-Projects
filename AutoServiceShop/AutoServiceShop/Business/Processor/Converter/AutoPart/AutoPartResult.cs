@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.AutoPart
 {
-    class AutoPartResult : BaseResultNamed
+    public class AutoPartResult : BaseResultNamed
     {
         public long AutoPartStatusId { get; set; }
 
-        public string autopartStatusName { get; set; }
+        public string AutopartStatusName { get; set; }
 
         public double Price { get; set; }
 

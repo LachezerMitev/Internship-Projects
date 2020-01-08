@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
-    class UserUserGroupResult : BaseResultNamed
+    public class UserUserGroupResult : BaseResultNamed
     {
         public List<Data.Entity.UserGroup> UserGroupList { get; set; }
 

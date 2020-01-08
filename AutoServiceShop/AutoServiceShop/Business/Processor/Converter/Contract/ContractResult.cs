@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Contract
 {
-    class ContractResult : BaseResultNamed
+    public class ContractResult : BaseResultNamed
     {
         public DateTime WorkDayStart { get; set; }
 

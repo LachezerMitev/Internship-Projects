@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.AutoPartStatus;
 using AutoServiceShop.Business.Processor.Converter.AutoPartStatus;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.AutoPartStatus
 {
-    class AutoPartStatusProcessor : IAutoPartStatusProcessor
+    public class AutoPartStatusProcessor
+        : BaseProcessor<IAutoPartStatusParamConverter, IAutoPartStatusResultConverter, AutoPartStatusParam, AutoPartStatusResult, IAutoPartStatusDao, long, Data.Entity.AutoPartStatus>, IAutoPartStatusProcessor
     {
+<<<<<<< Updated upstream
         IAutoPartStatusDao AutoPartStatusDao = new AutoPartStatusDao();
 
         IAutoPartStatusParamConverter AutoPartStatusParamConverter = new AutoPartStatusParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.AutoPartStatus
                 AutoPartStatusDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

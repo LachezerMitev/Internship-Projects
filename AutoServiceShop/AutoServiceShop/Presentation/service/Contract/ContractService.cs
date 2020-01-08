@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Contract;
 using AutoServiceShop.Business.Processor.Converter.Contract;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.Contract;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.Contract
 {
-    class ContractService : IContractService
+    public class ContractService
+        : BaseService<IContractProcessor, IContractParamconverter, IContractResultConverter, ContractParam, ContractResult, IContractDao, long, Data.Entity.Contract>, IContractService
     {
+<<<<<<< Updated upstream
         IContractProcessor ContractProcessor = new ContractProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +204,8 @@ namespace AutoServiceShop.Presentation.service.Contract
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

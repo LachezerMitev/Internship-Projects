@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.Vehicle;
+using AutoServiceShop.Dataaccess.Dao.Vehicle;
 
 namespace AutoServiceShop.Presentation.service.Vehicle
 {
-    interface IVehicleService
+    public interface IVehicleService
+        : IBaseService<IVehicleProcessor, IVehicleParamConverter, IVehicleResultConverter, VehicleParam, VehicleResult, IVehicleDao, long, Data.Entity.Vehicle>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(VehicleParam param);
-        ApiResponse Create(List<VehicleParam> param);
-
-        ApiResponse Update(long id, VehicleParam param);
-        ApiResponse Update(List<VehicleParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(VehicleParam param);
-        void ValidateParameters(List<VehicleParam> param);
     }
 }

@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.UserGroupStatus;
+using AutoServiceShop.Dataaccess.Dao.UserGroupStatus;
 
 namespace AutoServiceShop.Presentation.service.UserGroupStatus
 {
-    interface IUserGroupStatusService
+    public interface IUserGroupStatusService
+        : IBaseService<IUserGroupStatusProcessor, IUserGroupStatusParamConverter, IUserGroupStatusResultConverter, UserGroupStatusParam, UserGroupStatusResult, IUserGroupStatusDao, long, Data.Entity.UserGroupStatus>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(UserGroupStatusParam param);
-        ApiResponse Create(List<UserGroupStatusParam> param);
-
-        ApiResponse Update(long id, UserGroupStatusParam param);
-        ApiResponse Update(List<UserGroupStatusParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(UserGroupStatusParam param);
-        void ValidateParameters(List<UserGroupStatusParam> param);
     }
 }

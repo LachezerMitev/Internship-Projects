@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.CheckUp;
 using AutoServiceShop.Business.Processor.Converter.CheckUp;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.CheckUp
 {
-    class CheckUpProcessor : ICheckUpProcessor
+    public class CheckUpProcessor
+        : BaseProcessor<ICheckUpParamConverter, ICheckUpResultConverter, CheckUpParam, CheckUpResult, ICheckUpDao, long, Data.Entity.CheckUp>, ICheckUpProcessor
     {
+<<<<<<< Updated upstream
         ICheckUpDao CheckUpDao = new CheckUpDao();
 
         ICheckUpParamConverter CheckUpParamConverter = new CheckUpParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.CheckUp
                 CheckUpDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

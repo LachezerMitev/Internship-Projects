@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Business.Processor.Converter.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUp
 {
-    interface ICheckUpResultConverter
+    public interface ICheckUpResultConverter : IBaseResultConverter<Data.Entity.CheckUp, CheckUpResult>
     {
-        CheckUpResult Convert(AutoServiceShop.Data.Entity.CheckUp param);
     }
 }

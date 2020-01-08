@@ -1,4 +1,6 @@
-﻿using AutoServiceShop.Business.Processor.Converter.CheckUpStatus;
+﻿using AutoServiceShop.Business.Processor.Common;
+using AutoServiceShop.Business.Processor.Converter.CheckUpStatus;
+using AutoServiceShop.Dataaccess.Dao.CheckUpStatus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +9,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.CheckUpStatus
 {
-    interface ICheckUpStatusProcessor
+    public interface ICheckUpStatusProcessor
+        : IBaseProcessor<ICheckUpStatusParamConverter, ICheckUpStatusResultConverter, CheckUpStatusParam, CheckUpStatusResult, ICheckUpStatusDao, long, Data.Entity.CheckUpStatus>
     {
-        CheckUpStatusResult Create(CheckUpStatusParam param);
-        List<CheckUpStatusResult> Create(List<CheckUpStatusParam> param);
-
-        void Update(long id, CheckUpStatusParam param);
-        void Update(List<CheckUpStatusParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        CheckUpStatusResult Find(long id);
-        List<CheckUpStatusResult> Find();
     }
 }

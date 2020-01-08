@@ -5,24 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.AutoPart;
+using AutoServiceShop.Dataaccess.Dao.AutoPart;
 
 namespace AutoServiceShop.Presentation.service.AutoPart
 {
-    interface IAutoPartService
+    public interface IAutoPartService
+        : IBaseService<IAutoPartProcessor, IAutoPartParamConverter, IAutoPartResultConvert, AutoPartParam, AutoPartResult, IAutoPartDao, long, Data.Entity.AutoPart>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
 
-        ApiResponse Create(AutoPartParam param);
-        ApiResponse Create(List<AutoPartParam> param);
-
-        ApiResponse Update(long id, AutoPartParam param);
-        ApiResponse Update(List<AutoPartParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(AutoPartParam param);
-        void ValidateParameters(List<AutoPartParam> param);
     }
 }

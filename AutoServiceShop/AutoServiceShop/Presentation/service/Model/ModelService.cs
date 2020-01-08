@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Converter.Model;
 using AutoServiceShop.Business.Processor.Model;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.Model;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.Model
 {
-    class ModelService : IModelService
+    public class ModelService
+        : BaseService<IModelProcessor, IModelParamConverter, IModelResultConverter, ModelParam, ModelResult, IModelDao, long, Data.Entity.Model>, IModelService
     {
+<<<<<<< Updated upstream
         IModelProcessor ModelProcessor = new ModelProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +203,8 @@ namespace AutoServiceShop.Presentation.service.Model
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

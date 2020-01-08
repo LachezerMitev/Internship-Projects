@@ -1,113 +1,303 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
 {
-    class AccountStatusStorage
+    class AccountStatusStorage : BaseStorage<Data.Entity.AccountStatus, long>
     {
-        public static List<Data.Entity.AccountStatus> AccountStatusList = new List<Data.Entity.AccountStatus>();
-        public static Dictionary<long, Data.Entity.AccountStatus> AccountStatusDictionary = new Dictionary<long, Data.Entity.AccountStatus>();
+        public static List<Data.Entity.AccountStatus> List = new List<Data.Entity.AccountStatus>();
+        public static Dictionary<long, Data.Entity.AccountStatus> Dictionary = new Dictionary<long, Data.Entity.AccountStatus>();
+
+        //static AccountStorage()
+        //{
+        //    Data.Entity.Account account1 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Gosho",
+        //        Surname = "Ivanov",
+        //        LastName = "Golemiq",
+        //        Type = "WorEmployeeker",
+        //        Code = "ORTA",
+        //        Description = "Well, He works...... stuff..... idk",
+        //        Name = "Georgi",
+        //        Id = 1,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "ASCI",
+        //            Description = "Well, He works...... stuff..... idk",
+        //            Name = "Working",
+        //            Id = 1
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 11,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+
+        //    Data.Entity.Account account2 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Ivan",
+        //        Surname = "Georgiev",
+        //        LastName = "Shotlekov",
+        //        Type = "Employee",
+        //        Code = "PVRT",
+        //        Description = "Engine specialist",
+        //        Name = "Ivan",
+        //        Id = 2,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "ASCI",
+        //            Description = "Active",
+        //            Name = "Working",
+        //            Id = 2
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 21,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+
+        //    Data.Entity.Account account3 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Petar",
+        //        Surname = "Petrov",
+        //        LastName = "Petrov",
+        //        Type = "Customer",
+        //        Code = "KVPK",
+        //        Description = "Car",
+        //        Name = "Petar",
+        //        Id = 3,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "DOBF",
+        //            Description = "Active",
+        //            Name = "Working",
+        //            Id = 3
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 31,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account4 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Dimitar",
+        //        Surname = "Latunov",
+        //        LastName = "Mitev",
+        //        Type = "Customer",
+        //        Code = "KLMN",
+        //        Description = "Motorcycle",
+        //        Name = "Mitko",
+        //        Id = 4,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "SASS",
+        //            Description = "Inactive",
+        //            Name = "Idle",
+        //            Id = 4
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 41,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account5 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Mitko",
+        //        Surname = "Borislav",
+        //        LastName = "Petrov",
+        //        Type = "Admin",
+        //        Code = "LKVF",
+        //        Description = "System Administrator",
+        //        Name = "Mitko",
+        //        Id = 5,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "IDFA",
+        //            Description = "Active",
+        //            Name = "Working",
+        //            Id = 5
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 51,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account6 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Joro",
+        //        Surname = "Spasimirov",
+        //        LastName = "Angelov",
+        //        Type = "Intern",
+        //        Code = "OSDA",
+        //        Description = "Suspension intern",
+        //        Name = "Joro",
+        //        Id = 6,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "DFON",
+        //            Description = "Active",
+        //            Name = "Ill",
+        //            Id = 6
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 61,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account7 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Georgi",
+        //        Surname = "Ivanov",
+        //        LastName = "Peshev",
+        //        Type = "Intern",
+        //        Code = "ARTI",
+        //        Description = "General intern",
+        //        Name = "Joro",
+        //        Id = 7,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "SPZN",
+        //            Description = "Active",
+        //            Name = "Working",
+        //            Id = 7
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 71,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account8 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Georgi",
+        //        Surname = "Penev",
+        //        LastName = "Tenev",
+        //        Type = "Employee",
+        //        Code = "PROS",
+        //        Description = "Senior Suspension specialist",
+        //        Name = "Gergi",
+        //        Id = 8,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "STRL",
+        //            Description = "Inactive",
+        //            Name = "Idle",
+        //            Id = 8
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 81,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account9 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Stanislav",
+        //        Surname = "Tenev",
+        //        LastName = "Proiski",
+        //        Type = "Employee",
+        //        Code = "MAKF",
+        //        Description = "Electrical specialist",
+        //        Name = "Stanislav",
+        //        Id = 9,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "ODIN",
+        //            Description = "Inactive",
+        //            Name = "Idle",
+        //            Id = 9
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 91,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+        //    Data.Entity.Account account10 = new Data.Entity.Account
+        //    {
+        //        FirstName = "Teodor",
+        //        Surname = "Spasov",
+        //        LastName = "Georgiev",
+        //        Type = "Customer",
+        //        Code = "IFHE",
+        //        Description = "Car",
+        //        Name = "Tedo",
+        //        Id = 10,
+        //        AccountStatus = new Data.Entity.AccountStatus
+        //        {
+        //            Code = "ARES",
+        //            Description = "Inactive",
+        //            Name = "Working",
+        //            Id = 10
+        //        },
+        //        User = new Data.Entity.User
+        //        {
+        //            Id = 101,
+        //            Password = "123",
+        //            Username = "Joro"
+        //        }
+        //    };
+
+        //    AccountList.Add(account1);
+        //    AccountList.Add(account2);
+        //    AccountList.Add(account3);
+        //    AccountList.Add(account4);
+        //    AccountList.Add(account5);
+        //    AccountList.Add(account6);
+        //    AccountList.Add(account7);
+        //    AccountList.Add(account8);
+        //    AccountList.Add(account9);
+        //    AccountList.Add(account10);
+
+        //    AccountDictionary.Add(account1.Id, account1);
+        //    AccountDictionary.Add(account2.Id, account2);
+        //    AccountDictionary.Add(account3.Id, account3);
+        //    AccountDictionary.Add(account4.Id, account4);
+        //    AccountDictionary.Add(account5.Id, account5);
+        //    AccountDictionary.Add(account6.Id, account6);
+        //    AccountDictionary.Add(account7.Id, account7);
+        //    AccountDictionary.Add(account8.Id, account8);
+        //    AccountDictionary.Add(account9.Id, account9);
+        //    AccountDictionary.Add(account10.Id, account10);
+
+        //    JsonConvert.SerializeObject(AccountList, Formatting.Indented);
+
+        //    Console.WriteLine(JsonConvert.SerializeObject(AccountList, Formatting.Indented));
+
+        //}
 
         static AccountStatusStorage()
         {
-            Data.Entity.AccountStatus accountStatus1 = new Data.Entity.AccountStatus
-            {
-                Code = "ASCI",
-                Description = "Well, He works...... stuff..... idk",
-                Name = "Working",
-                Id = 1
-            };
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\AccountStatuses.json");
 
-            Data.Entity.AccountStatus accountStatus2 = new Data.Entity.AccountStatus
-            {
-                Code = "ASCI",
-                Description = "Active",
-                Name = "Working",
-                Id = 2
-            };
+            List = JsonConvert.DeserializeObject<List<Data.Entity.AccountStatus>>(json);
 
-            Data.Entity.AccountStatus accountStatus3 = new Data.Entity.AccountStatus
-            {
-                Code = "DOBF",
-                Description = "Active",
-                Name = "Working",
-                Id = 3
-            };
-            Data.Entity.AccountStatus accountStatus4 = new Data.Entity.AccountStatus
-            {
-                Code = "SASS",
-                Description = "Inactive",
-                Name = "Idle",
-                Id = 4
-            };
-            Data.Entity.AccountStatus accountStatus5 = new Data.Entity.AccountStatus
-            {
-                Code = "IDFA",
-                Description = "Active",
-                Name = "Working",
-                Id = 5
-            };
-            Data.Entity.AccountStatus accountStatus6 = new Data.Entity.AccountStatus
-            {
-                Code = "DFON",
-                Description = "Active",
-                Name = "Ill",
-                Id = 6
-            };
-            Data.Entity.AccountStatus accountStatus7 = new Data.Entity.AccountStatus
-            {
-                Code = "SPZN",
-                Description = "Active",
-                Name = "Working",
-                Id = 7
-            };
-            Data.Entity.AccountStatus accountStatus8 = new Data.Entity.AccountStatus
-            {
-                Code = "STRL",
-                Description = "Inactive",
-                Name = "Idle",
-                Id = 8
-            };
-            Data.Entity.AccountStatus accountStatus9 = new Data.Entity.AccountStatus
-            {
-                Code = "ODIN",
-                Description = "Inactive",
-                Name = "Idle",
-                Id = 9
-            };
-            Data.Entity.AccountStatus accountStatus10 = new Data.Entity.AccountStatus
-            {
-                Code = "ARES",
-                Description = "Inactive",
-                Name = "Working",
-                Id = 10
-            };
-
-            AccountStatusList.Add(accountStatus1);
-            AccountStatusList.Add(accountStatus2);
-            AccountStatusList.Add(accountStatus3);
-            AccountStatusList.Add(accountStatus4);
-            AccountStatusList.Add(accountStatus5);
-            AccountStatusList.Add(accountStatus6);
-            AccountStatusList.Add(accountStatus7);
-            AccountStatusList.Add(accountStatus8);
-            AccountStatusList.Add(accountStatus9);
-            AccountStatusList.Add(accountStatus10);
-
-            AccountStatusDictionary.Add(accountStatus1.Id, accountStatus1);
-            AccountStatusDictionary.Add(accountStatus2.Id, accountStatus2);
-            AccountStatusDictionary.Add(accountStatus3.Id, accountStatus3);
-            AccountStatusDictionary.Add(accountStatus4.Id, accountStatus4);
-            AccountStatusDictionary.Add(accountStatus5.Id, accountStatus5);
-            AccountStatusDictionary.Add(accountStatus6.Id, accountStatus6);
-            AccountStatusDictionary.Add(accountStatus7.Id, accountStatus7);
-            AccountStatusDictionary.Add(accountStatus8.Id, accountStatus8);
-            AccountStatusDictionary.Add(accountStatus9.Id, accountStatus9);
-            AccountStatusDictionary.Add(accountStatus10.Id, accountStatus10);
-
+            Dictionary = List.ToDictionary(x => x.Id, x => x);
         }
+
+        public override Dictionary<long, Data.Entity.AccountStatus> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\AccountStatuses.json";
     }
 }

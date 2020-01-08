@@ -3,34 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.CheckUpStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
 {
-    class CheckUpStatusParamConverter : ICheckUpStatusParamConverter
+    class CheckUpStatusParamConverter : BaseParamConverter<CheckUpStatusParam, Data.Entity.CheckUpStatus>, ICheckUpStatusParamConverter
     {
         ICheckUpStatusDao CheckUpStatusDao = new CheckUpStatusDao();
 
-        public Data.Entity.CheckUpStatus Convert(CheckUpStatusParam param, Data.Entity.CheckUpStatus oldentity)
-        {
-            Data.Entity.CheckUpStatus entity = null;
+        public override void ConvertSpecific(CheckUpStatusParam param, Data.Entity.CheckUpStatus entity) { }
 
-            if (oldentity != null)
+        public override Data.Entity.CheckUpStatus GetResult(CheckUpStatusParam param)
+        {
+            Data.Entity.CheckUpStatus entity = new Data.Entity.CheckUpStatus
             {
-                entity = oldentity;
-            }
-            else
-            {
-                entity = new Data.Entity.CheckUpStatus
-                {
-                    Code = param.Code,
-                    Id = param.Id,
-                    Description = param.Description,
-                    Name = param.Name
-                };
-            }
-            
+                Code = param.Code,
+                Id = param.Id,
+            };
+
             return entity;
         }
     }

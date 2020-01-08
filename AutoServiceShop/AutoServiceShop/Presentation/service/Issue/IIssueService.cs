@@ -5,25 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.Issue;
+using AutoServiceShop.Dataaccess.Dao.Issue;
 
 namespace AutoServiceShop.Presentation.service.Issue
 {
-    interface IIssueService
+    public interface IIssueService
+        : IBaseService<IIssueProcessor, IIssueParamConverter, IIssueResultConverter, IssueParam, IssueResult, IIssueDao, long, Data.Entity.Issue>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(IssueParam param);
-        ApiResponse Create(List<IssueParam> param);
-
-        ApiResponse Update(long id, IssueParam param);
-        ApiResponse Update(List<IssueParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(IssueParam param);
-        void ValidateParameters(List<IssueParam> param);
     }
 }

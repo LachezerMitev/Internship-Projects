@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.Make;
+using AutoServiceShop.Dataaccess.Dao.Make;
 
 namespace AutoServiceShop.Presentation.service.Make
 {
-    interface IMakeService
+    public interface IMakeService
+        : IBaseService<IMakeProcessor, IMakeParamConverter, IMakeResultConverter, MakeParam, MakeResult, IMakeDao, long, Data.Entity.Make>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(MakeParam param);
-        ApiResponse Create(List<MakeParam> param);
-
-        ApiResponse Update(long id, MakeParam param);
-        ApiResponse Update(List<MakeParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(MakeParam param);
-        void ValidateParameters(List<MakeParam> param);
     }
 }

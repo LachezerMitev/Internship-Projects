@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Vehicle
 {
-    class VehicleResult : BaseResultNamed
+    public class VehicleResult : BaseResultNamed
     {
         public long VehicleStatusId { get; set; }
         public string VehicleStatusName { get; set; }

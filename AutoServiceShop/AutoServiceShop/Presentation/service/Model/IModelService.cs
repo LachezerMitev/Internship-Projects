@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Dataaccess.Dao.Model;
+using AutoServiceShop.Business.Processor.Model;
 
 namespace AutoServiceShop.Presentation.service.Model
 {
-    interface IModelService
+    public interface IModelService
+        : IBaseService<IModelProcessor, IModelParamConverter, IModelResultConverter, ModelParam, ModelResult, IModelDao, long, Data.Entity.Model>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(ModelParam param);
-        ApiResponse Create(List<ModelParam> param);
-
-        ApiResponse Update(long id, ModelParam param);
-        ApiResponse Update(List<ModelParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(ModelParam param);
-        void ValidateParameters(List<ModelParam> param);
     }
 }

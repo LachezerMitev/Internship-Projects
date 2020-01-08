@@ -8,6 +8,15 @@ using AutoServiceShop.Business.Processor.Converter.Account;
 using AutoServiceShop.Presentation.service.Account;
 using AutoServiceShop.Data.Common;
 using System.Reflection;
+<<<<<<< Updated upstream
+=======
+using AutoServiceShop.Presentation.service.AccountStatus;
+using AutoServiceShop.Presentation.service.AutoPart;
+using AutoServiceShop.Presentation.service.User;
+using AutoServiceShop.Business.Processor.Account;
+using AutoServiceShop.Business.Processor.Converter.User;
+using AutoServiceShop.FactoryDI.Account;
+>>>>>>> Stashed changes
 
 namespace AutoServiceShop
 {
@@ -15,6 +24,23 @@ namespace AutoServiceShop
     {
         static void Main(string[] args)
         {
+
+            //IUserService testService = ProgramFactory.ResolveSpecific<IUserService>(ProgramFactory.BuildContainer());
+
+            //Console.WriteLine(testService.FindByField("Username", "joro").text);
+
+            //UserParam testUser = new UserParam
+            //{
+            //    Id = 2,
+            //    Username = "Georgi",
+            //    Password = "Deeba_toz_EF"
+            //};
+
+            //Console.WriteLine(testService.Create(testUser).text);
+
+            //Console.WriteLine(testService.ListAll().text);
+
+
             AccountParam testParam = new AccountParam
             {
                 FirstName = "Lubo",
@@ -26,7 +52,8 @@ namespace AutoServiceShop
                 Name = "idiota",
                 Id = 3218985,
                 AccountStatusId = 1,
-                UserId = 11
+                UserId = 11,
+                AccountTypeId = 1
             };
 
             AccountService testService = new AccountService();
@@ -37,38 +64,31 @@ namespace AutoServiceShop
 
             Console.WriteLine(response.text);
 
-            Console.WriteLine("_______________________________________________");
-            Console.WriteLine("Listing all accounts");
+            //Console.WriteLine("_______________________________________________");
+            //Console.WriteLine("Listing all accounts");
 
-            ApiResponse listAll = testService.ListAll();
+            //ApiResponse fbf = testService.FindByField("FirstName", "Lubo");
 
-            Console.WriteLine(listAll.text);
+            //ApiResponse listall = testService.ListAll();
+
+            //Console.WriteLine(listall.text);
 
             Console.WriteLine("_______________________________________________");
             Console.WriteLine("Removing an account");
 
-            ApiResponse deleteItem = testService.DeleteById(2);
+            ApiResponse deleteItem = testService.DeleteById(3218985);
 
             Console.WriteLine(deleteItem.text);
 
-            Console.WriteLine("_______________________________________________");
+            //Console.WriteLine("_______________________________________________");
 
-            Console.WriteLine("Finding Name: Gosho in accounts");
+            //Console.WriteLine("Finding Name: Gosho in accounts");
 
-            ApiResponse findByFieldName = testService.FindByField("FirstName", "Gosho");
+            //ApiResponse findByFieldName = testService.FindByField("FirstName", "Gosho");
 
-            Console.WriteLine(findByFieldName.text);
+            //Console.WriteLine(findByFieldName.text);
 
-            Console.WriteLine("_______________________________________________");
-
-            Console.WriteLine("Finding Lubo");
-
-            ApiResponse findById = testService.FindByPK(testParam.Id);
-
-            Console.WriteLine(findById.text);
-
-            Console.WriteLine("_______________________________________________");
-
+<<<<<<< Updated upstream
             Console.ReadLine();
 
             Assembly executing = Assembly.GetExecutingAssembly();
@@ -107,6 +127,38 @@ namespace AutoServiceShop
                     
                 }
             }
+=======
+            //Console.WriteLine("_______________________________________________");
+
+            //Console.WriteLine("Finding Lubo");
+
+            //ApiResponse findById = testService.FindByPK(testParam.Id);
+
+            //Console.WriteLine(findById.text);
+
+            //Console.WriteLine("_______________________________________________");
+
+
+            //Console.WriteLine("Updating Lubo");
+
+            //testParam.FirstName = "Lubo";
+            //testParam.Surname = "Tapak";
+            //testParam.LastName = "Tapak";
+            //testParam.Type = "BIG Idiot";
+            //testParam.Code = "ORTA";
+            //testParam.Description = "Well, He is an even bigger idiot";
+            //testParam.Name = "idiota";
+            //testParam.Id = 1;
+            //testParam.AccountStatusId = 1;
+            //testParam.UserId = 11;
+
+            //ApiResponse updateLubo = testService.Update(1, testParam);
+
+            //Console.WriteLine(updateLubo.text);
+
+            //Console.WriteLine("_______________________________________________");
+
+>>>>>>> Stashed changes
             Console.ReadLine();
         }
     }

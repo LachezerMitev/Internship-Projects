@@ -1,4 +1,6 @@
-﻿using AutoServiceShop.Business.Processor.Converter.VehicleMakeModel;
+﻿using AutoServiceShop.Business.Processor.Common;
+using AutoServiceShop.Business.Processor.Converter.VehicleMakeModel;
+using AutoServiceShop.Dataaccess.Dao.VehicleMakeModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +9,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
-    interface IVehicleMakeModelProcessor
+    public interface IVehicleMakeModelProcessor
+        : IBaseProcessor<IVehicleMakeModelParamConverter, IVehicleMakeModelResultConverter, VehicleMakeModelParam, VehicleMakeModelResult, IVehicleMakeModelDao, long, Data.Entity.VehicleMakeModel>
     {
-        VehicleMakeModelResult Create(VehicleMakeModelParam param);
-        List<VehicleMakeModelResult> Create(List<VehicleMakeModelParam> param);
-
-        void Update(long id, VehicleMakeModelParam param);
-        void Update(List<VehicleMakeModelParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        VehicleMakeModelResult Find(long id);
-        List<VehicleMakeModelResult> Find();
     }
 }

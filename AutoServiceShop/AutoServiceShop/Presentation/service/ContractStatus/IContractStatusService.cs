@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.ContractStatus;
+using AutoServiceShop.Dataaccess.Dao.ContractStatus;
 
 namespace AutoServiceShop.Presentation.service.ContractStatus
 {
-    interface IContractStatusService
+    public interface IContractStatusService
+        : IBaseService<IContractStatusProcessor, IContractStatusParamConverter, IContractStatusResultConverter, ContractStatusParam, ContractStatusResult, IContractStatusDao, long, Data.Entity.ContractStatus>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(ContractStatusParam param);
-        ApiResponse Create(List<ContractStatusParam> param);
-
-        ApiResponse Update(long id, ContractStatusParam param);
-        ApiResponse Update(List<ContractStatusParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(ContractStatusParam param);
-        void ValidateParameters(List<ContractStatusParam> param);
     }
 }

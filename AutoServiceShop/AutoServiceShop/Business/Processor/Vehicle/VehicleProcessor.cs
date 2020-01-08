@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Vehicle;
 using AutoServiceShop.Business.Processor.Converter.Vehicle;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Vehicle
 {
-    class VehicleProcessor : IVehicleProcessor
+    public class VehicleProcessor
+        : BaseProcessor<IVehicleParamConverter, IVehicleResultConverter, VehicleParam, VehicleResult, IVehicleDao, long, Data.Entity.Vehicle>, IVehicleProcessor
     {
+<<<<<<< Updated upstream
         IVehicleDao VehicleDao = new VehicleDao();
 
         IVehicleParamConverter VehicleParamConverter = new VehicleParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.Vehicle
                 VehicleDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

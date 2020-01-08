@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.Converter.Vehicle;
 using AutoServiceShop.Business.Processor.Vehicle;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.Vehicle;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.Vehicle
 {
-    class VehicleService : IVehicleService
+    public class VehicleService
+        : BaseService<IVehicleProcessor, IVehicleParamConverter, IVehicleResultConverter, VehicleParam, VehicleResult, IVehicleDao, long, Data.Entity.Vehicle>, IVehicleService
     {
+<<<<<<< Updated upstream
         IVehicleProcessor VehicleProcessor = new VehicleProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +203,7 @@ namespace AutoServiceShop.Presentation.service.Vehicle
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

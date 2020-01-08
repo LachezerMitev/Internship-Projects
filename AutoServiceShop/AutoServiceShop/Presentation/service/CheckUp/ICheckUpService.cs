@@ -5,24 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Presentation.service.Common;
+using AutoServiceShop.Business.Processor.CheckUp;
+using AutoServiceShop.Dataaccess.Dao.CheckUp;
 
 namespace AutoServiceShop.Presentation.service.CheckUp
 {
-    interface ICheckUpService
+    public interface ICheckUpService
+        : IBaseService<ICheckUpProcessor, ICheckUpParamConverter, ICheckUpResultConverter, CheckUpParam, CheckUpResult, ICheckUpDao, long, Data.Entity.CheckUp>
     {
-        ApiResponse FindByPK(long id);
-        ApiResponse ListAll();
-
-        ApiResponse Create(CheckUpParam param);
-        ApiResponse Create(List<CheckUpParam> param);
-
-        ApiResponse Update(long id, CheckUpParam param);
-        ApiResponse Update(List<CheckUpParam> param);
-
-        ApiResponse DeleteById(long id);
-        ApiResponse Delete(List<long> idList);
-
-        void ValidateParameters(CheckUpParam param);
-        void ValidateParameters(List<CheckUpParam> param);
     }
 }

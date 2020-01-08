@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,26 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
 {
-    interface IAccountStatusDao
+    public interface IAccountStatusDao
+        : IBaseDao<Data.Entity.AccountStatus, long>
     {
-        Data.Entity.AccountStatus Save(Data.Entity.AccountStatus entity);
-        List<Data.Entity.AccountStatus> Save(List<Data.Entity.AccountStatus> entity);
+        //Data.Entity.AccountStatus Save(Data.Entity.AccountStatus entity);
+        //List<Data.Entity.AccountStatus> Save(List<Data.Entity.AccountStatus> entity);
 
-        Data.Entity.AccountStatus Update(Data.Entity.AccountStatus entity);
-        List<Data.Entity.AccountStatus> Update(List<Data.Entity.AccountStatus> entity);
+        //Data.Entity.AccountStatus Update(Data.Entity.AccountStatus entity);
+        //List<Data.Entity.AccountStatus> Update(List<Data.Entity.AccountStatus> entity);
 
-        void Delete(long id);
-        void Delete(Data.Entity.AccountStatus entity);
-        void Delete(List<long> idList);
+        //void Delete(long id);
+        //void Delete(Data.Entity.AccountStatus entity);
+        //void Delete(List<long> idList);
 
+<<<<<<< Updated upstream
         List<Data.Entity.AccountStatus> Find();
         Data.Entity.AccountStatus Find(long id);
+=======
+        //List<Data.Entity.AccountStatus> Find();
+        //Data.Entity.AccountStatus Find(long id);
+        //List<Data.Entity.AccountStatus> FindByField(string field, string value);
+>>>>>>> Stashed changes
     }
 }

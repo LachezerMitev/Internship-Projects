@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.UserGroupStatus;
 using AutoServiceShop.Business.Processor.Converter.UserGroupStatus;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.UserGroupStatus
 {
-    class UserGroupStatusProcessor : IUserGroupStatusProcessor
+    public class UserGroupStatusProcessor
+        : BaseProcessor<IUserGroupStatusParamConverter, IUserGroupStatusResultConverter, UserGroupStatusParam, UserGroupStatusResult, IUserGroupStatusDao, long, Data.Entity.UserGroupStatus>, IUserGroupStatusProcessor
     {
+<<<<<<< Updated upstream
         IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
 
         IUserGroupStatusParamConverter UserGroupStatusParamConverter = new UserGroupStatusParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.UserGroupStatus
                 UserGroupStatusDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

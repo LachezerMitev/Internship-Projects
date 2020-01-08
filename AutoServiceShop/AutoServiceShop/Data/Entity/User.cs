@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Entity
 {
-    class User : Persistent
+    public class User : Persistent
     {
-        
         public string Username { get; set; }
 
         public string Password { get; set; }

@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.ContractType;
 using AutoServiceShop.Business.Processor.Converter.ContractType;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.ContractType;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.ContractType
 {
-    class ContractTypeService : IContractTypeService
+    class ContractTypeService
+        : BaseService<IContractTypeProcessor, IContractTypeParamConverter, IContractTypeResultConverter, ContractTypeParam, ContractTypeResult, IContractTypeDao, long, Data.Entity.ContractType>, IContractTypeService
     {
+<<<<<<< Updated upstream
        IContractTypeProcessor ContractTypeProcessor = new ContractTypeProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +204,7 @@ namespace AutoServiceShop.Presentation.service.ContractType
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -3,23 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AutoServiceShop.Business.Processor.Common;
 using AutoServiceShop.Business.Processor.Converter.CheckUp;
+using AutoServiceShop.Dataaccess.Dao.CheckUp;
 
 namespace AutoServiceShop.Business.Processor.CheckUp
 {
-    interface ICheckUpProcessor
+    public interface ICheckUpProcessor
+        : IBaseProcessor<ICheckUpParamConverter, ICheckUpResultConverter, CheckUpParam, CheckUpResult, ICheckUpDao, long, Data.Entity.CheckUp>
     {
-        CheckUpResult Create(CheckUpParam param);
-        List<CheckUpResult> Create(List<CheckUpParam> param);
-
-        void Update(long id, CheckUpParam param);
-        void Update(List<CheckUpParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        CheckUpResult Find(long id);
-        List<CheckUpResult> Find();
     }
 }

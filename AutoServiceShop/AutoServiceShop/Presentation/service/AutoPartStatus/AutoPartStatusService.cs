@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using AutoServiceShop.Business.Processor.AutoPartStatus;
 using AutoServiceShop.Business.Processor.Converter.AutoPartStatus;
 using AutoServiceShop.Data.Common;
+using AutoServiceShop.Dataaccess.Dao.AutoPartStatus;
+using AutoServiceShop.Presentation.service.Common;
 
 namespace AutoServiceShop.Presentation.service.AutoPartStatus
 {
-    class AutoPartStatusService : IAutoPartStatusService
+    public class AutoPartStatusService
+        : BaseService<IAutoPartStatusProcessor, IAutoPartStatusParamConverter, IAutoPartStatusResultConverter, AutoPartStatusParam, AutoPartStatusResult, IAutoPartStatusDao, long, Data.Entity.AutoPartStatus>, IAutoPartStatusService
     {
+<<<<<<< Updated upstream
         IAutoPartStatusProcessor AutoPartStatusProcessor = new AutoPartStatusProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +204,8 @@ namespace AutoServiceShop.Presentation.service.AutoPartStatus
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

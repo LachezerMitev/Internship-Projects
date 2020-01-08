@@ -1,10 +1,23 @@
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CoreCompileInputs.cache
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csprojAssemblyReference.cache
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.exe.config
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.exe
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\AutoServiceShop.pdb
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CoreCompileInputs.cache
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.CopyComplete
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.exe
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.pdb
+<<<<<<< Updated upstream
 C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csprojAssemblyReference.cache
+=======
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.dll
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.pdb
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\Autofac.xml
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\EntityFramework.dll
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\EntityFramework.xml
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.Migrations.AutoServiceShopMigration.resources
+C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\obj\Debug\AutoServiceShop.csproj.GenerateResource.cache
+>>>>>>> Stashed changes

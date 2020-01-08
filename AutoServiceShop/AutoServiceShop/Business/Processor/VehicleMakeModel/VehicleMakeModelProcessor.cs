@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.VehicleMakeModel;
 using AutoServiceShop.Business.Processor.Converter.VehicleMakeModel;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
-    class VehicleMakeModelProcessor : IVehicleMakeModelProcessor
+    public class VehicleMakeModelProcessor
+        : BaseProcessor<IVehicleMakeModelParamConverter, IVehicleMakeModelResultConverter, VehicleMakeModelParam, VehicleMakeModelResult, IVehicleMakeModelDao, long, Data.Entity.VehicleMakeModel>, IVehicleMakeModelProcessor
     {
+<<<<<<< Updated upstream
         IVehicleMakeModelDao VehicleMakeModelDao = new VehicleMakeModelDao();
 
         IVehicleMakeModelParamConverter VehicleMakeModelParamConverter = new VehicleMakeModelParamConverter();
@@ -93,5 +96,7 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
                 VehicleMakeModelDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }
