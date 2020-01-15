@@ -11,8 +11,14 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
     class UserUserGroupParamConverter : IUserUserGroupParamConverter
     {
+<<<<<<< Updated upstream
         IUserUserGroupDao UserUserGroupDao = new UserUserGroupDao();
         IUserDao UserDao = new UserDao();
+=======
+        private IUserDao _userDao;
+        public IUserDao UserDao
+        {
+>>>>>>> Stashed changes
 
         public Data.Entity.UserUserGroup Convert(UserUserGroupParam param, Data.Entity.UserUserGroup oldentity)
         {
@@ -29,9 +35,27 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
                     Id = param.Id
                 };
             }
+<<<<<<< Updated upstream
 
             entity.UserGroupList = param.UserGroupList;
             entity.User = UserDao.Find(param.UserId);
+=======
+        }
+
+        
+
+        public override void ConvertSpecific(UserUserGroupParam param, Data.Entity.UserUserGroup entity)
+        {
+            entity.User = _userDao.Find(param.UserId);
+        }
+
+        public override Data.Entity.UserUserGroup GetResult(UserUserGroupParam param)
+        {
+            Data.Entity.UserUserGroup entity = new Data.Entity.UserUserGroup
+            {
+                Id = param.Id
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

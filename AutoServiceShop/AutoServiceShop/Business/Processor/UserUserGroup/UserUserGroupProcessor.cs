@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.UserUserGroup
 {
     class UserUserGroupProcessor : IUserUserGroupProcessor
     {
+<<<<<<< Updated upstream
         IUserUserGroupDao UserUserGroupDao = new UserUserGroupDao();
 
         IUserUserGroupParamConverter UserUserGroupParamConverter = new UserUserGroupParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.UserUserGroup
                 UserUserGroupDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

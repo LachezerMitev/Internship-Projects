@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.VehicleStatus
 {
     class VehicleStatusService : IVehicleStatusService
     {
+<<<<<<< Updated upstream
         IVehicleStatusProcessor VehicleStatusProcessor = new VehicleStatusProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,7 @@ namespace AutoServiceShop.Presentation.service.VehicleStatus
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

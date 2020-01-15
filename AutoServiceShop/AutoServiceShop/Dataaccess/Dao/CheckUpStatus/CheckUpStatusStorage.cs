@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
             Data.Entity.CheckUpStatus CheckUpStatus1 = new Data.Entity.CheckUpStatus
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.CheckUpStatus CheckUpStatus2 = new Data.Entity.CheckUpStatus
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
             };
             Data.Entity.CheckUpStatus CheckUpStatus7 = new Data.Entity.CheckUpStatus
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.CheckUpStatus>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.CheckUpStatus CheckUpStatus8 = new Data.Entity.CheckUpStatus

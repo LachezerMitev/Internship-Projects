@@ -1,0 +1,68 @@
+{
+  "1": {
+    "Code": "ASCI",
+    "Name": "Working",
+    "Description": "Well, He works...... stuff..... idk",
+    "Id": 1
+  },
+  "2": {
+    "Code": "ASCI",
+    "Name": "Working",
+    "Description": "Active",
+    "Id": 2
+  },
+  "3": {
+    "Code": "DOBF",
+    "Name": "Working",
+    "Description": "Active",
+    "Id": 3
+  },
+  "4": {
+    "Code": "SASS",
+    "Name": "Idle",
+    "Description": "Inactive",
+    "Id": 4
+  },
+  "5": {
+    "Code": "IDFA",
+    "Name": "Working",
+    "Description": "Active",
+    "Id": 5
+  },
+  "6": {
+    "Code": "DFON",
+    "Name": "Ill",
+    "Description": "Active",
+    "Id": 6
+  },
+  "7": {
+    "Code": "SPZN",
+    "Name": "Working",
+    "Description": "Active",
+    "Id": 7
+  },
+  "8": {
+    "Code": "STRL",
+    "Name": "Idle",
+    "Description": "Inactive",
+    "Id": 8
+  },
+  "9": {
+    "Code": "ODIN",
+    "Name": "Idle",
+    "Description": "Inactive",
+    "Id": 9
+  },
+  "10": {
+    "Code": "ARES",
+    "Name": "Working",
+    "Description": "Inactive",
+    "Id": 10
+  },
+  "11": {
+    "Code": "JKLM",
+    "Name": "Active",
+    "Description": "Working",
+    "Id": 11
+  }
+}

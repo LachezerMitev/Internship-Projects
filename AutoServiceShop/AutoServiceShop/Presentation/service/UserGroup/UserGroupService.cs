@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.UserGroup
 {
     class UserGroupService : IUserGroupService
     {
+<<<<<<< Updated upstream
         IUserGroupProcessor UserGroupProcessor = new UserGroupProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,8 @@ namespace AutoServiceShop.Presentation.service.UserGroup
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

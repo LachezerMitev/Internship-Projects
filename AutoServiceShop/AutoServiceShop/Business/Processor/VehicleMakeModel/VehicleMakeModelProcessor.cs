@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
     class VehicleMakeModelProcessor : IVehicleMakeModelProcessor
     {
+<<<<<<< Updated upstream
         IVehicleMakeModelDao VehicleMakeModelDao = new VehicleMakeModelDao();
 
         IVehicleMakeModelParamConverter VehicleMakeModelParamConverter = new VehicleMakeModelParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
                 VehicleMakeModelDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

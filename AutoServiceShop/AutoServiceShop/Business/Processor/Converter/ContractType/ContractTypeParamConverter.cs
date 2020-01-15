@@ -10,7 +10,11 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractType
 {
     class ContractTypeParamConverter : IContractTypeParamConverter
     {
+<<<<<<< Updated upstream
         IContractTypeDao ContractTypeDao = new ContractTypeDao();
+=======
+        public override void ConvertSpecific(ContractTypeParam param, Data.Entity.ContractType entity) { }
+>>>>>>> Stashed changes
 
         public Data.Entity.ContractType Convert(ContractTypeParam param, Data.Entity.ContractType oldentity)
         {

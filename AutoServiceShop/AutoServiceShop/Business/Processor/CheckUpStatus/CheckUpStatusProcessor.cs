@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
 {
     class CheckUpStatusProcessor : ICheckUpStatusProcessor
     {
+<<<<<<< Updated upstream
         ICheckUpStatusDao CheckUpStatusDao = new CheckUpStatusDao();
 
         ICheckUpStatusParamConverter CheckUpStatusParamConverter = new CheckUpStatusParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
                 CheckUpStatusDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

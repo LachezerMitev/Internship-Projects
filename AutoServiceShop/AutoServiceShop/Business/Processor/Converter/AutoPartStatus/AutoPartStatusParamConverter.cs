@@ -10,11 +10,14 @@ namespace AutoServiceShop.Business.Processor.Converter.AutoPartStatus
 {
     class AutoPartStatusParamConverter : IAutoPartStatusParamConverter
     {
+<<<<<<< Updated upstream
         IAutoPartStatusDao AutoPartStatusDao = new AutoPartStatusDao();
 
         public Data.Entity.AutoPartStatus Convert(AutoPartStatusParam param, Data.Entity.AutoPartStatus oldentity)
         {
             Data.Entity.AutoPartStatus entity = null;
+=======
+>>>>>>> Stashed changes
 
             if (oldentity != null)
             {

@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPart
             Data.Entity.AutoPart AutoPart1 = new Data.Entity.AutoPart
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.AutoPart AutoPart2 = new Data.Entity.AutoPart
@@ -55,6 +56,10 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPart
             {
                 
             };
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.AutoPart>>(json);
+        }
+>>>>>>> Stashed changes
 
             AutoPartList.Add(AutoPart1);
             AutoPartList.Add(AutoPart2);

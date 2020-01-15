@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
     {
         public CheckUpStatusResult Convert(Data.Entity.CheckUpStatus param)
         {
+<<<<<<< Updated upstream
             CheckUpStatusResult result = new CheckUpStatusResult()
             {
                 Code = param.Code,
@@ -20,6 +21,8 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
             };
 
             return result;
+=======
+>>>>>>> Stashed changes
         }
     }
 }

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.ContractType
 {
     class ContractTypeProcessor : IContractTypeProcessor
     {
+<<<<<<< Updated upstream
         IContractTypeDao ContractTypeDao = new ContractTypeDao();
 
         IContractTypeParamConverter ContractTypeParamConverter = new ContractTypeParamConverter();
@@ -94,5 +95,7 @@ namespace AutoServiceShop.Business.Processor.ContractType
                 ContractTypeDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.VehicleStatus
 {
     class VehicleStatusProcessor : IVehicleStatusProcessor
     {
+<<<<<<< Updated upstream
         IVehicleStatusDao VehicleStatusDao = new VehicleStatusDao();
 
         IVehicleStatusParamConverter VehicleStatusParamConverter = new VehicleStatusParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.VehicleStatus
                 VehicleStatusDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

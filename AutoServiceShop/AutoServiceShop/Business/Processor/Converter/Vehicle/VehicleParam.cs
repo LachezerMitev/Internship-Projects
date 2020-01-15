@@ -15,8 +15,5 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
         public DateTime DateOfProduction { get; set; }
 
         public double Mileage { get; set; }
-
-        public long OwnerId { get; set; }
-        public string OwnerName { get; set; }
     }
 }

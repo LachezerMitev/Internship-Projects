@@ -18,7 +18,13 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
         void Delete(Data.Entity.AccountStatus entity);
         void Delete(List<long> idList);
 
+<<<<<<< Updated upstream
         List<Data.Entity.AccountStatus> Find();
         Data.Entity.AccountStatus Find(long id);
+=======
+        //List<Data.Entity.AccountStatus> Find();
+        //Data.Entity.AccountStatus Find(long id);
+        //List<Data.Entity.AccountStatus> FindByField(string field, string value);
+>>>>>>> Stashed changes
     }
 }

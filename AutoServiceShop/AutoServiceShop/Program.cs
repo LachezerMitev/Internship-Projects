@@ -1,13 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using AutoServiceShop.Business.Processor.Converter.Account;
-using AutoServiceShop.Presentation.service.Account;
+﻿using AutoServiceShop.Business.Processor.Converter.Account;
+using AutoServiceShop.Business.Processor.Converter.AccountStatus;
+using AutoServiceShop.Business.Processor.Converter.AccountType;
+using AutoServiceShop.Business.Processor.Converter.User;
 using AutoServiceShop.Data.Common;
+<<<<<<< Updated upstream
 using System.Reflection;
+=======
+using AutoServiceShop.Data.Entity;
+using AutoServiceShop.FactoryDI;
+using AutoServiceShop.FactoryDI.Account;
+using AutoServiceShop.Presentation.JsonConverter;
+using AutoServiceShop.Presentation.service.Account;
+using AutoServiceShop.Presentation.service.AccountStatus;
+using AutoServiceShop.Presentation.service.AccountType;
+using AutoServiceShop.Presentation.service.AutoPart;
+using AutoServiceShop.Presentation.service.CheckUp;
+using AutoServiceShop.Presentation.service.User;
+using AutoServiceShop.Presentation.service.Vehicle;
+using System;
+>>>>>>> Stashed changes
 
 namespace AutoServiceShop
 {
@@ -24,15 +35,18 @@ namespace AutoServiceShop
                 Code = "IDIOT",
                 Description = "Well, He is an idiot",
                 Name = "idiota",
-                Id = 3218985,
                 AccountStatusId = 1,
+<<<<<<< Updated upstream
                 UserId = 11
+=======
+                UserId = 1,
+                AccountTypeId = 1
+>>>>>>> Stashed changes
             };
 
-            AccountService testService = new AccountService();
+            IUserService testService = UserFactory.ResolveEF();
 
-            Console.WriteLine("Adding an Account");
-
+<<<<<<< Updated upstream
             ApiResponse response = testService.Create(testParam);
 
             Console.WriteLine(response.text);
@@ -107,6 +121,12 @@ namespace AutoServiceShop
                     
                 }
             }
+=======
+            Console.WriteLine(testService.DeleteById(1).text);
+
+            Console.WriteLine("_______________________________________________");
+
+>>>>>>> Stashed changes
             Console.ReadLine();
         }
     }

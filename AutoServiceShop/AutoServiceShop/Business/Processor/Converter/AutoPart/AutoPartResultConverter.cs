@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.AutoPart
     {
         public AutoPartResult Convert(Data.Entity.AutoPart param)
         {
+<<<<<<< Updated upstream
             AutoPartResult result = new AutoPartResult()
             {
                 Code = param.Code,
@@ -24,6 +25,13 @@ namespace AutoServiceShop.Business.Processor.Converter.AutoPart
             };
 
             return result;
+=======
+            if (param.AutoPartStatus == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.AutoPartStatusId = param.AutoPartStatus.Id;
+            result.AutopartStatusName = param.AutoPartStatus.Name;
+>>>>>>> Stashed changes
         }
     }
 }

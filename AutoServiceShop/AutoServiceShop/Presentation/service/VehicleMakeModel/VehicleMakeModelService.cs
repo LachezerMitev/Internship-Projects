@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
 {
     class VehicleMakeModelService : IVehicleMakeModelService
     {
+<<<<<<< Updated upstream
         IVehicleMakeModelProcessor VehicleMakeModelProcessor = new VehicleMakeModelProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,7 @@ namespace AutoServiceShop.Presentation.service.VehicleMakeModel
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

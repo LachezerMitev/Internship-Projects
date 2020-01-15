@@ -21,6 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
                 Id = 1
             };
 
+<<<<<<< Updated upstream
             Data.Entity.AccountStatus accountStatus2 = new Data.Entity.AccountStatus
             {
                 Code = "ASCI",
@@ -85,6 +86,10 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
                 Name = "Working",
                 Id = 10
             };
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.AccountStatus>>(json);
+        }
+>>>>>>> Stashed changes
 
             AccountStatusList.Add(accountStatus1);
             AccountStatusList.Add(accountStatus2);

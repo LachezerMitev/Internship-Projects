@@ -18,8 +18,20 @@ namespace AutoServiceShop.Data.Entity
 
         public string Type { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
+<<<<<<< Updated upstream
         public AccountStatus AccountStatus { get; set; }
+=======
+        [ForeignKey("AccountStatus")]
+        public long AccountStatusId { get; set; }
+
+        public virtual AccountStatus AccountStatus { get; set; }
+
+        [ForeignKey("AccountType")]
+        public long AccountTypeId { get; set; }
+
+        public virtual AccountType AccountType { get; set; }
+>>>>>>> Stashed changes
     }
 }

@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Contract
             Data.Entity.Contract Contract1 = new Data.Entity.Contract
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.Contract Contract2 = new Data.Entity.Contract
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.Contract
             };
             Data.Entity.Contract Contract7 = new Data.Entity.Contract
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.Contract>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.Contract Contract8 = new Data.Entity.Contract

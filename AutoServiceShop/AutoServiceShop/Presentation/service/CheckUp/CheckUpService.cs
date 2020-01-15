@@ -12,6 +12,7 @@ namespace AutoServiceShop.Presentation.service.CheckUp
 {
     class CheckUpService : ICheckUpService
     {
+<<<<<<< Updated upstream
         ICheckUpProcessor CheckUpProcessor = new CheckUpProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +201,7 @@ namespace AutoServiceShop.Presentation.service.CheckUp
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

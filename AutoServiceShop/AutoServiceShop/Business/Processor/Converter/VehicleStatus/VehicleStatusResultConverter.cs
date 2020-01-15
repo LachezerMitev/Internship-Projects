@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
     {
         public VehicleStatusResult Convert(Data.Entity.VehicleStatus param)
         {
+<<<<<<< Updated upstream
             VehicleStatusResult result = new VehicleStatusResult()
             {
                 Code = param.Code,
@@ -20,6 +21,8 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
             };
 
             return result;
+=======
+>>>>>>> Stashed changes
         }
     }
 }

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Model
 {
     class ModelProcessor : IModelProcessor
     {
+<<<<<<< Updated upstream
         IModelDao ModelDao = new ModelDao();
 
         IModelParamConverter ModelParamConverter = new ModelParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.Model
                 ModelDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

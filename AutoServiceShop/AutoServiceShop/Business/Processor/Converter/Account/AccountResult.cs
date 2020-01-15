@@ -14,8 +14,6 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
 
         public string LastName { get; set; }
 
-        public string Type { get; set; }
-
         public long UserId { get; set; }
 
         public string Username { get; set; }

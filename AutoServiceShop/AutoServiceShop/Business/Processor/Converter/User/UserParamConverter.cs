@@ -10,7 +10,11 @@ namespace AutoServiceShop.Business.Processor.Converter.User
 {
     class UserParamConverter : IUserParamConverter
     {
+<<<<<<< Updated upstream
         IUserDao UserDao { get; set; }
+=======
+        public override void ConvertSpecific(UserParam param, Data.Entity.User entity) { }
+>>>>>>> Stashed changes
 
         public Data.Entity.User Convert(UserParam param, Data.Entity.User oldentity)
         {

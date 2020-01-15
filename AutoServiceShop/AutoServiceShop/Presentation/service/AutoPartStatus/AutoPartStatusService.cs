@@ -12,6 +12,7 @@ namespace AutoServiceShop.Presentation.service.AutoPartStatus
 {
     class AutoPartStatusService : IAutoPartStatusService
     {
+<<<<<<< Updated upstream
         IAutoPartStatusProcessor AutoPartStatusProcessor = new AutoPartStatusProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +201,8 @@ namespace AutoServiceShop.Presentation.service.AutoPartStatus
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

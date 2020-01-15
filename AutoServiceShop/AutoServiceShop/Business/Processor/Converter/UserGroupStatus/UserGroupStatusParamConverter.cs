@@ -10,7 +10,6 @@ namespace AutoServiceShop.Business.Processor.Converter.UserGroupStatus
 {
     class UserGroupStatusParamConverter : IUserGroupStatusParamConverter
     {
-        IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
 
         public Data.Entity.UserGroupStatus Convert(UserGroupStatusParam param, Data.Entity.UserGroupStatus oldentity)
         {

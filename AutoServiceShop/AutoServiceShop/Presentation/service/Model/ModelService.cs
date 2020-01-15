@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.Model
 {
     class ModelService : IModelService
     {
+<<<<<<< Updated upstream
         IModelProcessor ModelProcessor = new ModelProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,8 @@ namespace AutoServiceShop.Presentation.service.Model
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

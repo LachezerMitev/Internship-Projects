@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Make
             Data.Entity.Make Make1 = new Data.Entity.Make
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.Make Make2 = new Data.Entity.Make
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.Make
             };
             Data.Entity.Make Make7 = new Data.Entity.Make
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.Make>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.Make Make8 = new Data.Entity.Make

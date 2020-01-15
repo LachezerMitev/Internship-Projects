@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
 {
     interface IVehicleStatusDao
     {
+<<<<<<< Updated upstream
         Data.Entity.VehicleStatus Save(Data.Entity.VehicleStatus entity);
         List<Data.Entity.VehicleStatus> Save(List<Data.Entity.VehicleStatus> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
 
         List<Data.Entity.VehicleStatus> Find();
         Data.Entity.VehicleStatus Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

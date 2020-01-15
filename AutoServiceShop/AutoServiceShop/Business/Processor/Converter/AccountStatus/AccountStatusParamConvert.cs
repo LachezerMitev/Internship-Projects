@@ -10,11 +10,18 @@ namespace AutoServiceShop.Business.Processor.Converter.AccountStatus
 {
     class AccountStatusParamConvert : IAccountStatusParamConverter
     {
+<<<<<<< Updated upstream
         IAccountStatusDao AccountStatusDao = new AccountStatusDao();
 
         public Data.Entity.AccountStatus Convert(AccountStatusParam param, Data.Entity.AccountStatus oldentity)
         {
             Data.Entity.AccountStatus entity = null;
+=======
+        
+        public override void ConvertSpecific(AccountStatusParam param, Data.Entity.AccountStatus entity)
+        {
+        }
+>>>>>>> Stashed changes
 
             if (oldentity != null)
             {

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.Make
 {
     class MakeService : IMakeService
     {
+<<<<<<< Updated upstream
         IMakeProcessor MakeProcessor = new MakeProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,8 @@ namespace AutoServiceShop.Presentation.service.Make
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

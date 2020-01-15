@@ -20,6 +20,7 @@ namespace AutoServiceShop.Dataaccess.Dao.User
                 Username = "Joro"
             };
 
+<<<<<<< Updated upstream
             Data.Entity.User User2 = new Data.Entity.User
             {
                 Id = 21,
@@ -86,6 +87,10 @@ namespace AutoServiceShop.Dataaccess.Dao.User
             UserList.Add(User8);
             UserList.Add(User9);
             UserList.Add(User10);
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.User>>(json);
+        }
+>>>>>>> Stashed changes
 
             UserDictionary.Add(User1.Id, User1);
             UserDictionary.Add(User2.Id, User2);

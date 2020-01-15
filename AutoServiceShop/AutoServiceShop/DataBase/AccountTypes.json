@@ -1,0 +1,20 @@
+{
+  "1": {
+    "Code": "ADMN",
+    "Name": "Admin",
+    "Description": "Admin",
+    "Id": 1
+  },
+  "2": {
+    "Code": "USER",
+    "Name": "User",
+    "Description": "User",
+    "Id": 2
+  },
+  "3": {
+    "Code": "EMPL",
+    "Name": "This account is an Employee",
+    "Description": "Employee",
+    "Id": 3
+  }
+}

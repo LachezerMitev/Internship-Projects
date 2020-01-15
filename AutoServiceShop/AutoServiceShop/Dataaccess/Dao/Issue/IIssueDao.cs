@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Issue
 {
     interface IIssueDao
     {
+<<<<<<< Updated upstream
         Data.Entity.Issue Save(Data.Entity.Issue entity);
         List<Data.Entity.Issue> Save(List<Data.Entity.Issue> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Issue
 
         List<Data.Entity.Issue> Find();
         Data.Entity.Issue Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

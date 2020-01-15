@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Make
 {
     class MakeProcessor : IMakeProcessor
     {
+<<<<<<< Updated upstream
         IMakeDao MakeDao = new MakeDao();
 
         IMakeParamConverter MakeParamConverter = new MakeParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.Make
                 MakeDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

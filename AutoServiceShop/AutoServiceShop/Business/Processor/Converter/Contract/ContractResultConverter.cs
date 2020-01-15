@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Contract
     {
         public ContractResult Convert(Data.Entity.Contract param)
         {
+<<<<<<< Updated upstream
             ContractResult result = new ContractResult()
             {
                 Code = param.Code,
@@ -28,6 +29,15 @@ namespace AutoServiceShop.Business.Processor.Converter.Contract
             };
 
             return result;
+=======
+            if (param.ContractStatus == null || param.ContractType == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.ContractStatusId = param.ContractStatus.Id;
+            result.ContractStatusName = param.ContractStatus.Name;
+            result.ContractTypeId = param.ContractType.Id;
+            result.ContractTypeName = param.ContractType.Name;
+>>>>>>> Stashed changes
         }
     }
 }

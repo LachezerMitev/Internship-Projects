@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.User
 {
     class UserProcessor : IUserProcessor
     {
+<<<<<<< Updated upstream
         IUserDao UserDao = new UserDao();
 
         IUserParamConverter UserParamConverter = new UserParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.User
                 UserDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

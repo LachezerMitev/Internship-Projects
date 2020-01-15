@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Issue
 {
     class IssueProcessor : IIssueProcessor
     {
+<<<<<<< Updated upstream
         IIssueDao IssueDao = new IssueDao();
 
         IIssueParamConverter IssueParamConverter = new IssueParamConverter();
@@ -93,5 +94,7 @@ namespace AutoServiceShop.Business.Processor.Issue
                 IssueDao.Update(newEntity);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

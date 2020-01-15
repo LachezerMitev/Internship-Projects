@@ -15,17 +15,9 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUp
 
         public double Price { get; set; }
 
-        public List<Data.Entity.AutoPart> PartList { get; set; }
-
         public DateTime CheckUpEnd { get; set; }
 
         public DateTime CheckUpStart { get; set; }
-
-        public List<Data.Entity.Issue> IssueList { get; set; }
-
-        public long EmployeeId { get; set; }
-
-        public string EmployeeName { get; set; }
 
         public long CustomerId { get; set; }
 

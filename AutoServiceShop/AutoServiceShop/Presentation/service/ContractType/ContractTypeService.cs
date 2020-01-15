@@ -12,6 +12,7 @@ namespace AutoServiceShop.Presentation.service.ContractType
 {
     class ContractTypeService : IContractTypeService
     {
+<<<<<<< Updated upstream
        IContractTypeProcessor ContractTypeProcessor = new ContractTypeProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +201,7 @@ namespace AutoServiceShop.Presentation.service.ContractType
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

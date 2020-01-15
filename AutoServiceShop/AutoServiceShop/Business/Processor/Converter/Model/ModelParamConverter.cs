@@ -10,7 +10,11 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
 {
     class ModelParamConverter : IModelParamConverter
     {
+<<<<<<< Updated upstream
         IModelDao ModelDao { get; set; }
+=======
+        public override void ConvertSpecific(ModelParam param, Data.Entity.Model entity) { }
+>>>>>>> Stashed changes
 
         public Data.Entity.Model Convert(ModelParam param, Data.Entity.Model oldentity)
         {

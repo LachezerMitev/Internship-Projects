@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
             Data.Entity.VehicleMakeModel VehicleMakeModel1 = new Data.Entity.VehicleMakeModel
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.VehicleMakeModel VehicleMakeModel2 = new Data.Entity.VehicleMakeModel
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
             };
             Data.Entity.VehicleMakeModel VehicleMakeModel7 = new Data.Entity.VehicleMakeModel
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.VehicleMakeModel>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.VehicleMakeModel VehicleMakeModel8 = new Data.Entity.VehicleMakeModel

@@ -12,6 +12,7 @@ namespace AutoServiceShop.Presentation.service.ContractStatus
 {
     class ContractStatusService : IContractStatusService
     {
+<<<<<<< Updated upstream
         IContractStatusProcessor ContractStatusProcessor = new ContractStatusProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -200,5 +201,8 @@ namespace AutoServiceShop.Presentation.service.ContractStatus
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

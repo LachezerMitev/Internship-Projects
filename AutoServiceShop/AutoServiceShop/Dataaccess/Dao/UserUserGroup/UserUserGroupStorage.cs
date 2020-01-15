@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.UserUserGroup
             Data.Entity.UserUserGroup UserUserGroup1 = new Data.Entity.UserUserGroup
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.UserUserGroup UserUserGroup2 = new Data.Entity.UserUserGroup
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.UserUserGroup
             };
             Data.Entity.UserUserGroup UserUserGroup7 = new Data.Entity.UserUserGroup
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.UserUserGroup>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.UserUserGroup UserUserGroup8 = new Data.Entity.UserUserGroup

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Presentation.service.Issue
 {
     class IssueService : IIssueService
     {
+<<<<<<< Updated upstream
         IIssueProcessor IssueProcessor = new IssueProcessor();
         public ApiResponse Response = new ApiResponse();
 
@@ -199,5 +200,8 @@ namespace AutoServiceShop.Presentation.service.Issue
         {
             throw new NotImplementedException();
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }

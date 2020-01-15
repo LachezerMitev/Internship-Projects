@@ -12,6 +12,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Contract
 {
     class ContractParamConverter : IContractParamconverter
     {
+<<<<<<< Updated upstream
         IContractDao ContractDao = new ContractDao();
         IContractStatusDao ContractStatusDao = new ContractStatusDao();
         IContractTypeDao ContractTypeDao = new ContractTypeDao();
@@ -40,6 +41,61 @@ namespace AutoServiceShop.Business.Processor.Converter.Contract
             entity.Salary = param.Salary;
             entity.WorkDayEnd = param.WorkDayEnd;
             entity.WorkDayStart = param.WorkDayStart;
+=======
+        private IContractStatusDao _contractStatusDao;
+        public IContractStatusDao ContractStatusDao
+        {
+
+            set { _contractStatusDao = value; }
+
+            get
+            {
+                if (_contractStatusDao == null)
+                {
+                    return _contractStatusDao;
+                }
+                else
+                {
+                    return _contractStatusDao;
+                }
+            }
+        }
+
+        private IContractTypeDao _contractTypeDao;
+        public IContractTypeDao ContractTypeDao
+        {
+
+            set { _contractTypeDao = value; }
+
+            get
+            {
+                if (_contractTypeDao == null)
+                {
+                    return _contractTypeDao;
+                }
+                else
+                {
+                    return _contractTypeDao;
+                }
+            }
+        }
+
+        
+
+        public override void ConvertSpecific(ContractParam param, Data.Entity.Contract entity)
+        {
+            entity.ContractStatus = _contractStatusDao.Find(param.ContractStatusId);
+            entity.ContractType = _contractTypeDao.Find(param.ContractTypeId);
+        }
+
+        public override Data.Entity.Contract GetResult(ContractParam param)
+        {
+            Data.Entity.Contract entity = new Data.Entity.Contract
+            {
+                Code = param.Code,
+                Id = param.Id,
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

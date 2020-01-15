@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Presentation.service.User
 {
+<<<<<<< Updated upstream
     interface IUserService
+=======
+    public interface IUserService 
+        : IBaseService<IUserProcessor, IUserParamConverter, IUserResultConverter, UserParam, UserResult, IUserDao, long, Data.Entity.User>
+>>>>>>> Stashed changes
     {
         ApiResponse FindByPK(long id);
         ApiResponse ListAll();
