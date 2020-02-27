@@ -9,5 +9,7 @@ namespace AutoServiceShop.Business.Processor.Converter
     class BaseResult
     {
         public long Id { get; set; }
+
+        public sbyte Active { get; set; }
     }
 }

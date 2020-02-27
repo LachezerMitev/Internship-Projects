@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
 {
     class CheckUpStatusProcessor : ICheckUpStatusProcessor
     {
+<<<<<<< Updated upstream
         ICheckUpStatusDao CheckUpStatusDao = new CheckUpStatusDao();
 
         ICheckUpStatusParamConverter CheckUpStatusParamConverter = new CheckUpStatusParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.CheckUpStatus
         }
 
         public void Update(List<CheckUpStatusParam> param)
+=======
+        public CheckUpStatusProcessor(ICheckUpStatusDao dao, ICheckUpStatusParamConverter paramConverter, ICheckUpStatusResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.CheckUpStatus> entity = new List<Data.Entity.CheckUpStatus>();
             foreach (var item in param)

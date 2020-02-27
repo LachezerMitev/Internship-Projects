@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Issue
             Data.Entity.Issue Issue1 = new Data.Entity.Issue
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.Issue Issue2 = new Data.Entity.Issue
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.Issue
             };
             Data.Entity.Issue Issue7 = new Data.Entity.Issue
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.Issue>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.Issue Issue8 = new Data.Entity.Issue

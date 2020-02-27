@@ -10,7 +10,11 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
 {
     class ModelParamConverter : IModelParamConverter
     {
+<<<<<<< Updated upstream
         IModelDao ModelDao { get; set; }
+=======
+        public override void ConvertSpecific(ModelParam param, Data.Entity.Model entity) { }
+>>>>>>> Stashed changes
 
         public Data.Entity.Model Convert(ModelParam param, Data.Entity.Model oldentity)
         {
@@ -22,6 +26,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
             }
             else
             {
+<<<<<<< Updated upstream
                 entity = new Data.Entity.Model
                 {
                     Code = param.Code,
@@ -30,6 +35,12 @@ namespace AutoServiceShop.Business.Processor.Converter.Model
                     Name = param.Name
                 };
             }
+=======
+                Code = param.Code,
+                Id = param.Id,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

@@ -1,0 +1,31 @@
+﻿@model List<AutoServiceShopClient.Data.Entity.User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List all users</title>
+</head>
+<body>
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li>@string.Format("{0} - {1}, {2}", item.Id, item.Username, item.Password)</li>
+        }
+
+    </ol>
+
+    <div>
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <input type="submit" value="Home" />
+        }
+
+    </div>
+
+</body>
+</html>

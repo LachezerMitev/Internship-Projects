@@ -10,11 +10,19 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractStatus
 {
     class ContractStatusParamConverter : IContractStatusParamConverter
     {
-        IContractStatusDao ContractStatusDao = new ContractStatusDao();
 
         public Data.Entity.ContractStatus Convert(ContractStatusParam param, Data.Entity.ContractStatus oldentity)
         {
+<<<<<<< Updated upstream
             Data.Entity.ContractStatus entity = null;
+=======
+            Data.Entity.ContractStatus entity = new Data.Entity.ContractStatus
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             if (oldentity != null)
             {

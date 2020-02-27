@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Model
 {
     interface IModelDao
     {
+<<<<<<< Updated upstream
         Data.Entity.Model Save(Data.Entity.Model entity);
         List<Data.Entity.Model> Save(List<Data.Entity.Model> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Model
 
         List<Data.Entity.Model> Find();
         Data.Entity.Model Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

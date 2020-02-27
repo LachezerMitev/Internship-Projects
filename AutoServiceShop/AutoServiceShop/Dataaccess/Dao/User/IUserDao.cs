@@ -18,7 +18,13 @@ namespace AutoServiceShop.Dataaccess.Dao.User
         void Delete(Data.Entity.User entity);
         void Delete(List<long> idList);
 
+<<<<<<< Updated upstream
         List<Data.Entity.User> Find();
         Data.Entity.User Find(long id);
+=======
+        //List<Data.Entity.User> Find();
+        //Data.Entity.User Find(long id);
+        //List<Data.Entity.User> FindByField(string field, string value);
+>>>>>>> Stashed changes
     }
 }

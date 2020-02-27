@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
 {
     class ContractStatusProcessor : IContractStatusProcessor
     {
+<<<<<<< Updated upstream
         IContractStatusDao ContractStatusDao = new ContractStatusDao();
 
         IContractStatusParamConverter ContractStatusParamConverter = new ContractStatusParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.ContractStatus
         }
 
         public void Update(List<ContractStatusParam> param)
+=======
+        public ContractStatusProcessor(IContractStatusDao dao, IContractStatusParamConverter paramConverter, IContractStatusResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.ContractStatus> entity = new List<Data.Entity.ContractStatus>();
             foreach (var item in param)

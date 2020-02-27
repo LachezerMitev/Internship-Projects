@@ -14,7 +14,16 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
 
         public Data.Entity.VehicleStatus Convert(VehicleStatusParam param, Data.Entity.VehicleStatus oldentity)
         {
+<<<<<<< Updated upstream
             Data.Entity.VehicleStatus entity = null;
+=======
+            Data.Entity.VehicleStatus entity = new Data.Entity.VehicleStatus
+            {
+                Id = param.Id,
+                Code = param.Code,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             if (oldentity != null)
             {

@@ -13,6 +13,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
     {
         public AccountResult Convert(Data.Entity.Account param)
         {
+<<<<<<< Updated upstream
             
             AccountResult result = new AccountResult()
             {
@@ -33,6 +34,17 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
             };
 
             return result;
+=======
+            if (param.AccountStatus == null || param.User == null || param.AccountType == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.AccountStatusId = param.AccountStatus.Id;
+            result.AccountStatusName = param.AccountStatus.Name;
+            result.UserId = param.User.Id;
+            result.UserName = param.User.Username;
+            result.AccountTypeId = param.AccountType.Id;
+            result.AccountTypeName = param.AccountType.Name;
+>>>>>>> Stashed changes
         }
     }
 }

@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroupStatus
 {
     interface IUserGroupStatusDao
     {
+<<<<<<< Updated upstream
         Data.Entity.UserGroupStatus Save(Data.Entity.UserGroupStatus entity);
         List<Data.Entity.UserGroupStatus> Save(List<Data.Entity.UserGroupStatus> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroupStatus
 
         List<Data.Entity.UserGroupStatus> Find();
         Data.Entity.UserGroupStatus Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

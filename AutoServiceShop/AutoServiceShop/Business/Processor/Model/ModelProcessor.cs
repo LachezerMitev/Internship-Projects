@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Model
 {
     class ModelProcessor : IModelProcessor
     {
+<<<<<<< Updated upstream
         IModelDao ModelDao = new ModelDao();
 
         IModelParamConverter ModelParamConverter = new ModelParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.Model
         }
 
         public void Update(List<ModelParam> param)
+=======
+        public ModelProcessor(IModelDao dao, IModelParamConverter paramConverter, IModelResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.Model> entity = new List<Data.Entity.Model>();
             foreach (var item in param)

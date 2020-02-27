@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.AutoPart
 {
     class AutoPartProcessor : IAutoPartProcessor
     {
+<<<<<<< Updated upstream
         IAutoPartDao AutoPartDao = new AutoPartDao();
 
         IAutoPartParamConverter AutoPartParamConverter = new AutoPartParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.AutoPart
         }
 
         public void Update(List<AutoPartParam> param)
+=======
+        public AutoPartProcessor(IAutoPartDao dao, IAutoPartParamConverter paramConverter, IAutoPartResultConvert resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.AutoPart> entity = new List<Data.Entity.AutoPart>();
             foreach (var item in param)

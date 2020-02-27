@@ -12,12 +12,17 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
 {
     class VehicleParamConverter : IVehicleParamConverter
     {
+<<<<<<< Updated upstream
         IVehicleDao VehicleDao = new VehicleDao();
         IVehicleStatusDao VehicleStatusDao = new VehicleStatusDao();
         ICustomerDao CustomerDao = new CustomerDao();
+=======
+        private readonly IVehicleStatusDao _vehicleStatusDao;
+>>>>>>> Stashed changes
 
         public Data.Entity.Vehicle Convert(VehicleParam param, Data.Entity.Vehicle oldentity)
         {
+<<<<<<< Updated upstream
             Data.Entity.Vehicle entity = null;
 
             if (oldentity != null)
@@ -39,6 +44,23 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
             entity.Mileage = param.Mileage;
             entity.DateOfProduction = param.DateOfProduction;
             entity.VehicleStatus = VehicleStatusDao.Find(param.VehicleStatusId);
+=======
+            _vehicleStatusDao = vehicleStatusDao;
+        }
+
+        public override void ConvertSpecific(VehicleParam param, Data.Entity.Vehicle entity)
+        {
+            entity.VehicleStatus = _vehicleStatusDao.Find(param.VehicleStatusId);
+        }
+
+        public override Data.Entity.Vehicle GetResult(VehicleParam param)
+        {
+            Data.Entity.Vehicle entity = new Data.Entity.Vehicle
+            {
+                Id = param.Id,
+                Code = param.Code
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

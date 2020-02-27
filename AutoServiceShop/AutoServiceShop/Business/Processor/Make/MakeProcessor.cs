@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Make
 {
     class MakeProcessor : IMakeProcessor
     {
+<<<<<<< Updated upstream
         IMakeDao MakeDao = new MakeDao();
 
         IMakeParamConverter MakeParamConverter = new MakeParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.Make
         }
 
         public void Update(List<MakeParam> param)
+=======
+        public MakeProcessor(IMakeDao dao, IMakeParamConverter paramConverter, IMakeResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.Make> entity = new List<Data.Entity.Make>();
             foreach (var item in param)

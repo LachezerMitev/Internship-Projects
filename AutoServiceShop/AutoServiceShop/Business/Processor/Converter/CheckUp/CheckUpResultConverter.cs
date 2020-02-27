@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUp
     {
         public CheckUpResult Convert(Data.Entity.CheckUp param)
         {
+<<<<<<< Updated upstream
             CheckUpResult result = new CheckUpResult()
             {
                 Code = param.Code,
@@ -34,6 +35,17 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUp
             };
 
             return result;
+=======
+            if (param.Vehicle == null || param.CheckUpStatus == null || param.Customer == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.VehicleId = param.Vehicle.Id;
+            result.VehicleName = param.Vehicle.Name;
+            result.CheckUpStatusId = param.CheckUpStatus.Id;
+            result.CheckUpStatusName = param.CheckUpStatus.Name;
+            result.CustomerId = param.Customer.Id;
+            result.CustomerName = param.Customer.Name;
+>>>>>>> Stashed changes
         }
     }
 }

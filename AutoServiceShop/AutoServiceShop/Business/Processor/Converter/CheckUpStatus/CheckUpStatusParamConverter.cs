@@ -10,11 +10,19 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUpStatus
 {
     class CheckUpStatusParamConverter : ICheckUpStatusParamConverter
     {
-        ICheckUpStatusDao CheckUpStatusDao = new CheckUpStatusDao();
 
         public Data.Entity.CheckUpStatus Convert(CheckUpStatusParam param, Data.Entity.CheckUpStatus oldentity)
         {
+<<<<<<< Updated upstream
             Data.Entity.CheckUpStatus entity = null;
+=======
+            Data.Entity.CheckUpStatus entity = new Data.Entity.CheckUpStatus
+            {
+                Code = param.Code,
+                Id = param.Id,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             if (oldentity != null)
             {

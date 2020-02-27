@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
     {
         public UserUserGroupResult Convert(Data.Entity.UserUserGroup param)
         {
+<<<<<<< Updated upstream
             UserUserGroupResult result = new UserUserGroupResult()
             {
                 Id = param.Id,
@@ -21,6 +22,15 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
             };
 
             return result;
+=======
+            if (param.User == null)
+                throw new Exception("Some or all items in the entity thаt are crucial were not found");
+
+            result.UserId = param.User.Id;
+            result.Username = param.User.Username;
+            result.UserGroupName = param.UserGroup.Name;
+            result.UserGroupId = param.UserGroup.Id;
+>>>>>>> Stashed changes
         }
     }
 }

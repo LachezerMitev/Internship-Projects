@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
             Data.Entity.VehicleStatus VehicleStatus1 = new Data.Entity.VehicleStatus
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.VehicleStatus VehicleStatus2 = new Data.Entity.VehicleStatus
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleStatus
             };
             Data.Entity.VehicleStatus VehicleStatus7 = new Data.Entity.VehicleStatus
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.VehicleStatus>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.VehicleStatus VehicleStatus8 = new Data.Entity.VehicleStatus

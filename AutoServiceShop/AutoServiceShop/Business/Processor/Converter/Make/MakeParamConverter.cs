@@ -10,7 +10,12 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
 {
     class MakeParamConverter : IMakeParamConverter
     {
+<<<<<<< Updated upstream
         IMakeDao MakeDao { get; set; }
+=======
+        
+        public override void ConvertSpecific(MakeParam param, Data.Entity.Make entity) { }
+>>>>>>> Stashed changes
 
         public Data.Entity.Make Convert(MakeParam param, Data.Entity.Make oldentity)
         {
@@ -18,6 +23,7 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
             
             if (oldentity != null)
             {
+<<<<<<< Updated upstream
                 entity = oldentity;
             }
             else
@@ -30,6 +36,12 @@ namespace AutoServiceShop.Business.Processor.Converter.Make
                     Name = param.Name
                 };
             }
+=======
+                Code = param.Code,
+                Id = param.Id,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

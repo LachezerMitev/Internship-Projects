@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.ContractType
 {
     interface IContractTypeDao
     {
+<<<<<<< Updated upstream
         Data.Entity.ContractType Save(Data.Entity.ContractType entity);
         List<Data.Entity.ContractType> Save(List<Data.Entity.ContractType> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.ContractType
 
         List<Data.Entity.ContractType> Find();
         Data.Entity.ContractType Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

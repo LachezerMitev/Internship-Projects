@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.UserGroup
 {
     class UserGroupProcessor : IUserGroupProcessor
     {
+<<<<<<< Updated upstream
         IUserGroupDao UserGroupDao = new UserGroupDao();
 
         IUserGroupParamConverter UserGroupParamConverter = new UserGroupParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.UserGroup
         }
 
         public void Update(List<UserGroupParam> param)
+=======
+        public UserGroupProcessor(IUserGroupDao dao, IUserGroupParamConverter paramConverter, IUserGroupResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.UserGroup> entity = new List<Data.Entity.UserGroup>();
             foreach (var item in param)

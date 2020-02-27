@@ -16,6 +16,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Model
             Data.Entity.Model Model1 = new Data.Entity.Model
             {
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.Model Model2 = new Data.Entity.Model
@@ -41,6 +42,10 @@ namespace AutoServiceShop.Dataaccess.Dao.Model
             };
             Data.Entity.Model Model7 = new Data.Entity.Model
             {
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.Model>>(json);
+        }
+>>>>>>> Stashed changes
 
             };
             Data.Entity.Model Model8 = new Data.Entity.Model

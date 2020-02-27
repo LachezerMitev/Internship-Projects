@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
+<<<<<<< Updated upstream
     class UserUserGroupResult : BaseResultNamed
+=======
+    public class UserUserGroupResult : BaseResult
+>>>>>>> Stashed changes
     {
-        public List<Data.Entity.UserGroup> UserGroupList { get; set; }
-
         public long UserId { get; set; }
+
+        public long UserGroupId { get; set; }
+
+        public string UserGroupName { get; set; }
+
         public string Username { get; set; }
     }
 }

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< Updated upstream
+=======
+using AutoServiceShop.Business.Processor.Converter.Common;
+using AutoServiceShop.Business.Processor.Converter.Encryption;
+>>>>>>> Stashed changes
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.User;
 
@@ -10,7 +15,14 @@ namespace AutoServiceShop.Business.Processor.Converter.User
 {
     class UserParamConverter : IUserParamConverter
     {
+<<<<<<< Updated upstream
         IUserDao UserDao { get; set; }
+=======
+        public override void ConvertSpecific(UserParam param, Data.Entity.User entity) 
+        {
+            entity.Password = Encryptor.SHA512(param.Password);
+        }
+>>>>>>> Stashed changes
 
         public Data.Entity.User Convert(UserParam param, Data.Entity.User oldentity)
         {

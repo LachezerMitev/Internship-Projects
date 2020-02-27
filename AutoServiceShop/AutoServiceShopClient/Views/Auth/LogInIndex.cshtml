@@ -1,0 +1,64 @@
+﻿@model AutoServiceShopClient.Data.Entity.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        #Auth-div {
+            position: absolute;
+            left: 40%;
+            top:40%;
+            border: 1px solid #000;
+            padding: 10px 10px;
+        }
+        .field-validation-error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="Auth-div">
+        @using (Html.BeginForm("LogIn", "Auth", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline">Log In</td>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(model => model.Username)</td>
+                    <td> @Html.EditorFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(model => model.Password)</td>
+                    <td> @Html.EditorFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Log In" />
+                        <input type="reset" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        }
+    </div>
+</body>
+</html>

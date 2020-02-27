@@ -9,11 +9,19 @@ using AutoServiceShop.Dataaccess.Dao.Account;
 
 namespace AutoServiceShop.Business.Processor.Account
 {
+<<<<<<< Updated upstream
     interface IAccountProcessor
     {
 
         AccountResult Create(AccountParam param);
         List<AccountResult> Create(List<AccountParam> param);
+=======
+    public interface IAccountProcessor
+         : IBaseProcessor<IAccountParamConverter, IAccountResultConverter, AccountParam, AccountResult, IAccountDao, long, Data.Entity.Account>
+    {
+        //AccountResult Create(AccountParam param);
+        //List<AccountResult> Create(List<AccountParam> param);
+>>>>>>> Stashed changes
 
         void Update(long id, AccountParam param);
         void Update(List<AccountParam> param);

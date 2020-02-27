@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Issue
 {
     class IssueProcessor : IIssueProcessor
     {
+<<<<<<< Updated upstream
         IIssueDao IssueDao = new IssueDao();
 
         IIssueParamConverter IssueParamConverter = new IssueParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.Issue
         }
 
         public void Update(List<IssueParam> param)
+=======
+        public IssueProcessor(IIssueDao dao, IIssueParamConverter paramConverter, IIssueResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.Issue> entity = new List<Data.Entity.Issue>();
             foreach (var item in param)

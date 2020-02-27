@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
 {
     interface IVehicleMakeModelDao
     {
+<<<<<<< Updated upstream
         Data.Entity.VehicleMakeModel Save(Data.Entity.VehicleMakeModel entity);
         List<Data.Entity.VehicleMakeModel> Save(List<Data.Entity.VehicleMakeModel> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
 
         List<Data.Entity.VehicleMakeModel> Find();
         Data.Entity.VehicleMakeModel Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

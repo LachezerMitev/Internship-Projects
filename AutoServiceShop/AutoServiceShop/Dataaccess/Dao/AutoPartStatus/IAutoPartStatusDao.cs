@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPartStatus
 {
     interface IAutoPartStatusDao
     {
+<<<<<<< Updated upstream
         Data.Entity.AutoPartStatus Save(Data.Entity.AutoPartStatus entity);
         List<Data.Entity.AutoPartStatus> Save(List<Data.Entity.AutoPartStatus> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPartStatus
 
         List<Data.Entity.AutoPartStatus> Find();
         Data.Entity.AutoPartStatus Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

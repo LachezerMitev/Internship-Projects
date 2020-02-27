@@ -1,0 +1,25 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateResult</title>
+</head>
+<body>
+    <div>
+        Value: @Model
+    </div>
+    <div>
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <input type="submit" value="Home" />
+        }
+
+    </div>
+</body>
+</html>

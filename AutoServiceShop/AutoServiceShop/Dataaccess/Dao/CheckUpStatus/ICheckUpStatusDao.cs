@@ -8,6 +8,7 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
 {
     interface ICheckUpStatusDao
     {
+<<<<<<< Updated upstream
         Data.Entity.CheckUpStatus Save(Data.Entity.CheckUpStatus entity);
         List<Data.Entity.CheckUpStatus> Save(List<Data.Entity.CheckUpStatus> entity);
 
@@ -20,5 +21,7 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
 
         List<Data.Entity.CheckUpStatus> Find();
         Data.Entity.CheckUpStatus Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -10,7 +10,6 @@ namespace AutoServiceShop.Business.Processor.Converter.UserGroupStatus
 {
     class UserGroupStatusParamConverter : IUserGroupStatusParamConverter
     {
-        IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
 
         public Data.Entity.UserGroupStatus Convert(UserGroupStatusParam param, Data.Entity.UserGroupStatus oldentity)
         {
@@ -18,6 +17,7 @@ namespace AutoServiceShop.Business.Processor.Converter.UserGroupStatus
 
             if (oldentity != null)
             {
+<<<<<<< Updated upstream
                 entity = oldentity;
             }
             else
@@ -31,6 +31,12 @@ namespace AutoServiceShop.Business.Processor.Converter.UserGroupStatus
                 };
             }
 
+=======
+                Id = param.Id,
+                Code = param.Code,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

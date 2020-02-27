@@ -13,6 +13,7 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
 
         static AccountStatusStorage()
         {
+<<<<<<< Updated upstream
             Data.Entity.AccountStatus accountStatus1 = new Data.Entity.AccountStatus
             {
                 Code = "ASCI",
@@ -96,6 +97,12 @@ namespace AutoServiceShop.Dataaccess.Dao.AccountStatus
             AccountStatusList.Add(accountStatus8);
             AccountStatusList.Add(accountStatus9);
             AccountStatusList.Add(accountStatus10);
+=======
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\AccountStatuses.json");
+
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.AccountStatus>>(json);
+        }
+>>>>>>> Stashed changes
 
             AccountStatusDictionary.Add(accountStatus1.Id, accountStatus1);
             AccountStatusDictionary.Add(accountStatus2.Id, accountStatus2);

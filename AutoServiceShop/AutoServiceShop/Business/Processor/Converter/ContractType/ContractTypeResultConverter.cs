@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractType
     {
         public ContractTypeResult Convert(Data.Entity.ContractType param)
         {
+<<<<<<< Updated upstream
             ContractTypeResult result = new ContractTypeResult()
             {
                 Code = param.Code,
@@ -20,6 +21,8 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractType
             };
 
             return result;
+=======
+>>>>>>> Stashed changes
         }
     }
 }

@@ -11,6 +11,7 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
     class VehicleMakeModelProcessor : IVehicleMakeModelProcessor
     {
+<<<<<<< Updated upstream
         IVehicleMakeModelDao VehicleMakeModelDao = new VehicleMakeModelDao();
 
         IVehicleMakeModelParamConverter VehicleMakeModelParamConverter = new VehicleMakeModelParamConverter();
@@ -84,6 +85,9 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
         }
 
         public void Update(List<VehicleMakeModelParam> param)
+=======
+        public VehicleMakeModelProcessor(IVehicleMakeModelDao dao, IVehicleMakeModelParamConverter paramConverter, IVehicleMakeModelResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.VehicleMakeModel> entity = new List<Data.Entity.VehicleMakeModel>();
             foreach (var item in param)

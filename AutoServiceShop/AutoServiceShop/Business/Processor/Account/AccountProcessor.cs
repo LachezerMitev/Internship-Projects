@@ -12,6 +12,7 @@ namespace AutoServiceShop.Business.Processor.Account
 {
     class AccountProcessor : IAccountProcessor
     {
+<<<<<<< Updated upstream
         public IAccountDao AccountDao = new AccountDao();
 
         public IAccountParamConverter AccountParamConverter = new AccountParamConverter();
@@ -98,14 +99,10 @@ namespace AutoServiceShop.Business.Processor.Account
         }
 
         public void Update(List<AccountParam> param)
+=======
+        public AccountProcessor(IAccountDao dao, IAccountParamConverter paramConverter, IAccountResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.Account> entity = new List<Data.Entity.Account>();
-            foreach(var item in param)
-            {
-                Data.Entity.Account oldEntity = AccountDao.Find(item.Id);
-                Data.Entity.Account newEntity = AccountParamConverter.Convert(item, null);
-                AccountDao.Update(newEntity);
-            }
         }
     }
 }
