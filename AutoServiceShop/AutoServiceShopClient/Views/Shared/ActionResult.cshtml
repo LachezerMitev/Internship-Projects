@@ -1,0 +1,71 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Result</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div.hidden').fadeIn(1500).removeClass('hidden');
+        });
+    </script>
+    <style>
+        div.hidden {
+            display: none
+        }
+
+        .container {
+            height: 200px;
+            width: 300px;
+            position: relative;
+            border: 3px solid #007AFF;
+            display: flex;
+            align-items: center;
+            margin-top: 15%;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .button-center {
+            margin: 0;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        body {
+            background-image: url('https://cdn3.f-cdn.com/contestentries/1476645/14106457/5c7905a19aaa6_thumb900.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="hidden container rounded p-3 mb-2 bg-primary text-white text-center">
+        <p class="display-4">@Model</p>
+    </div>
+    <div class="hidden button-center" style="width: 200px;">
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Return to Home</button>
+        }
+    </div>
+</body>
+</html>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 {
-    class VehicleMakeModelResult : BaseResult
+    public class VehicleMakeModelResult : BaseResult
     {
         public long VehicleId { get; set; }
         public string VehicleName { get; set; }

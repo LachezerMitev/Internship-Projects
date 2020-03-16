@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Contract;
 using AutoServiceShop.Business.Processor.Converter.Contract;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Contract
 {
-    class ContractProcessor : IContractProcessor
+    public class ContractProcessor
+        : BaseProcessor<IContractParamconverter, IContractResultConverter, ContractParam, ContractResult, IContractDao, long, Data.Entity.Contract>, IContractProcessor
     {
+<<<<<<< Updated upstream
         IContractDao ContractDao = new ContractDao();
 
         IContractParamconverter ContractParamConverter = new ContractParamConverter();
@@ -84,14 +87,10 @@ namespace AutoServiceShop.Business.Processor.Contract
         }
 
         public void Update(List<ContractParam> param)
+=======
+        public ContractProcessor(IContractDao dao, IContractParamconverter paramConverter, IContractResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.Contract> entity = new List<Data.Entity.Contract>();
-            foreach (var item in param)
-            {
-                Data.Entity.Contract oldEntity = ContractDao.Find(item.Id);
-                Data.Entity.Contract newEntity = ContractParamConverter.Convert(item, null);
-                ContractDao.Update(newEntity);
-            }
         }
     }
 }

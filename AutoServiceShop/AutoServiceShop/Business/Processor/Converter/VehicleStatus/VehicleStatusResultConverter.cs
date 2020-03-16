@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
 {
-    class VehicleStatusResultConverter : IVehicleStatusResultConverter
+    class VehicleStatusResultConverter : BaseResultConverter<Data.Entity.VehicleStatus, VehicleStatusResult>, IVehicleStatusResultConverter
     {
-        public VehicleStatusResult Convert(Data.Entity.VehicleStatus param)
+        public override void ConvertSpecific(Data.Entity.VehicleStatus param, VehicleStatusResult result)
         {
+<<<<<<< Updated upstream
             VehicleStatusResult result = new VehicleStatusResult()
             {
                 Code = param.Code,
@@ -20,6 +22,8 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
             };
 
             return result;
+=======
+>>>>>>> Stashed changes
         }
     }
 }

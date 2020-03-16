@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUp
 {
-    class CheckUpResult : BaseResultNamed
+    public class CheckUpResult : BaseResultNamed
     {
 
         public long CheckUpStatusId { get; set; }
 
         public string CheckUpStatusName { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
+<<<<<<< Updated upstream
         public List<Data.Entity.AutoPart> PartList { get; set; }
 
+=======
+        [DataType(DataType.Date)]
+>>>>>>> Stashed changes
         public DateTime CheckUpEnd { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime CheckUpStart { get; set; }
 
         public List<Data.Entity.Issue> IssueList { get; set; }

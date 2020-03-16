@@ -1,4 +1,6 @@
-﻿using AutoServiceShop.Business.Processor.Converter.Model;
+﻿using AutoServiceShop.Business.Processor.Common;
+using AutoServiceShop.Business.Processor.Converter.Model;
+using AutoServiceShop.Dataaccess.Dao.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +9,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Model
 {
-    interface IModelProcessor
+    public interface IModelProcessor
+        : IBaseProcessor<IModelParamConverter, IModelResultConverter, ModelParam, ModelResult, IModelDao, long, Data.Entity.Model>
     {
-        ModelResult Create(ModelParam param);
-        List<ModelResult> Create(List<ModelParam> param);
-
-        void Update(long id, ModelParam param);
-        void Update(List<ModelParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        ModelResult Find(long id);
-        List<ModelResult> Find();
     }
 }

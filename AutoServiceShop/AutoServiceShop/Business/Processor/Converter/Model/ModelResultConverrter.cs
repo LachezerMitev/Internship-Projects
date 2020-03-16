@@ -3,23 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.Model
 {
-    class ModelResultConverrter : IModelResultConverter
+    class ModelResultConverrter : BaseResultConverter<Data.Entity.Model, ModelResult>, IModelResultConverter
     {
-        public ModelResult Convert(Data.Entity.Model param)
-        {
-            ModelResult result = new ModelResult()
-            {
-                Code = param.Code,
-                Id = param.Id,
-                Description = param.Description,
-                Name = param.Name
-            };
-
-            return result;
-        }
+        public override void ConvertSpecific(Data.Entity.Model param, ModelResult result) { }
     }
 }

@@ -8,7 +8,7 @@ using AutoServiceShop.Dataaccess.Dao.AutoPartStatus;
 
 namespace AutoServiceShop.Business.Processor.Converter.AutoPartStatus
 {
-    class AutoPartStatusParam : BaseParamNamed
+    public class AutoPartStatusParam : BaseParamNamed
     {
     }
 }

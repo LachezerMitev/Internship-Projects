@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.Contract
 {
-    interface IContractDao
+    public interface IContractDao : IBaseDao<Data.Entity.Contract, long>
     {
+<<<<<<< Updated upstream
         Data.Entity.Contract Save(Data.Entity.Contract entity);
         List<Data.Entity.Contract> Save(List<Data.Entity.Contract> entity);
 
@@ -20,5 +22,7 @@ namespace AutoServiceShop.Dataaccess.Dao.Contract
 
         List<Data.Entity.Contract> Find();
         Data.Entity.Contract Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

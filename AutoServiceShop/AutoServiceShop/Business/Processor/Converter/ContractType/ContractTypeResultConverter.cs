@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.ContractType
 {
-    class ContractTypeResultConverter : IContractTypeResultConverter
+    class ContractTypeResultConverter : BaseResultConverter<Data.Entity.ContractType, ContractTypeResult>, IContractTypeResultConverter
     {
-        public ContractTypeResult Convert(Data.Entity.ContractType param)
+        public override void ConvertSpecific(Data.Entity.ContractType param, ContractTypeResult result)
         {
+<<<<<<< Updated upstream
             ContractTypeResult result = new ContractTypeResult()
             {
                 Code = param.Code,
@@ -20,6 +22,8 @@ namespace AutoServiceShop.Business.Processor.Converter.ContractType
             };
 
             return result;
+=======
+>>>>>>> Stashed changes
         }
     }
 }

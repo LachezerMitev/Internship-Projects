@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "User Management Page";
+}
+<head style="color: #07181F;">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div.hidden').fadeIn(1500).removeClass('hidden');
+        });
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        div.hidden {
+            display: none
+        }
+
+        body {
+            background-image: url('https://cdn3.f-cdn.com/contestentries/1476645/14106457/5c7905a19aaa6_thumb900.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>User Management</title>
+</head>
+<div class="text-center hidden text-white">
+    <h1 class="display-4">Welcome</h1>
+    <p>This Is the User Management Panel</p>
+    <p></p>
+    <p></p>
+    <div>
+        @using (Html.BeginForm("ListAll", "User", FormMethod.Get))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">List All Users</button>
+        }
+
+    </div>
+    <p></p>
+    <div>
+        @using (Html.BeginForm("CreateIndex", "User", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Create a Users</button>
+        }
+    </div>
+    <p></p>
+    <div>
+        @using (Html.BeginForm("DeleteIndex", "User", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Delete a user</button>
+        }
+    </div>
+    <p></p>
+    <div>
+        @using (Html.BeginForm("UpdateIndex", "User", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Update a user</button>
+        }
+    </div>
+    <p></p>
+    <div>
+        @using (Html.BeginForm("FindIndex", "User", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Find a user</button>
+        }
+    </div>
+    <p></p>
+</div>
+<footer>
+    <div class="text-center hidden text-white">
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-blockt">Home</button>
+        }
+    </div>
+</footer>

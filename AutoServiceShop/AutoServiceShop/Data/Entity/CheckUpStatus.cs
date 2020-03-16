@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Entity
 {
-    class CheckUpStatus : NamedPersistent
+    public class CheckUpStatus : NamedPersistent
     {
     }
 }

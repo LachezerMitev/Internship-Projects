@@ -7,12 +7,14 @@ using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.Account;
 using AutoServiceShop.Dataaccess.Dao.User;
 using AutoServiceShop.Dataaccess.Dao.AccountStatus;
-using Newtonsoft.Json;
+using AutoServiceShop.Business.Processor.Converter.Common;
+using AutoServiceShop.Dataaccess.Dao.AccountType;
 
 namespace AutoServiceShop.Business.Processor.Converter.Account
 {
-    class AccountParamConverter : IAccountParamConverter
+    class AccountParamConverter : BaseParamConverter<AccountParam, Data.Entity.Account>, IAccountParamConverter
     {
+<<<<<<< Updated upstream
         IAccountDao AccountDao = new AccountDao();
         IUserDao UserDao = new UserDao();
         IAccountStatusDao AccountStatusDao = new AccountStatusDao();
@@ -42,6 +44,36 @@ namespace AutoServiceShop.Business.Processor.Converter.Account
             entity.Type = param.Type;
             entity.User = UserDao.Find(param.UserId);
             entity.AccountStatus = AccountStatusDao.Find(param.AccountStatusId);
+=======
+
+        private readonly IUserDao _userDao;
+
+        private readonly IAccountStatusDao _accountStatusDao; 
+
+        private readonly IAccountTypeDao _accountTypeDao;
+
+        public AccountParamConverter(IUserDao userDao, IAccountStatusDao accountStatusDao, IAccountTypeDao accountTypeDao)
+        {
+            _userDao = userDao;
+            _accountStatusDao = accountStatusDao;
+            _accountTypeDao = accountTypeDao;
+        }
+
+        public override void ConvertSpecific(AccountParam param, Data.Entity.Account entity)
+        {
+            entity.AccountStatus = _accountStatusDao.Find(param.AccountStatusId);
+            entity.User = _userDao.Find(param.UserId);
+            entity.AccountType = _accountTypeDao.Find(param.AccountTypeId);
+        }
+
+        public override Data.Entity.Account GetResult(AccountParam param)
+        {
+            Data.Entity.Account entity = new Data.Entity.Account
+            {
+                Code = param.Code,
+                Id = param.Id,
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

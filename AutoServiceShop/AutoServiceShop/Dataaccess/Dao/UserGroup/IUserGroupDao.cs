@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.UserGroup
 {
-    interface IUserGroupDao
+    public interface IUserGroupDao : IBaseDao<Data.Entity.UserGroup, long>
     {
+<<<<<<< Updated upstream
         Data.Entity.UserGroup Save(Data.Entity.UserGroup entity);
         List<Data.Entity.UserGroup> Save(List<Data.Entity.UserGroup> entity);
 
@@ -20,5 +22,7 @@ namespace AutoServiceShop.Dataaccess.Dao.UserGroup
 
         List<Data.Entity.UserGroup> Find();
         Data.Entity.UserGroup Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

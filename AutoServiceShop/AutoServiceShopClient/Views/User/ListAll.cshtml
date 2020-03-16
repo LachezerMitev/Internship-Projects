@@ -1,0 +1,54 @@
+﻿@model List<AutoServiceShopClient.Data.Entity.User>
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "All Users";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div.hidden').fadeIn(1500).removeClass('hidden');
+        });
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        div.hidden {
+            display: none
+        }
+
+        body {
+            background-image: url('https://cdn3.f-cdn.com/contestentries/1476645/14106457/5c7905a19aaa6_thumb900.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>List all users</title>
+</head>
+<body>
+    <div style="width:60%; margin:0 auto;" class="hidden">
+        <p></p>
+        <ol>
+
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">@string.Format("{0} - {1}, {2}", item.Id, item.Username, item.Password)</li>
+            }
+
+        </ol>
+        <p></p>
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">Home</button>
+        }
+    </div>
+</body>
+</html>

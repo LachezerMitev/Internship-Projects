@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 {
-    class VehicleMakeModelResultConverter : IVehicleMakeModelResultConverter
+    class VehicleMakeModelResultConverter : BaseResultConverter<Data.Entity.VehicleMakeModel, VehicleMakeModelResult>, IVehicleMakeModelResultConverter
     {
-        public VehicleMakeModelResult Convert(Data.Entity.VehicleMakeModel param)
+        public override void ConvertSpecific(Data.Entity.VehicleMakeModel param, VehicleMakeModelResult result)
         {
+<<<<<<< Updated upstream
             VehicleMakeModelResult result = new VehicleMakeModelResult()
             {
                 Id = param.Id,
@@ -20,12 +22,19 @@ namespace AutoServiceShop.Business.Processor.Converter.VehicleMakeModel
 
                 Modelid = param.Model.Id,
                 ModelName = param.Model.Name,
+=======
+            if (param.Vehicle == null || param.Model == null || param.Make == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
 
-                MakeId = param.Make.Id,
-                MakeName = param.Make.Name
-            };
+            result.VehicleId = param.Vehicle.Id;
+            result.VehicleName = param.Vehicle.Name;
+>>>>>>> Stashed changes
 
-            return result;
+            result.Modelid = param.Model.Id;
+            result.ModelName = param.Model.Name;
+
+            result.MakeId = param.Make.Id;
+            result.MakeName = param.Make.Name;
         }
     }
 }

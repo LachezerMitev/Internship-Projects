@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.UserGroupStatus;
 using AutoServiceShop.Business.Processor.Converter.UserGroupStatus;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.UserGroupStatus
 {
-    class UserGroupStatusProcessor : IUserGroupStatusProcessor
+    public class UserGroupStatusProcessor
+        : BaseProcessor<IUserGroupStatusParamConverter, IUserGroupStatusResultConverter, UserGroupStatusParam, UserGroupStatusResult, IUserGroupStatusDao, long, Data.Entity.UserGroupStatus>, IUserGroupStatusProcessor
     {
+<<<<<<< Updated upstream
         IUserGroupStatusDao UserGroupStatusDao = new UserGroupStatusDao();
 
         IUserGroupStatusParamConverter UserGroupStatusParamConverter = new UserGroupStatusParamConverter();
@@ -84,14 +87,10 @@ namespace AutoServiceShop.Business.Processor.UserGroupStatus
         }
 
         public void Update(List<UserGroupStatusParam> param)
+=======
+        public UserGroupStatusProcessor(IUserGroupStatusDao dao, IUserGroupStatusParamConverter paramConverter, IUserGroupStatusResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.UserGroupStatus> entity = new List<Data.Entity.UserGroupStatus>();
-            foreach (var item in param)
-            {
-                Data.Entity.UserGroupStatus oldEntity = UserGroupStatusDao.Find(item.Id);
-                Data.Entity.UserGroupStatus newEntity = UserGroupStatusParamConverter.Convert(item, null);
-                UserGroupStatusDao.Update(newEntity);
-            }
         }
     }
 }

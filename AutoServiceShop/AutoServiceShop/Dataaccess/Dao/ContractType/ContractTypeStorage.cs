@@ -1,21 +1,24 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.ContractType
 {
-    class ContractTypeStorage
+    class ContractTypeStorage : BaseStorage<Data.Entity.ContractType, long>
     {
-        public static List<Data.Entity.ContractType> ContractTypeList = new List<Data.Entity.ContractType>();
-        public static Dictionary<long, Data.Entity.ContractType> ContractTypeDictionary = new Dictionary<long, Data.Entity.ContractType>();
+        public static List<Data.Entity.ContractType> List = new List<Data.Entity.ContractType>();
+        public static Dictionary<long, Data.Entity.ContractType> Dictionary = new Dictionary<long, Data.Entity.ContractType>();
 
         static ContractTypeStorage()
         {
-            Data.Entity.ContractType ContractType1 = new Data.Entity.ContractType
-            {
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\ContractTypes.json");
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.ContractType ContractType2 = new Data.Entity.ContractType
@@ -41,43 +44,13 @@ namespace AutoServiceShop.Dataaccess.Dao.ContractType
             };
             Data.Entity.ContractType ContractType7 = new Data.Entity.ContractType
             {
-
-            };
-            Data.Entity.ContractType ContractType8 = new Data.Entity.ContractType
-            {
-
-            };
-            Data.Entity.ContractType ContractType9 = new Data.Entity.ContractType
-            {
-
-            };
-            Data.Entity.ContractType ContractType10 = new Data.Entity.ContractType
-            {
-
-            };
-
-            ContractTypeList.Add(ContractType1);
-            ContractTypeList.Add(ContractType2);
-            ContractTypeList.Add(ContractType3);
-            ContractTypeList.Add(ContractType4);
-            ContractTypeList.Add(ContractType5);
-            ContractTypeList.Add(ContractType6);
-            ContractTypeList.Add(ContractType7);
-            ContractTypeList.Add(ContractType8);
-            ContractTypeList.Add(ContractType9);
-            ContractTypeList.Add(ContractType10);
-
-            ContractTypeDictionary.Add(ContractType1.Id, ContractType1);
-            ContractTypeDictionary.Add(ContractType2.Id, ContractType2);
-            ContractTypeDictionary.Add(ContractType3.Id, ContractType3);
-            ContractTypeDictionary.Add(ContractType4.Id, ContractType4);
-            ContractTypeDictionary.Add(ContractType5.Id, ContractType5);
-            ContractTypeDictionary.Add(ContractType6.Id, ContractType6);
-            ContractTypeDictionary.Add(ContractType7.Id, ContractType7);
-            ContractTypeDictionary.Add(ContractType8.Id, ContractType8);
-            ContractTypeDictionary.Add(ContractType9.Id, ContractType9);
-            ContractTypeDictionary.Add(ContractType10.Id, ContractType10);
-
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.ContractType>>(json);
         }
+>>>>>>> Stashed changes
+
+        public override Dictionary<long, Data.Entity.ContractType> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\ContractTypes.json";
     }
 }

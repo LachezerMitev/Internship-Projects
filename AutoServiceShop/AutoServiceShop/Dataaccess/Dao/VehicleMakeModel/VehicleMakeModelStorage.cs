@@ -1,21 +1,24 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
 {
-    class VehicleMakeModelStorage
+    class VehicleMakeModelStorage : BaseStorage<Data.Entity.VehicleMakeModel, long>
     {
-        public static List<Data.Entity.VehicleMakeModel> VehicleMakeModelList = new List<Data.Entity.VehicleMakeModel>();
-        public static Dictionary<long, Data.Entity.VehicleMakeModel> VehicleMakeModelDictionary = new Dictionary<long, Data.Entity.VehicleMakeModel>();
+        public static List<Data.Entity.VehicleMakeModel> List = new List<Data.Entity.VehicleMakeModel>();
+        public static Dictionary<long, Data.Entity.VehicleMakeModel> Dictionary = new Dictionary<long, Data.Entity.VehicleMakeModel>();
 
         static VehicleMakeModelStorage()
         {
-            Data.Entity.VehicleMakeModel VehicleMakeModel1 = new Data.Entity.VehicleMakeModel
-            {
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\VehicleMakeModels.json");
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.VehicleMakeModel VehicleMakeModel2 = new Data.Entity.VehicleMakeModel
@@ -41,43 +44,13 @@ namespace AutoServiceShop.Dataaccess.Dao.VehicleMakeModel
             };
             Data.Entity.VehicleMakeModel VehicleMakeModel7 = new Data.Entity.VehicleMakeModel
             {
-
-            };
-            Data.Entity.VehicleMakeModel VehicleMakeModel8 = new Data.Entity.VehicleMakeModel
-            {
-
-            };
-            Data.Entity.VehicleMakeModel VehicleMakeModel9 = new Data.Entity.VehicleMakeModel
-            {
-
-            };
-            Data.Entity.VehicleMakeModel VehicleMakeModel10 = new Data.Entity.VehicleMakeModel
-            {
-
-            };
-
-            VehicleMakeModelList.Add(VehicleMakeModel1);
-            VehicleMakeModelList.Add(VehicleMakeModel2);
-            VehicleMakeModelList.Add(VehicleMakeModel3);
-            VehicleMakeModelList.Add(VehicleMakeModel4);
-            VehicleMakeModelList.Add(VehicleMakeModel5);
-            VehicleMakeModelList.Add(VehicleMakeModel6);
-            VehicleMakeModelList.Add(VehicleMakeModel7);
-            VehicleMakeModelList.Add(VehicleMakeModel8);
-            VehicleMakeModelList.Add(VehicleMakeModel9);
-            VehicleMakeModelList.Add(VehicleMakeModel10);
-
-            VehicleMakeModelDictionary.Add(VehicleMakeModel1.Id, VehicleMakeModel1);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel2.Id, VehicleMakeModel2);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel3.Id, VehicleMakeModel3);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel4.Id, VehicleMakeModel4);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel5.Id, VehicleMakeModel5);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel6.Id, VehicleMakeModel6);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel7.Id, VehicleMakeModel7);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel8.Id, VehicleMakeModel8);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel9.Id, VehicleMakeModel9);
-            VehicleMakeModelDictionary.Add(VehicleMakeModel10.Id, VehicleMakeModel10);
-
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.VehicleMakeModel>>(json);
         }
+>>>>>>> Stashed changes
+
+        public override Dictionary<long, Data.Entity.VehicleMakeModel> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\VehicleMakeModels.json";
     }
 }

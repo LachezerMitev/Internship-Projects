@@ -1,4 +1,6 @@
-﻿using AutoServiceShop.Business.Processor.Converter.UserUserGroup;
+﻿using AutoServiceShop.Business.Processor.Common;
+using AutoServiceShop.Business.Processor.Converter.UserUserGroup;
+using AutoServiceShop.Dataaccess.Dao.UserUserGroup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +9,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.UserUserGroup
 {
-    interface IUserUserGroupProcessor
+    public interface IUserUserGroupProcessor
+        : IBaseProcessor<IUserUserGroupParamConverter, IUserUserGroupResultConverter, UserUserGroupParam, UserUserGroupResult, IUserUserGroupDao, long, Data.Entity.UserUserGroup>
     {
-        UserUserGroupResult Create(UserUserGroupParam param);
-        List<UserUserGroupResult> Create(List<UserUserGroupParam> param);
-
-        void Update(long id, UserUserGroupParam param);
-        void Update(List<UserUserGroupParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        UserUserGroupResult Find(long id);
-        List<UserUserGroupResult> Find();
     }
 }

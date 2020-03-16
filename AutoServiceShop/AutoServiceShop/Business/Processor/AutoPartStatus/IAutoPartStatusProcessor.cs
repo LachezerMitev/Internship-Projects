@@ -3,23 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AutoServiceShop.Business.Processor.Common;
 using AutoServiceShop.Business.Processor.Converter.AutoPartStatus;
+using AutoServiceShop.Dataaccess.Dao.AutoPartStatus;
 
 namespace AutoServiceShop.Business.Processor.AutoPartStatus
 {
-    interface IAutoPartStatusProcessor
+    public interface IAutoPartStatusProcessor
+        : IBaseProcessor<IAutoPartStatusParamConverter, IAutoPartStatusResultConverter, AutoPartStatusParam, AutoPartStatusResult, IAutoPartStatusDao, long, Data.Entity.AutoPartStatus>
     {
-        AutoPartStatusResult Create(AutoPartStatusParam param);
-        List<AutoPartStatusResult> Create(List<AutoPartStatusParam> param);
-
-        void Update(long id, AutoPartStatusParam param);
-        void Update(List<AutoPartStatusParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        AutoPartStatusResult Find(long id);
-        List<AutoPartStatusResult> Find();
     }
 }

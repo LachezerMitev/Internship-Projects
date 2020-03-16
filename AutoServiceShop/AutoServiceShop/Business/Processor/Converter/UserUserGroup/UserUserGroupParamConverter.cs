@@ -6,16 +6,24 @@ using System.Threading.Tasks;
 using AutoServiceShop.Data.Entity;
 using AutoServiceShop.Dataaccess.Dao.UserUserGroup;
 using AutoServiceShop.Dataaccess.Dao.User;
+using AutoServiceShop.Business.Processor.Converter.Common;
+using AutoServiceShop.Dataaccess.Dao.UserGroup;
 
 namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 {
-    class UserUserGroupParamConverter : IUserUserGroupParamConverter
+    class UserUserGroupParamConverter : BaseParamConverter<UserUserGroupParam, Data.Entity.UserUserGroup>, IUserUserGroupParamConverter
     {
+<<<<<<< Updated upstream
         IUserUserGroupDao UserUserGroupDao = new UserUserGroupDao();
         IUserDao UserDao = new UserDao();
+=======
+        private readonly IUserDao _userDao;
+        private readonly IUserGroupDao _userGroupDao;
+>>>>>>> Stashed changes
 
-        public Data.Entity.UserUserGroup Convert(UserUserGroupParam param, Data.Entity.UserUserGroup oldentity)
+        public UserUserGroupParamConverter(IUserDao userDao, IUserGroupDao userGroupDao)
         {
+<<<<<<< Updated upstream
             Data.Entity.UserUserGroup entity = null;
 
             if (oldentity != null)
@@ -32,6 +40,25 @@ namespace AutoServiceShop.Business.Processor.Converter.UserUserGroup
 
             entity.UserGroupList = param.UserGroupList;
             entity.User = UserDao.Find(param.UserId);
+=======
+            _userDao = userDao;
+            _userGroupDao = userGroupDao;
+        }
+
+        public override void ConvertSpecific(UserUserGroupParam param, Data.Entity.UserUserGroup entity)
+        {
+            entity.User = _userDao.Find(param.UserId);
+            entity.UserGroup = _userGroupDao.Find(param.UserGroupId);
+        }
+
+        public override Data.Entity.UserUserGroup GetResult(UserUserGroupParam param)
+        {
+            Data.Entity.UserUserGroup entity = new Data.Entity.UserUserGroup
+            {
+                Id = param.Id,
+                Active = param.Active
+            };
+>>>>>>> Stashed changes
 
             return entity;
         }

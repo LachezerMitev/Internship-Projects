@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Make;
 using AutoServiceShop.Business.Processor.Converter.Make;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Make
 {
-    class MakeProcessor : IMakeProcessor
+    public class MakeProcessor
+        : BaseProcessor<IMakeParamConverter, IMakeResultConverter, MakeParam, MakeResult, IMakeDao, long, Data.Entity.Make>, IMakeProcessor
     {
+<<<<<<< Updated upstream
         IMakeDao MakeDao = new MakeDao();
 
         IMakeParamConverter MakeParamConverter = new MakeParamConverter();
@@ -84,14 +87,10 @@ namespace AutoServiceShop.Business.Processor.Make
         }
 
         public void Update(List<MakeParam> param)
+=======
+        public MakeProcessor(IMakeDao dao, IMakeParamConverter paramConverter, IMakeResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.Make> entity = new List<Data.Entity.Make>();
-            foreach (var item in param)
-            {
-                Data.Entity.Make oldEntity = MakeDao.Find(item.Id);
-                Data.Entity.Make newEntity = MakeParamConverter.Convert(item, null);
-                MakeDao.Update(newEntity);
-            }
         }
     }
 }

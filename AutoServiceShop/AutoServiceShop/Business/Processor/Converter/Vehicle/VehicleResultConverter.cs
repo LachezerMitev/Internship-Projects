@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.Vehicle
 {
-    class VehicleResultConverter : IVehicleResultConverter
+    class VehicleResultConverter : BaseResultConverter<Data.Entity.Vehicle, VehicleResult>, IVehicleResultConverter
     {
-        public VehicleResult Convert(Data.Entity.Vehicle param)
+        public override void ConvertSpecific(Data.Entity.Vehicle param, VehicleResult result)
         {
+<<<<<<< Updated upstream
             VehicleResult result = new VehicleResult()
             {
                 Code = param.Code,
@@ -27,6 +29,13 @@ namespace AutoServiceShop.Business.Processor.Converter.Vehicle
             };
 
             return result;
+=======
+            if (param.VehicleStatus == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.VehicleStatusId = param.VehicleStatus.Id;
+            result.VehicleStatusName = param.VehicleStatus.Name;
+>>>>>>> Stashed changes
         }
     }
 }

@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.Contract
 {
-    class ContractParam : BaseParamNamed
+    public class ContractParam : BaseParamNamed
     {
+        [DataType(DataType.Time)]
         public DateTime WorkDayStart { get; set; }
 
+        [DataType(DataType.Time)]
         public DateTime WorkDayEnd { get; set; }
 
-        public double Salary { get; set; }
+        public decimal Salary { get; set; }
 
         public long ContractStatusId { get; set; }
         public string ContractStatusName { get; set; }

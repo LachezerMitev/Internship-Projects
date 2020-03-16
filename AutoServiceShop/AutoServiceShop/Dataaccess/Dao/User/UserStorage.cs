@@ -1,25 +1,24 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.User
 {
-    class UserStorage
+    class UserStorage : BaseStorage<Data.Entity.User, long>
     {
-        public static List<Data.Entity.User> UserList = new List<Data.Entity.User>();
-        public static Dictionary<long, Data.Entity.User> UserDictionary = new Dictionary<long, Data.Entity.User>();
+        public static List<Data.Entity.User> List = new List<Data.Entity.User>();
+        public static Dictionary<long, Data.Entity.User> Dictionary = new Dictionary<long, Data.Entity.User>();
 
         static UserStorage()
         {
-            Data.Entity.User User1 = new Data.Entity.User
-            {
-                Id = 11,
-                Password = "123",
-                Username = "Joro"
-            };
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\Users.json");
 
+<<<<<<< Updated upstream
             Data.Entity.User User2 = new Data.Entity.User
             {
                 Id = 21,
@@ -86,18 +85,13 @@ namespace AutoServiceShop.Dataaccess.Dao.User
             UserList.Add(User8);
             UserList.Add(User9);
             UserList.Add(User10);
-
-            UserDictionary.Add(User1.Id, User1);
-            UserDictionary.Add(User2.Id, User2);
-            UserDictionary.Add(User3.Id, User3);
-            UserDictionary.Add(User4.Id, User4);
-            UserDictionary.Add(User5.Id, User5);
-            UserDictionary.Add(User6.Id, User6);
-            UserDictionary.Add(User7.Id, User7);
-            UserDictionary.Add(User8.Id, User8);
-            UserDictionary.Add(User9.Id, User9);
-            UserDictionary.Add(User10.Id, User10);
-
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.User>>(json);
         }
+>>>>>>> Stashed changes
+
+        public override Dictionary<long, Data.Entity.User> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\Users.json";
     }
 }

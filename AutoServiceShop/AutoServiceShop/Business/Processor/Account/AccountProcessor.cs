@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Account;
 using AutoServiceShop.Business.Processor.Converter.Account;
-using Newtonsoft.Json;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Account
 {
-    class AccountProcessor : IAccountProcessor
+    public class AccountProcessor
+        : BaseProcessor<IAccountParamConverter, IAccountResultConverter, AccountParam, AccountResult, IAccountDao, long, Data.Entity.Account>, IAccountProcessor
     {
+<<<<<<< Updated upstream
         public IAccountDao AccountDao = new AccountDao();
 
         public IAccountParamConverter AccountParamConverter = new AccountParamConverter();
@@ -98,6 +100,9 @@ namespace AutoServiceShop.Business.Processor.Account
         }
 
         public void Update(List<AccountParam> param)
+=======
+        public AccountProcessor(IAccountDao dao, IAccountParamConverter paramConverter, IAccountResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
             List<Data.Entity.Account> entity = new List<Data.Entity.Account>();
             foreach(var item in param)

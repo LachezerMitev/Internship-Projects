@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< Updated upstream
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceShop", "AutoServiceShop\AutoServiceShop.csproj", "{6EE6F1BB-85B9-4397-9654-4B54F5C42F0B}"
+=======
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceShop", "AutoServiceShop\AutoServiceShop.csproj", "{F6BBDD3F-0C0D-4992-813F-1EF2BE14451B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceShopClient", "AutoServiceShopClient\AutoServiceShopClient.csproj", "{B447EE62-5D14-4D50-8354-22D1C3FBDC9E}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +20,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< Updated upstream
 		{6EE6F1BB-85B9-4397-9654-4B54F5C42F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EE6F1BB-85B9-4397-9654-4B54F5C42F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE6F1BB-85B9-4397-9654-4B54F5C42F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EE6F1BB-85B9-4397-9654-4B54F5C42F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{F6BBDD3F-0C0D-4992-813F-1EF2BE14451B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BBDD3F-0C0D-4992-813F-1EF2BE14451B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BBDD3F-0C0D-4992-813F-1EF2BE14451B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BBDD3F-0C0D-4992-813F-1EF2BE14451B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B447EE62-5D14-4D50-8354-22D1C3FBDC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B447EE62-5D14-4D50-8354-22D1C3FBDC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B447EE62-5D14-4D50-8354-22D1C3FBDC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B447EE62-5D14-4D50-8354-22D1C3FBDC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< Updated upstream
 		SolutionGuid = {C1EAC7B5-05F5-46B0-A67D-AAA4E5E70762}
+=======
+		SolutionGuid = {35A92729-D58E-4C5C-B31B-A0B692906F11}
+>>>>>>> Stashed changes
 	EndGlobalSection
 EndGlobal

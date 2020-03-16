@@ -1,4 +1,6 @@
-﻿using AutoServiceShop.Business.Processor.Converter.VehicleStatus;
+﻿using AutoServiceShop.Business.Processor.Common;
+using AutoServiceShop.Business.Processor.Converter.VehicleStatus;
+using AutoServiceShop.Dataaccess.Dao.VehicleStatus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +9,8 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.VehicleStatus
 {
-    interface IVehicleStatusProcessor
+    public interface IVehicleStatusProcessor
+        : IBaseProcessor<IVehicleStatusParamConverter, IVehicleStatusResultConverter, VehicleStatusParam, VehicleStatusResult, IVehicleStatusDao, long, Data.Entity.VehicleStatus>
     {
-        VehicleStatusResult Create(VehicleStatusParam param);
-        List<VehicleStatusResult> Create(List<VehicleStatusParam> param);
-
-        void Update(long id, VehicleStatusParam param);
-        void Update(List<VehicleStatusParam> param);
-
-        void Delete(long id);
-        void Delete(List<long> idList);
-
-        VehicleStatusResult Find(long id);
-        List<VehicleStatusResult> Find();
     }
 }

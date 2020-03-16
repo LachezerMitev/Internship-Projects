@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,26 @@ using AutoServiceShop.Business.Processor.Converter.Account;
 using AutoServiceShop.Presentation.service.Account;
 using AutoServiceShop.Data.Common;
 using System.Reflection;
+=======
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+>>>>>>> Stashed changes
 
 namespace AutoServiceShop
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+<<<<<<< Updated upstream
             AccountParam testParam = new AccountParam
             {
                 FirstName = "Lubo",
@@ -98,16 +112,25 @@ namespace AutoServiceShop
                 }
 
                 PropertyInfo[] properties = item.GetProperties();
+=======
+            CreateHostBuilder(args).Build().Run();
+        }
+>>>>>>> Stashed changes
 
-                foreach (var property in properties)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    // Display each method 
-                    Console.WriteLine("--> Property : {0}", property.Name);
+                    webBuilder.UseStartup<Startup>();
+                });
 
+<<<<<<< Updated upstream
                     
                 }
             }
             Console.ReadLine();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

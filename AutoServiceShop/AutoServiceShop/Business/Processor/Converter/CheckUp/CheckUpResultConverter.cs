@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoServiceShop.Business.Processor.Converter.Common;
 using AutoServiceShop.Data.Entity;
 
 namespace AutoServiceShop.Business.Processor.Converter.CheckUp
 {
-    class CheckUpResultConverter : ICheckUpResultConverter
+    class CheckUpResultConverter : BaseResultConverter<Data.Entity.CheckUp, CheckUpResult>, ICheckUpResultConverter
     {
-        public CheckUpResult Convert(Data.Entity.CheckUp param)
+        public override void ConvertSpecific(Data.Entity.CheckUp param, CheckUpResult result)
         {
+<<<<<<< Updated upstream
             CheckUpResult result = new CheckUpResult()
             {
                 Code = param.Code,
@@ -34,6 +36,17 @@ namespace AutoServiceShop.Business.Processor.Converter.CheckUp
             };
 
             return result;
+=======
+            if (param.Vehicle == null || param.CheckUpStatus == null || param.Customer == null)
+                throw new Exception("Some or all items in the entity taht are crucial were not found");
+
+            result.VehicleId = param.Vehicle.Id;
+            result.VehicleName = param.Vehicle.Name;
+            result.CheckUpStatusId = param.CheckUpStatus.Id;
+            result.CheckUpStatusName = param.CheckUpStatus.Name;
+            result.CustomerId = param.Customer.Id;
+            result.CustomerName = param.Customer.Name;
+>>>>>>> Stashed changes
         }
     }
 }

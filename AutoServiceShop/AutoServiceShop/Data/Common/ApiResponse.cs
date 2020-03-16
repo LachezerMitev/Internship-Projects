@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Data.Common
 {
-    class ApiResponse
+    public class ApiResponse
     {
         public string text;
         public bool result;

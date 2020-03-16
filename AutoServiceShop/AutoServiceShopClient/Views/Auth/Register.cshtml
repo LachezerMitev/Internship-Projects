@@ -1,0 +1,106 @@
+﻿@model AutoServiceShopClient.Data.Entity.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div.hidden').fadeIn(1500).removeClass('hidden');
+        });
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register a new user</title>
+    <style>
+        div.hidden {
+            display: none
+        }
+
+        .container {
+            height: 200px;
+            width: 200px;
+            position: relative;
+            border: 3px solid #007AFF;
+            display: flex;
+            align-items: center;
+            margin-top: 15%;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        body {
+            background-image: url('https://cdn3.f-cdn.com/contestentries/1476645/14106457/5c7905a19aaa6_thumb900.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="hidden container rounded p-3 mb-2 bg-primary text-white ">
+        @using (Html.BeginForm("Register", "Auth", FormMethod.Post))
+        {
+            <table class="center" style="font-family: Arial, Helvetica, sans-serif;
+">
+                <tr>
+                    <td></td>
+                    <td class="display-4 font-weight-bold">Register</td>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(model => model.Username)  </td>
+                    <td> @Html.EditorFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(model => model.Password)</td>
+                    <td> @Html.EditorFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td>
+                            @Html.DropDownList("group", new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Admin", Value = "1" },
+                                   new SelectListItem{ Text="User", Value = "2" },
+                                   new SelectListItem{ Text="Worker", Value = "3" },
+                                   new SelectListItem{ Text="Client", Value = "4" },
+                                   new SelectListItem{ Text="Manager", Value = "5" }
+                                }
+                                , "Select Group"
+                            )
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded">Register User</button>
+                        <button type="reset" class="btn btn-primary btn-outline-primary btn-rounded">Clear</button>
+                    </td>
+                </tr>
+            </table>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        }
+    </div>
+</body>
+</html>

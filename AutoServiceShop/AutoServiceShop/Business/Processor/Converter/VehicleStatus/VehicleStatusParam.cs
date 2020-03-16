@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.VehicleStatus
 {
-    class VehicleStatusParam : BaseParamNamed
+    public class VehicleStatusParam : BaseParamNamed
     {
     }
 }

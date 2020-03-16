@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoServiceShop</name>
+    </assembly>
+    <members>
+        <member name="T:AutoServiceShop.Business.Processor.Common.BaseProcessor`7">
+            <summary>
+            Base processors that handles all of the data logic
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Business.Processor.Common.BaseProcessor`7.Create(`2)">
+            <summary>
+            Saves item
+            Converts the parameter to entity and passes it to DAO
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.IAPISessionController.APISessionController.CreateSession(AutoServiceShop.Business.Processor.Converter.Session.SessionParam)">
+            <summary>
+            Creates a session.
+            </summary>   
+            <response code="200">Item created</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't create your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.IAPISessionController.APISessionController.GetSessions">
+            <summary>
+            Returns All Session.
+            </summary>
+            <response code="200">Items listed</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't list your Items right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.OutController.AuthController.LogIn">
+            <summary>
+            Log In.
+            </summary>
+            <response code="200">Item created</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't create your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.OutController.AuthController.LogOut">
+            <summary>
+            Log out.
+            </summary>
+            <response code="200">Session Deleted</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't create your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.Create(`3)">
+            <summary>
+            Creates an entity.
+            </summary>
+            <param name="param"></param>   
+            <response code="200">Item created</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't create your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.CreateWithList(System.Collections.Generic.List{`3})">
+            <summary>
+            Creates a list of entities.
+            </summary>
+            <param name="param"></param>   
+            <response code="200">Items created</response>
+            <response code="400">Items are missing/invalid values</response>
+            <response code="500">Oops! Can't create your Items right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.Delete(System.Collections.Generic.List{`6})">
+            <summary>
+            Deletes a list of entity by their ID.
+            </summary>
+            <param name="idList"></param>
+            <response code="200">Items deleted</response>
+            <response code="400">Items are missing/invalid values</response>
+            <response code="500">Oops! Can't delete your Items right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.DeleteById(`6)">
+            <summary>
+            Deletes an entity by its Id.
+            </summary>
+            <param name="id"></param>
+            <response code="200">Item deleted</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't delete your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.FindByField(System.String,System.String)">
+            <summary>
+            Finds entities with a specific value in a field.
+            </summary>
+            <param name="field"></param> 
+            <param name="value"></param> 
+            <response code="200">Item found</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't find your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.FindByPK(`6)">
+            <summary>
+            Finds an entity by its Id.
+            </summary>
+            <param name="id"></param>
+            <response code="200">Item found</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't find your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.ListAll">
+            <summary>
+            Returns All Entities.
+            </summary>
+            <response code="200">Items listed</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't list your Items right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.Update(`6,`3)">
+            <summary>
+            Updates an entity by its Id.
+            </summary>
+            <param name="id"></param> 
+            <param name="param"></param> 
+            <response code="200">Item updated</response>
+            <response code="400">Item has missing/invalid values</response>
+            <response code="500">Oops! Can't update your Item right now</response>
+        </member>
+        <member name="M:AutoServiceShop.Controllers.CommonController.BaseController`8.UpdateByList(System.Collections.Generic.List{`3})">
+            <summary>
+            Updates a list of entities.
+            </summary>
+            <param name="param"></param>
+            <response code="200">Items updated</response>
+            <response code="400">Items have missing/invalid values</response>
+            <response code="500">Oops! Can't update your Items right now</response>
+        </member>
+        <member name="T:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3">
+            <summary>
+            Data Access class for the local storage (JSON files)
+            </summary>
+        </member>
+        <member name="F:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3._storage">
+            <summary>
+            Get's the instance of the storage class
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Delete(`1)">
+            <summary>
+            Set's entity to Inactive item from file via ID
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Delete(`0)">
+            <summary>
+            Removes item from file via the entity itself
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Delete(System.Collections.Generic.List{`1})">
+            <summary>
+            Removes items from file via list of ID
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Find">
+            <summary>
+            Returns all items in the file
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Find(`1)">
+            <summary>
+            Returns a specific item from the file via the ID
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.FindByField(System.String,System.String)">
+            <summary>
+            Returns a items from file that corespond to the given field name and value
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Save(`0)">
+            <summary>
+            Adds an item to the file
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Save(System.Collections.Generic.List{`0})">
+            <summary>
+            Adds an items to the file via list of entities
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Update(`0)">
+            <summary>
+            Updates a specific entity
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.Update(System.Collections.Generic.List{`0})">
+            <summary>
+            Updates items in a file from a list
+            </summary>
+        </member>
+        <member name="M:AutoServiceShop.Dataaccess.Dao.Common.BaseDaoFile`3.GetPK(`0)">
+            <summary>
+            Returns the PK of an entity
+            </summary>
+        </member>
+    </members>
+</doc>

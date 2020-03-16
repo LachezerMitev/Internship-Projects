@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.VehicleMakeModel;
 using AutoServiceShop.Business.Processor.Converter.VehicleMakeModel;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.VehicleMakeModel
 {
-    class VehicleMakeModelProcessor : IVehicleMakeModelProcessor
+    public class VehicleMakeModelProcessor
+        : BaseProcessor<IVehicleMakeModelParamConverter, IVehicleMakeModelResultConverter, VehicleMakeModelParam, VehicleMakeModelResult, IVehicleMakeModelDao, long, Data.Entity.VehicleMakeModel>, IVehicleMakeModelProcessor
     {
+<<<<<<< Updated upstream
         IVehicleMakeModelDao VehicleMakeModelDao = new VehicleMakeModelDao();
 
         IVehicleMakeModelParamConverter VehicleMakeModelParamConverter = new VehicleMakeModelParamConverter();
@@ -84,14 +87,10 @@ namespace AutoServiceShop.Business.Processor.VehicleMakeModel
         }
 
         public void Update(List<VehicleMakeModelParam> param)
+=======
+        public VehicleMakeModelProcessor(IVehicleMakeModelDao dao, IVehicleMakeModelParamConverter paramConverter, IVehicleMakeModelResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.VehicleMakeModel> entity = new List<Data.Entity.VehicleMakeModel>();
-            foreach (var item in param)
-            {
-                Data.Entity.VehicleMakeModel oldEntity = VehicleMakeModelDao.Find(item.Id);
-                Data.Entity.VehicleMakeModel newEntity = VehicleMakeModelParamConverter.Convert(item, null);
-                VehicleMakeModelDao.Update(newEntity);
-            }
         }
     }
 }

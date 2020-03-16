@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
 {
-    interface ICheckUpStatusDao
+    public interface ICheckUpStatusDao : IBaseDao<Data.Entity.CheckUpStatus, long>
     {
+<<<<<<< Updated upstream
         Data.Entity.CheckUpStatus Save(Data.Entity.CheckUpStatus entity);
         List<Data.Entity.CheckUpStatus> Save(List<Data.Entity.CheckUpStatus> entity);
 
@@ -20,5 +22,7 @@ namespace AutoServiceShop.Dataaccess.Dao.CheckUpStatus
 
         List<Data.Entity.CheckUpStatus> Find();
         Data.Entity.CheckUpStatus Find(long id);
+=======
+>>>>>>> Stashed changes
     }
 }

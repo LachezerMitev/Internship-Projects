@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <head style="color: #07181F;">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            $('div.hidden').fadeIn(1500).removeClass('hidden');
+        });
+        </script>
+        <meta name="viewport" content="width=device-width" />
+        <style>
+            div.hidden {
+                display: none
+            }
+
+            body {
+                background-image: url('https://cdn3.f-cdn.com/contestentries/1476645/14106457/5c7905a19aaa6_thumb900.jpg');
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        </style>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Home Page</title>
+    </head>
+
+    <div class="text-center hidden text-white">
+        <h1 class="display-4">Welcome</h1>
+        <p>This my Auto Service Shop WEB Application. Feel free to explore and test things out</p>
+        <p></p>
+        <p></p>
+        <div>
+            @using (Html.BeginForm("UserIndex", "User", FormMethod.Get))
+            {
+                <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded btn-lg btn-block">User Management Panel</button>
+            }
+        </div>
+    </div>

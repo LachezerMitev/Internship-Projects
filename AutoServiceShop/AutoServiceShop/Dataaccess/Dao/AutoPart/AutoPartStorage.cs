@@ -1,21 +1,24 @@
-﻿using System;
+﻿using AutoServiceShop.Dataaccess.Dao.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceShop.Dataaccess.Dao.AutoPart
 {
-    class AutoPartStorage
+    class AutoPartStorage : BaseStorage<Data.Entity.AutoPart, long>
     {
-        public static List<Data.Entity.AutoPart> AutoPartList = new List<Data.Entity.AutoPart>();
-        public static Dictionary<long, Data.Entity.AutoPart> AutoPartDictionary = new Dictionary<long, Data.Entity.AutoPart>();
+        public static List<Data.Entity.AutoPart> List = new List<Data.Entity.AutoPart>();
+        public static Dictionary<long, Data.Entity.AutoPart> Dictionary = new Dictionary<long, Data.Entity.AutoPart>();
 
         static AutoPartStorage()
         {
-            Data.Entity.AutoPart AutoPart1 = new Data.Entity.AutoPart
-            {
+            string json = File.ReadAllText(@"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\AutoParts.json");
 
+<<<<<<< Updated upstream
             };
 
             Data.Entity.AutoPart AutoPart2 = new Data.Entity.AutoPart
@@ -55,29 +58,13 @@ namespace AutoServiceShop.Dataaccess.Dao.AutoPart
             {
                 
             };
-
-            AutoPartList.Add(AutoPart1);
-            AutoPartList.Add(AutoPart2);
-            AutoPartList.Add(AutoPart3);
-            AutoPartList.Add(AutoPart4);
-            AutoPartList.Add(AutoPart5);
-            AutoPartList.Add(AutoPart6);
-            AutoPartList.Add(AutoPart7);
-            AutoPartList.Add(AutoPart8);
-            AutoPartList.Add(AutoPart9);
-            AutoPartList.Add(AutoPart10);
-
-            AutoPartDictionary.Add(AutoPart1.Id, AutoPart1);
-            AutoPartDictionary.Add(AutoPart2.Id, AutoPart2);
-            AutoPartDictionary.Add(AutoPart3.Id, AutoPart3);
-            AutoPartDictionary.Add(AutoPart4.Id, AutoPart4);
-            AutoPartDictionary.Add(AutoPart5.Id, AutoPart5);
-            AutoPartDictionary.Add(AutoPart6.Id, AutoPart6);
-            AutoPartDictionary.Add(AutoPart7.Id, AutoPart7);
-            AutoPartDictionary.Add(AutoPart8.Id, AutoPart8);
-            AutoPartDictionary.Add(AutoPart9.Id, AutoPart9);
-            AutoPartDictionary.Add(AutoPart10.Id, AutoPart10);
-
+=======
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<long, Data.Entity.AutoPart>>(json);
         }
+>>>>>>> Stashed changes
+
+        public override Dictionary<long, Data.Entity.AutoPart> GetDictionary() => Dictionary;
+
+        public override string GetPath() => @"C:\Users\Lathe\source\repos\AutoServiceShop\AutoServiceShop\DataBase\AutoParts.json";
     }
 }

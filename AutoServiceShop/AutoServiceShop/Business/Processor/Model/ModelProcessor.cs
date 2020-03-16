@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using AutoServiceShop.Dataaccess.Dao.Model;
 using AutoServiceShop.Business.Processor.Converter.Model;
+using AutoServiceShop.Business.Processor.Common;
 
 namespace AutoServiceShop.Business.Processor.Model
 {
-    class ModelProcessor : IModelProcessor
+    public class ModelProcessor
+        : BaseProcessor<IModelParamConverter, IModelResultConverter, ModelParam, ModelResult, IModelDao, long, Data.Entity.Model>, IModelProcessor
     {
+<<<<<<< Updated upstream
         IModelDao ModelDao = new ModelDao();
 
         IModelParamConverter ModelParamConverter = new ModelParamConverter();
@@ -84,14 +87,10 @@ namespace AutoServiceShop.Business.Processor.Model
         }
 
         public void Update(List<ModelParam> param)
+=======
+        public ModelProcessor(IModelDao dao, IModelParamConverter paramConverter, IModelResultConverter resultConverter) : base(dao, paramConverter, resultConverter)
+>>>>>>> Stashed changes
         {
-            List<Data.Entity.Model> entity = new List<Data.Entity.Model>();
-            foreach (var item in param)
-            {
-                Data.Entity.Model oldEntity = ModelDao.Find(item.Id);
-                Data.Entity.Model newEntity = ModelParamConverter.Convert(item, null);
-                ModelDao.Update(newEntity);
-            }
         }
     }
 }

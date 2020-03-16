@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoServiceShop.Business.Processor.Converter.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceShop.Business.Processor.Converter.AutoPartStatus
 {
-    interface IAutoPartStatusParamConverter
+    public interface IAutoPartStatusParamConverter : IBaseParamConverter<AutoPartStatusParam, Data.Entity.AutoPartStatus>
     {
-        AutoServiceShop.Data.Entity.AutoPartStatus Convert(AutoPartStatusParam param, Data.Entity.AutoPartStatus oldentity);
     }
 }

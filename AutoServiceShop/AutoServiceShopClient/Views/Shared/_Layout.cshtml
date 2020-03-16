@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<body style="color: #07181F;">
+    <header style="color: #07181F;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="color: #07181F;">
+            <div class="container" style="color: #07181F;">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AutoServiceShopClient</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="color: #07181F;"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item" style="float: right;">
+                            @using (Html.BeginForm("CurrentUserIndex", "CurrentUser"))
+                            {
+                                <button type="submit" style="float: right;" class="btn btn-primary btn-outline-primary btn-rounded btn-block">My Account</button>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <input type="hidden" name="token" value="@ViewBag.Token" />
+
+    <footer class="border-top footer text-muted text-white" style="color: #07181F;">
+        <div class="container text-white">
+            <p class="float-left d-inline-block text-white">&copy; 2020 - AutoServiceShopClient - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+
+            @using (Html.BeginForm("LogOut", "Auth", FormMethod.Get))
+            {
+                <button type="submit" class="btn btn-primary btn-outline-primary btn-rounded float-right">Log Out</button>
+            }
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
